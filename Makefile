@@ -1,6 +1,11 @@
 SHELL := /bin/bash
-COMPOSE := docker compose
 ENV_FILE := .env
+
+# MAC=1 layers in the Mac-native override (host Ollama, no ollama container).
+ifeq ($(MAC),1)
+  EXTRA_FILES := -f docker-compose.yml -f docker-compose.mac-native.yml
+endif
+COMPOSE := docker compose $(EXTRA_FILES)
 
 SMALL_MODEL  := llama3.2:3b
 MEDIUM_MODEL := qwen2.5-coder:7b
@@ -8,8 +13,8 @@ LARGE_MODEL  := qwen2.5-coder:32b
 
 .DEFAULT_GOAL := help
 
-.PHONY: help up down restart build rebuild status logs ollama-logs litellm-logs \
-        shell claude ruflo pull-models clean nuke \
+.PHONY: help up up-mac-native _up-mac-native down restart build rebuild status \
+        logs ollama-logs litellm-logs shell claude ruflo pull-models clean nuke \
         model-small model-medium model-large model-show _set-model
 
 help: ## Show this help
@@ -29,6 +34,25 @@ $(ENV_FILE):
 up: $(ENV_FILE) ## Start ollama + litellm and pre-pull the configured model
 	$(COMPOSE) up -d ollama litellm
 	$(COMPOSE) run --rm ollama-pull
+
+up-mac-native: ## Mac: use native (Metal) Ollama on the host, run only LiteLLM in Docker
+	@$(MAKE) MAC=1 _up-mac-native
+
+_up-mac-native: $(ENV_FILE)
+	@command -v ollama >/dev/null 2>&1 || { \
+	  echo "ERROR: native ollama not found. Install with: brew install ollama"; exit 1; }
+	@curl -fsS http://localhost:11434/api/tags >/dev/null 2>&1 || { \
+	  echo "ERROR: ollama not running on localhost:11434. Start it: ollama serve &"; exit 1; }
+	@MODEL=$$(grep -E '^MODELS=' $(ENV_FILE) | cut -d= -f2- | awk '{print $$1}'); \
+	  echo ">> ensuring '$$MODEL' is pulled into native Ollama"; \
+	  ollama pull "$$MODEL"
+	$(COMPOSE) up -d litellm
+	@echo ""
+	@echo ">> mac-native mode is active."
+	@echo ">> Run subsequent targets with MAC=1, e.g.:"
+	@echo "     make shell MAC=1"
+	@echo "     make claude MAC=1"
+	@echo "     make model-medium MAC=1"
 
 down: ## Stop all services (volumes preserved)
 	$(COMPOSE) down

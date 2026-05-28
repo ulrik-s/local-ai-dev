@@ -47,6 +47,7 @@ services:
       - ./litellm/config.yaml:/app/config.yaml:ro
     environment:
       LITELLM_MODEL: ${LITELLM_MODEL:-ollama_chat/qwen2.5-coder:7b}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://ollama:11434}
     command: ["--config", "/app/config.yaml", "--port", "4000", "--host", "0.0.0.0"]
     ports:
       - "4000:4000"

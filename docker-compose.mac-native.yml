@@ -1,0 +1,25 @@
+# Override layer for Mac users running Ollama natively (Metal-accelerated)
+# on the host instead of inside a container.
+#
+# Usage:  docker compose -f docker-compose.yml -f docker-compose.mac-native.yml ...
+#         (or run any Makefile target with MAC=1)
+
+services:
+  ollama:
+    profiles: ["never"]
+
+  ollama-pull:
+    profiles: ["never"]
+
+  litellm:
+    environment:
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+    depends_on: !reset []
+
+  ruflo:
+    environment:
+      OLLAMA_HOST: http://host.docker.internal:11434
+      OLLAMA_API_BASE: http://host.docker.internal:11434
+    depends_on: !override
+      litellm:
+        condition: service_started
