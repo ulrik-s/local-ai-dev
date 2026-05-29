@@ -20,11 +20,9 @@ RUN npm install -g \
 COPY scripts/ruflo-entrypoint.sh /usr/local/bin/ruflo-entrypoint.sh
 RUN chmod +x /usr/local/bin/ruflo-entrypoint.sh
 
-RUN useradd -m -s /bin/bash -u 1000 ruflo \
-  && mkdir -p /workspace \
-  && chown ruflo:ruflo /workspace
+RUN mkdir -p /workspace && chown node:node /workspace
 
-USER ruflo
+USER node
 WORKDIR /workspace
 
 ENTRYPOINT ["/usr/local/bin/ruflo-entrypoint.sh"]

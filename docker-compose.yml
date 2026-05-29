@@ -77,7 +77,7 @@ services:
       RUFLO_DEFAULT_MODEL: ${RUFLO_DEFAULT_MODEL:-qwen2.5-coder:7b}
     volumes:
       - .:/workspace
-      - ruflo-home:/home/ruflo
+      - ruflo-home:/home/node
     working_dir: /workspace
     stdin_open: true
     tty: true
