@@ -120,6 +120,26 @@ tippa – här bryts det av de branta ändstigningarna. Ytterformen är en
 
 ---
 
+## Öppen variant – bara en kurvad yta, inga väggar
+
+Måste vi ha väggar? **Nej.** En enda öppen, kurvad yta räcker – men den måste
+vara **parabolisk** (brantare mot ändarna), *inte* en rak kon:
+
+- En **rak kon** har konstant lutning → ingen återställande kraft → tvålen
+  glider ner och tippar (samma fel som tidigare, fast utan vägg som stoppar).
+- En **parabolisk ("båt"-formad) yta** blir brantare ju längre ut man kommer →
+  rubbas tvålen åker en ände upp på en brantare del → tyngdpunkten höjs → den
+  glider tillbaka. **Kurvaturen ersätter väggen.**
+
+Mitten ligger lägst (undersidan torkar, vattnet rinner till avloppet) och tvålen
+vilar på kortsidornas nederkanter/hörn. Priset för minimalismen: ingen hård
+stopp (en hård stöt kan putta av tvålen), och ytan måste vara större än tvålen
+för att centreringen ska fungera.
+
+![Öppen ritning](tvalkopp_oppen_ritning.png)
+
+---
+
 ## Filer
 
 | Fil | Beskrivning |
@@ -128,10 +148,14 @@ tippa – här bryts det av de branta ändstigningarna. Ytterformen är en
 | `tvalkopp_3d.png` | 3D-render av den rektangulära modellen |
 | `tvalkopp_oval_ritning.png` | **Oval/rund** variant: 3D + plan + långsektion + förklaring |
 | `oval_iso.png` | 3D-render av den ovala modellen |
+| `tvalkopp_oppen_ritning.png` | **Öppen** variant (inga väggar): 3D + kon-vs-kurva + långsektion |
+| `oppen_iso.png` | 3D-render av den öppna modellen |
 | `rita_tvalkopp.py` | Genererar rektangulära ritningen (matplotlib) |
 | `rita_tvalkopp_oval.py` | Genererar ovala ritningen (matplotlib) |
+| `rita_tvalkopp_oppen.py` | Genererar öppna ritningen (matplotlib) |
 | `tvalkopp.scad` | Parametrisk rektangulär modell (OpenSCAD → STL) |
 | `tvalkopp_oval.scad` | Parametrisk **oval/rund** modell (OpenSCAD → STL) |
+| `tvalkopp_oppen.scad` | Parametrisk **öppen** modell utan väggar (OpenSCAD → STL) |
 
 ### Återskapa ritningarna
 ```bash
