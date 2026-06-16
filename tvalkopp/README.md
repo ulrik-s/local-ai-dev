@@ -222,6 +222,29 @@ aggressiv fångst.
 
 ---
 
+## Not: tvålens slitage
+
+En tvål slits inte jämnt: man gnuggar de stora ytorna, så **tjockleken (T) går
+först** och **kanter/hörn rundas av**, medan **längd (L) och bredd (W) är
+jämförelsevis stabila** större delen av livet. Det är gynnsamt för dessa
+designer:
+
+- Tvålen **lägeställs av sin längd** (axlar/väggar ≈ L) → fungerar nästan hela
+  livet.
+- **Tunnare tvål = lägre tyngdpunkt = ännu stabilare.**
+- Underkanten vilar på samma ställe oavsett tjocklek → längsfångsten påverkas
+  inte.
+- När hörnen rundas **vaggar den krökta skålen in tvålen** (kula-i-skål) →
+  krökta former åldras snällare än skarpa spår/fack.
+
+Undantag: den allra sista tunna skivan blir klurig för alla tvålfat, och ojämn
+användning kan göra tvålen kilformad (skålen tål det – den lägger sig snett men
+ligger kvar).
+
+![Slitage](tvalkopp_slitage.png)
+
+---
+
 ## Filer
 
 | Fil | Beskrivning |
@@ -238,12 +261,14 @@ aggressiv fångst.
 | `ovalskal_iso.png` | 3D-render av oval skål-varianten |
 | `tvalkopp_bat_ritning.png` | **Båt-profil**: 3D + plan + långsektion + förklaring |
 | `bat_iso.png` | 3D-render av båt-profil-varianten |
+| `tvalkopp_slitage.png` | Illustration: hur tvålen slits och varför designen åldras väl |
 | `rita_tvalkopp.py` | Genererar rektangulära ritningen (matplotlib) |
 | `rita_tvalkopp_oval.py` | Genererar ovala ritningen (matplotlib) |
 | `rita_tvalkopp_oppen.py` | Genererar öppna ritningen (matplotlib) |
 | `rita_tvalkopp_sten.py` | Genererar sten-ritningen (matplotlib) |
 | `rita_tvalkopp_ovalskal.py` | Genererar oval skål-ritningen (matplotlib) |
 | `rita_tvalkopp_bat.py` | Genererar båt-profil-ritningen (matplotlib) |
+| `rita_tvalkopp_slitage.py` | Genererar slitage-illustrationen (matplotlib) |
 | `tvalkopp.scad` | Parametrisk rektangulär modell (OpenSCAD → STL) |
 | `tvalkopp_oval.scad` | Parametrisk **oval/rund** modell (OpenSCAD → STL) |
 | `tvalkopp_oppen.scad` | Parametrisk **öppen** modell utan väggar (OpenSCAD → STL) |
