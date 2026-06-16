@@ -176,6 +176,30 @@ stenkänsla utan att hugga.
 
 ---
 
+## Oval skål – vacker form, funktionell tack vare djupkrökningen
+
+En **oval skål som är krökt även i djupled** (en ellipsoid-skål) ger både en
+estetiskt vacker form *och* full funktion – samtidigt. Det är just
+**djupkrökningen** som är poängen:
+
+- En **rak kon** har konstant lutning → ingen återställning → tvålen tippar.
+- En **krökt skål** (ellipsoid) blir brantare ju längre ut man kommer åt alla
+  håll → tvålen centreras och hålls vågrät **helt utan väggar**.
+
+Tvålen vilar på sina **4 underkantshörn** (minimal kontakt → torkar bäst),
+mitten svävar fritt, och den ovala formen självriktar även tvålens längdled.
+Mitten är lägsta punkten → ett **borrat avloppshål** där (annars samlas vatten
+under tvålen).
+
+**Tillverkning:** "svarvad oval" kräver **oval-/rosettsvarv** (avancerat
+hantverk). En vanlig svarv ger bara **rund** skål – sätt `A=B` i modellen så
+blir det en rund skål som funkar lika bra fysiskt. Annars CNC-fräs,
+handhuggning (täljsten) eller gjutning.
+
+![Oval skål-ritning](tvalkopp_ovalskal_ritning.png)
+
+---
+
 ## Filer
 
 | Fil | Beskrivning |
@@ -188,14 +212,18 @@ stenkänsla utan att hugga.
 | `oppen_iso.png` | 3D-render av den öppna modellen |
 | `tvalkopp_sten_ritning.png` | **Sten**-variant: 3D + måttsatt tvärsektion + sten-guide |
 | `sten_iso.png` | 3D-render av sten-varianten |
+| `tvalkopp_ovalskal_ritning.png` | **Oval skål**: 3D + plan + långsektion + förklaring |
+| `ovalskal_iso.png` | 3D-render av oval skål-varianten |
 | `rita_tvalkopp.py` | Genererar rektangulära ritningen (matplotlib) |
 | `rita_tvalkopp_oval.py` | Genererar ovala ritningen (matplotlib) |
 | `rita_tvalkopp_oppen.py` | Genererar öppna ritningen (matplotlib) |
 | `rita_tvalkopp_sten.py` | Genererar sten-ritningen (matplotlib) |
+| `rita_tvalkopp_ovalskal.py` | Genererar oval skål-ritningen (matplotlib) |
 | `tvalkopp.scad` | Parametrisk rektangulär modell (OpenSCAD → STL) |
 | `tvalkopp_oval.scad` | Parametrisk **oval/rund** modell (OpenSCAD → STL) |
 | `tvalkopp_oppen.scad` | Parametrisk **öppen** modell utan väggar (OpenSCAD → STL) |
 | `tvalkopp_sten.scad` | Parametrisk **sten**-modell med långsidesväggar (OpenSCAD → STL) |
+| `tvalkopp_ovalskal.scad` | Parametrisk **oval skål** (ellipsoid, krökt i djupled; A=B → rund) |
 
 ### Återskapa ritningarna
 ```bash
