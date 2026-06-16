@@ -14,7 +14,7 @@ from matplotlib.gridspec import GridSpec
 
 # parametrar (= tvalkopp_ovalskal.scad)
 L, W, T = 90.0, 60.0, 25.0
-A, B, C, fmin, H, border, drain_d = 72.0, 52.0, 24.0, 8.0, 22.0, 5.0, 9.0
+A, B, C, fmin, H, border, drain_d = 92.0, 46.0, 34.0, 8.0, 27.0, 5.0, 9.0
 half = L/2
 zc = fmin + C
 

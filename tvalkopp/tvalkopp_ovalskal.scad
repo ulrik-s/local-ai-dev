@@ -22,12 +22,12 @@
 L = 90;  W = 60;  T = 25;
 
 /* [Oval skål] */
-A      = 72;   // ellipsoidens halvaxel i längdled (x)
-B      = 52;   // ellipsoidens halvaxel i breddled (y)
-C      = 24;   // ellipsoidens halvaxel i djupled (z)  <-- djupkrökningen
+A      = 92;   // ellipsoidens halvaxel i längdled (x)  - längre
+B      = 46;   // ellipsoidens halvaxel i breddled (y)  - smalare => mer avlång
+C      = 34;   // ellipsoidens halvaxel i djupled (z)   - djupare/aggressivare
 fmin   = 8;    // godstjocklek under skålens lägsta punkt
 border = 5;    // kant mellan skålens rim och blockets ytterkant
-H      = 22;   // blockhöjd
+H      = 27;   // blockhöjd (rim) - djupare skål
 rf     = 5;    // yttre rundning (pebble)
 drain_d= 9;    // borrat avloppshål i lägsta punkten
 feet_h = 3;
