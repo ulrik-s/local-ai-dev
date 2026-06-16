@@ -100,23 +100,55 @@ Exemplet i ritningen utgår från en vanlig tvålbit:
 
 ---
 
+## Rund/oval variant ("avlångt cirkulär")
+
+Gillar du runda former? Det går utmärkt – **den runda konturen är bara estetik
+och påverkar inte funktionen.** Allt som krävs för de önskvärda egenskaperna
+sitter i den inre **golvprofilen**, inte i ytterkonturen:
+
+- **flack v-ränna i mitten** (~12°) → undersidan svävar fritt och torkar, vattnet
+  rinner till avloppet, och lutningen lockar tvålen mot mitten;
+- **branta ändstigningar** (~37°) på avstånd ≈ `L` → fångar kortsidornas
+  nederkanter, hindrar tippning och centrerar på längden;
+- **oval skål + tajt sidoglapp** → centrerar i sidled.
+
+Skillnaden mot en ren kon: konen är symmetrisk och låter tvålen glida ner och
+tippa – här bryts det av de branta ändstigningarna. Ytterformen är en
+"stadion/oval" (rundade ändar), allt mjukt rundat.
+
+![Oval ritning](tvalkopp_oval_ritning.png)
+
+---
+
 ## Filer
 
 | Fil | Beskrivning |
 |---|---|
-| `tvalkopp_ritning.png` | Ortografiska vyer (långsektion, tvärsektion, vy uppifrån) + 3D + förklaring |
-| `tvalkopp_3d.png` | 3D-render av den parametriska modellen |
-| `rita_tvalkopp.py` | Genererar ritningen (matplotlib). Ändra `L, W, T` överst. |
-| `tvalkopp.scad` | Parametrisk 3D-modell för OpenSCAD → STL för 3D-utskrift |
+| `tvalkopp_ritning.png` | Rektangulär variant: ortografiska vyer + 3D + förklaring |
+| `tvalkopp_3d.png` | 3D-render av den rektangulära modellen |
+| `tvalkopp_oval_ritning.png` | **Oval/rund** variant: 3D + plan + långsektion + förklaring |
+| `oval_iso.png` | 3D-render av den ovala modellen |
+| `rita_tvalkopp.py` | Genererar rektangulära ritningen (matplotlib) |
+| `rita_tvalkopp_oval.py` | Genererar ovala ritningen (matplotlib) |
+| `tvalkopp.scad` | Parametrisk rektangulär modell (OpenSCAD → STL) |
+| `tvalkopp_oval.scad` | Parametrisk **oval/rund** modell (OpenSCAD → STL) |
 
-### Återskapa ritningen
+### Återskapa ritningarna
 ```bash
 pip install matplotlib numpy
-python3 rita_tvalkopp.py        # -> tvalkopp_ritning.png
+python3 rita_tvalkopp.py        # -> tvalkopp_ritning.png  (rektangulär)
+python3 rita_tvalkopp_oval.py   # -> tvalkopp_oval_ritning.png  (oval; kräver oval_iso.png)
 ```
 
 ### 3D-modell / utskrift
-Öppna `tvalkopp.scad` i [OpenSCAD](https://openscad.org), ändra `L`, `W`, `T`,
-tryck **F6** för att rendera och exportera **STL**. Sätt `show_soap = false`
-innan du exporterar för utskrift. Skriv ut i fukttålig plast (t.ex. PETG) eller
-gjut i keramik/betong.
+Öppna `tvalkopp.scad` eller `tvalkopp_oval.scad` i
+[OpenSCAD](https://openscad.org), ändra `L`, `W`, `T`, tryck **F6** och exportera
+**STL**. Sätt `show_soap = false` före export. Den ovala modellen har även
+`cut = true` för att se golvprofilen i längssnitt. Skriv ut i fukttålig plast
+(t.ex. PETG) eller gjut i keramik/betong.
+
+Rendera bilder från kommandoraden (headless):
+```bash
+openscad -o oval_iso.png --imgsize=1400,1000 \
+  --camera=0,0,5,60,0,335,215 --colorscheme=Tomorrow tvalkopp_oval.scad
+```
