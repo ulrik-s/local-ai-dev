@@ -140,6 +140,42 @@ för att centreringen ska fungera.
 
 ---
 
+## Variant med långsidesväggar (gjord för sten)
+
+Vill man att tvålen inte ska kunna glida av i sidled lägger man till **väggar på
+långsidorna**. Den paraboliska golvprofilen sköter centreringen på längden;
+långsidesväggarna ger en hård sidostopp. Kortändarna hålls låga/öppna så att man
+kan skjuta ut tvålen och vattnet rinner av.
+
+Den här varianten är ritad för att kunna **göras i sten**: tjockt gods
+(botten/vägg ≳ 12 mm), inga vassa innerhörn (allt fileat), inga underskärningar
+och plan botten.
+
+![Sten-ritning](tvalkopp_sten_ritning.png)
+
+### Hur arbetar man i sten? (och: svarv?)
+
+- **Svarv** gör bara **runda** (rotationssymmetriska) former. Den här avlånga
+  formen kan en svarv **inte** göra. Vill du svarva: gör i stället en **rund
+  skål** (säg till så ger jag svarvprofilen – en parabolisk/sfärisk urgröpning
+  som tvålen vilar i).
+- **Handhuggning i mjuk sten** (täljsten/specksten, Mohs ~2): kniv, rasp,
+  filar/rifflers, borr, och sandpapper/diamantsvampar till finish. Enklast för
+  en unik kopp – täljsten kan i stort sett bearbetas med träverktyg.
+- **Vinkelslip + diamantskiva** för grovform, **diamant-roterstift (Dremel)**
+  för skålen, **diamant-kärnborr** för avloppshålet.
+- **CNC-stenfräs** med diamantverktyg (vattenkyld) för exakt form eller hård
+  sten (granit). Mata in STL:en från `tvalkopp_sten.scad`.
+- **Vattenskärning** kan grovkapa planformen ur en skiva (sedan urgröpning för
+  hand/CNC).
+
+**Material:** täljsten är idealisk – mjuk, vatten- och värmetålig, nordisk
+tradition, och passande tema för just tvål. Alabaster eller mjuk marmor går
+också. Enklast av allt: **gjut** i betong/jesmonite i en 3D-printad form –
+stenkänsla utan att hugga.
+
+---
+
 ## Filer
 
 | Fil | Beskrivning |
@@ -150,12 +186,16 @@ för att centreringen ska fungera.
 | `oval_iso.png` | 3D-render av den ovala modellen |
 | `tvalkopp_oppen_ritning.png` | **Öppen** variant (inga väggar): 3D + kon-vs-kurva + långsektion |
 | `oppen_iso.png` | 3D-render av den öppna modellen |
+| `tvalkopp_sten_ritning.png` | **Sten**-variant: 3D + måttsatt tvärsektion + sten-guide |
+| `sten_iso.png` | 3D-render av sten-varianten |
 | `rita_tvalkopp.py` | Genererar rektangulära ritningen (matplotlib) |
 | `rita_tvalkopp_oval.py` | Genererar ovala ritningen (matplotlib) |
 | `rita_tvalkopp_oppen.py` | Genererar öppna ritningen (matplotlib) |
+| `rita_tvalkopp_sten.py` | Genererar sten-ritningen (matplotlib) |
 | `tvalkopp.scad` | Parametrisk rektangulär modell (OpenSCAD → STL) |
 | `tvalkopp_oval.scad` | Parametrisk **oval/rund** modell (OpenSCAD → STL) |
 | `tvalkopp_oppen.scad` | Parametrisk **öppen** modell utan väggar (OpenSCAD → STL) |
+| `tvalkopp_sten.scad` | Parametrisk **sten**-modell med långsidesväggar (OpenSCAD → STL) |
 
 ### Återskapa ritningarna
 ```bash
