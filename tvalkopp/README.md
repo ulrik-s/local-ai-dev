@@ -200,6 +200,28 @@ handhuggning (täljsten) eller gjutning.
 
 ---
 
+## Båt-profil – djup cockpit + branta ändar (aggressiv längsfångst)
+
+Om man vill att djupet ska vara **mer aggressivt i längd-led** byter man från
+ellipsoid till en **båt-profil**: långaxeln dippar djupt och flackt i mitten
+(cockpit) och reser sig **brant just vid tvålens ändar** (axlar/"shoulders"),
+och planar sedan ut i ett mjukt däck ut till den ovala kanten.
+
+- De **branta axlarna** fångar kortsidorna → stark centrering på längden.
+- Den **djupa cockpiten** gör att undersidan svävar fritt och torkar (avlopp i
+  lägsta punkten).
+- **Tvärsnittet** är en flack parabel som når samma rimhöjd överallt → ren oval
+  kant och mild sidocentrering.
+
+Skillnad mot ellipsoid-skålen: där var långaxeln den *mjukast* krökta; här är
+den medvetet *brantast* vid tvåländen. Justera `cdip` (cockpit-djup), `Sh`
+(axelns höjd) och `xsh_ex` (axelns längd – kort = brantare) för mer/mindre
+aggressiv fångst.
+
+![Båt-ritning](tvalkopp_bat_ritning.png)
+
+---
+
 ## Filer
 
 | Fil | Beskrivning |
@@ -214,16 +236,20 @@ handhuggning (täljsten) eller gjutning.
 | `sten_iso.png` | 3D-render av sten-varianten |
 | `tvalkopp_ovalskal_ritning.png` | **Oval skål**: 3D + plan + långsektion + förklaring |
 | `ovalskal_iso.png` | 3D-render av oval skål-varianten |
+| `tvalkopp_bat_ritning.png` | **Båt-profil**: 3D + plan + långsektion + förklaring |
+| `bat_iso.png` | 3D-render av båt-profil-varianten |
 | `rita_tvalkopp.py` | Genererar rektangulära ritningen (matplotlib) |
 | `rita_tvalkopp_oval.py` | Genererar ovala ritningen (matplotlib) |
 | `rita_tvalkopp_oppen.py` | Genererar öppna ritningen (matplotlib) |
 | `rita_tvalkopp_sten.py` | Genererar sten-ritningen (matplotlib) |
 | `rita_tvalkopp_ovalskal.py` | Genererar oval skål-ritningen (matplotlib) |
+| `rita_tvalkopp_bat.py` | Genererar båt-profil-ritningen (matplotlib) |
 | `tvalkopp.scad` | Parametrisk rektangulär modell (OpenSCAD → STL) |
 | `tvalkopp_oval.scad` | Parametrisk **oval/rund** modell (OpenSCAD → STL) |
 | `tvalkopp_oppen.scad` | Parametrisk **öppen** modell utan väggar (OpenSCAD → STL) |
 | `tvalkopp_sten.scad` | Parametrisk **sten**-modell med långsidesväggar (OpenSCAD → STL) |
 | `tvalkopp_ovalskal.scad` | Parametrisk **oval skål** (ellipsoid, krökt i djupled; A=B → rund) |
+| `tvalkopp_bat.scad` | Parametrisk **båt-profil** (djup cockpit + branta ändar) |
 
 ### Återskapa ritningarna
 ```bash
