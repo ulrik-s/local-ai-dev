@@ -33,8 +33,18 @@ rf     = 5;    // yttre rundning (pebble)
 drain_d= 9;
 feet_h = 3;
 
+/* [Sump / slitbana - för sista tunna skivan] */
+sump      = true;  // sump + perch i botten
+sump_r    = 17;    // sumpens radie
+sump_d    = 5;     // sumpens djup under skålgolvet
+nub_n     = 3;     // antal knottror (3 = stabilt, vaggar inte)
+nub_r     = 10;    // knottrornas radie från centrum
+peg_d     = 6;     // knottrans diameter (grov => tål sten)
+nub_above = 5;     // knottrans topp ovanför skålgolvet
+
 /* [Visning] */
 show_soap = true;
+show_sliver = false;   // visa sista tunna skivan vilande på knottrorna
 cut = 0;       // 0=hel, 1=längssnitt (y<0), 2=tvärsnitt (x<0)
 $fn = 56;
 
@@ -77,12 +87,22 @@ module oval_block() intersection(){
     minkowski(){ linear_extrude(H-2*rf) scale([Xb+border-rf, Yb+border-rf]) circle(1); sphere(rf); }
     translate([-400,-400,0]) cube([800,800,H+rf]);
 }
+module nub() {  // rundad knotter från sumpgolv upp till perch-höjd
+    zbot = fmin - sump_d; ztop = fmin + nub_above;
+    hull() {
+        translate([0,0,zbot]) cylinder(d=peg_d, h=0.1);
+        translate([0,0,ztop-peg_d/2]) sphere(d=peg_d);
+    }
+}
 module dish() {
     difference() {
         oval_block();
         cavity();
-        translate([0,0,-2]) cylinder(d=drain_d, h=fmin+4);
+        translate([0,0,-2]) cylinder(d=drain_d, h=fmin+(sump?sump_d:0)+4);   // avlopp
+        if (sump) translate([0,0,fmin-sump_d]) cylinder(d=2*sump_r, h=sump_d+0.05); // sump
     }
+    // perch: knottror som den tunna skivan vilar på, ovanför sumpens vatten
+    if (sump) for (a=[0:nub_n-1]) rotate([0,0,360*a/nub_n+90]) translate([nub_r,0,0]) nub();
     for (a=[0:2]) rotate([0,0,120*a+90])
         translate([(Xb)*0.5,0,-feet_h]) cylinder(d=9, h=feet_h);
 }
@@ -93,6 +113,9 @@ module scene() {
     if (show_soap)
         color([0.12,0.37,0.75,0.40])
             translate([-half,-W/2, rest]) cube([L, W, T]);
+    if (show_sliver)               // sista tunna skivan vilar på knottrorna
+        color([0.76,0.38,0.12,0.65])
+            translate([-22,-17, fmin+nub_above]) cube([44, 34, 5]);
 }
 if      (cut==1) intersection(){ scene(); translate([-400,-400,-60]) cube([800,400,300]); }
 else if (cut==2) intersection(){ scene(); translate([-400,-400,-60]) cube([400,800,300]); }

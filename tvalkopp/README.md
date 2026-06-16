@@ -245,6 +245,26 @@ ligger kvar).
 
 ---
 
+## Sump + perch för slutskivan
+
+När tvålen blivit en liten tunn skiva (kortare än axelavståndet) lossnar
+längsfångsten och skivan faller till botten – just där vattnet samlas. Båt-
+modellen (`tvalkopp_bat.scad`, `sump=true`) löser det med:
+
+- en **sump** (försänkning) i botten som samlar vattnet och leder det till
+  avloppet, och
+- tre små rundade **knottror** (perch) som skivan vilar på en bit *ovanför*
+  vattnet → den hålls torr och mosas inte.
+
+Den färska tvålen ligger högt på de branta axlarna (~15 mm upp) och rör aldrig
+knottrorna – de spelar bara roll allra sist. Tre knottror = stabilt (vaggar
+inte), grova och rundade = tål sten. Styrs av `sump_d`, `nub_above`, `nub_r`,
+`peg_d`. (`show_sliver=true` visar slutskivan på knottrorna.)
+
+![Sump](tvalkopp_sump_ritning.png)
+
+---
+
 ## Filer
 
 | Fil | Beskrivning |
@@ -262,6 +282,8 @@ ligger kvar).
 | `tvalkopp_bat_ritning.png` | **Båt-profil**: 3D + plan + långsektion + förklaring |
 | `bat_iso.png` | 3D-render av båt-profil-varianten |
 | `tvalkopp_slitage.png` | Illustration: hur tvålen slits och varför designen åldras väl |
+| `tvalkopp_sump_ritning.png` | **Sump + perch**: hur sista tunna skivan hålls torr |
+| `bat_sump_iso.png` | 3D-render av båt med sump + knottror |
 | `rita_tvalkopp.py` | Genererar rektangulära ritningen (matplotlib) |
 | `rita_tvalkopp_oval.py` | Genererar ovala ritningen (matplotlib) |
 | `rita_tvalkopp_oppen.py` | Genererar öppna ritningen (matplotlib) |
@@ -269,6 +291,7 @@ ligger kvar).
 | `rita_tvalkopp_ovalskal.py` | Genererar oval skål-ritningen (matplotlib) |
 | `rita_tvalkopp_bat.py` | Genererar båt-profil-ritningen (matplotlib) |
 | `rita_tvalkopp_slitage.py` | Genererar slitage-illustrationen (matplotlib) |
+| `rita_tvalkopp_sump.py` | Genererar sump-ritningen (matplotlib) |
 | `tvalkopp.scad` | Parametrisk rektangulär modell (OpenSCAD → STL) |
 | `tvalkopp_oval.scad` | Parametrisk **oval/rund** modell (OpenSCAD → STL) |
 | `tvalkopp_oppen.scad` | Parametrisk **öppen** modell utan väggar (OpenSCAD → STL) |
