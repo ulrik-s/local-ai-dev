@@ -65,6 +65,32 @@ ran `make` from, so file edits persist on the host.
 
 ---
 
+## Demo: InnoTrans SeatSense
+
+`demo/innotrans-seatsense/` is a self-contained trade-show demo built on this
+stack: a visitor asks Claude questions in plain English, and Claude reads a
+**fake Yggio tenant** over MCP to answer with real figures from generated JSON.
+The story is what SeatSense - measuring whether a seat is *physically occupied*
+- earned a (fictional) British train operator.
+
+```bash
+make demo-check      # pre-flight: calls all 12 fake-Yggio tools, prints OK per tool
+make demo            # Claude + fake Yggio, ready for questions
+make demo-yggio      # optional: the same data as REST on http://localhost:8787
+make demo-data       # regenerate the dataset
+```
+
+It needs nothing but Node 20+, so it also runs without Docker:
+
+```bash
+cd demo/innotrans-seatsense && node src/selftest.mjs && claude
+```
+
+See `demo/innotrans-seatsense/README.md` for the data model and
+`DEMO-SCRIPT.md` for the stage script.
+
+---
+
 ## Switching model tiers
 
 | Tier   | Model                  | Size    | Notes                          |

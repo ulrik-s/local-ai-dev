@@ -7,6 +7,8 @@ ifeq ($(MAC),1)
 endif
 COMPOSE := docker compose $(EXTRA_FILES)
 
+DEMO_DIR := demo/innotrans-seatsense
+
 SMALL_MODEL  := llama3.2:3b
 MEDIUM_MODEL := qwen2.5-coder:7b
 LARGE_MODEL  := qwen2.5-coder:32b
@@ -15,7 +17,8 @@ LARGE_MODEL  := qwen2.5-coder:32b
 
 .PHONY: help up up-mac-native _up-mac-native down restart build rebuild status \
         logs ollama-logs litellm-logs shell claude ruflo pull-models clean nuke \
-        model-small model-medium model-large model-show _set-model
+        model-small model-medium model-large model-show _set-model \
+        demo demo-check demo-data demo-yggio
 
 help: ## Show this help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n\nTargets:\n"} \
@@ -95,6 +98,20 @@ clean: ## Stop services and remove containers (volumes preserved)
 
 nuke: ## Stop services and DELETE all volumes (models + ruflo home)
 	$(COMPOSE) down -v --remove-orphans
+
+# ---------------- InnoTrans SeatSense demo ----------------
+
+demo: $(ENV_FILE) ## Run the InnoTrans SeatSense demo (Claude + fake Yggio)
+	$(COMPOSE) run --rm -w /workspace/$(DEMO_DIR) ruflo claude
+
+demo-check: $(ENV_FILE) ## Pre-flight the demo: call every fake-Yggio tool over MCP
+	$(COMPOSE) run --rm -w /workspace/$(DEMO_DIR) ruflo node src/selftest.mjs
+
+demo-data: $(ENV_FILE) ## Regenerate the demo dataset from src/model.mjs
+	$(COMPOSE) run --rm -w /workspace/$(DEMO_DIR) ruflo node src/generate.mjs
+
+demo-yggio: $(ENV_FILE) ## Serve the fake Yggio REST API on http://localhost:8787
+	$(COMPOSE) run --rm --publish 8787:8787 -w /workspace/$(DEMO_DIR) ruflo node src/yggio-api.mjs
 
 # ---------------- model tier switching ----------------
 

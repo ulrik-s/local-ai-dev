@@ -1,0 +1,5042 @@
+[
+  {
+    "_id": "iot-nbr1-u001-a",
+    "name": "SeatSense NBR1-U001 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U001",
+      "coach": "A",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 90,
+      "rssi": -83,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u001-b",
+    "name": "SeatSense NBR1-U001 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U001",
+      "coach": "B",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 103,
+      "rssi": -97,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u001-c",
+    "name": "SeatSense NBR1-U001 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U001",
+      "coach": "C",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 111,
+      "rssi": -105,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u001-d",
+    "name": "SeatSense NBR1-U001 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U001",
+      "coach": "D",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 105,
+      "rssi": -112,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u001-e",
+    "name": "SeatSense NBR1-U001 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U001",
+      "coach": "E",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 111,
+      "rssi": -80,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u001-f",
+    "name": "SeatSense NBR1-U001 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U001",
+      "coach": "F",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 108,
+      "rssi": -90,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u001-g",
+    "name": "SeatSense NBR1-U001 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U001",
+      "coach": "G",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 111,
+      "rssi": -95,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u001-h",
+    "name": "SeatSense NBR1-U001 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U001",
+      "coach": "H",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 99,
+      "rssi": -108,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u002-a",
+    "name": "SeatSense NBR1-U002 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U002",
+      "coach": "A",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 104,
+      "rssi": -82,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u002-b",
+    "name": "SeatSense NBR1-U002 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U002",
+      "coach": "B",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 105,
+      "rssi": -102,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u002-c",
+    "name": "SeatSense NBR1-U002 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U002",
+      "coach": "C",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 106,
+      "rssi": -96,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u002-d",
+    "name": "SeatSense NBR1-U002 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U002",
+      "coach": "D",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 103,
+      "rssi": -77,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u002-e",
+    "name": "SeatSense NBR1-U002 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U002",
+      "coach": "E",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 94,
+      "rssi": -83,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u002-f",
+    "name": "SeatSense NBR1-U002 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U002",
+      "coach": "F",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 108,
+      "rssi": -106,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u002-g",
+    "name": "SeatSense NBR1-U002 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U002",
+      "coach": "G",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 88,
+      "rssi": -89,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u002-h",
+    "name": "SeatSense NBR1-U002 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U002",
+      "coach": "H",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 89,
+      "rssi": -113,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u003-a",
+    "name": "SeatSense NBR1-U003 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U003",
+      "coach": "A",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 98,
+      "rssi": -78,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u003-b",
+    "name": "SeatSense NBR1-U003 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U003",
+      "coach": "B",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 96,
+      "rssi": -86,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u003-c",
+    "name": "SeatSense NBR1-U003 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U003",
+      "coach": "C",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 100,
+      "rssi": -102,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u003-d",
+    "name": "SeatSense NBR1-U003 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U003",
+      "coach": "D",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 94,
+      "rssi": -97,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u003-e",
+    "name": "SeatSense NBR1-U003 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U003",
+      "coach": "E",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 91,
+      "rssi": -111,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u003-f",
+    "name": "SeatSense NBR1-U003 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U003",
+      "coach": "F",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 88,
+      "rssi": -79,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u003-g",
+    "name": "SeatSense NBR1-U003 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U003",
+      "coach": "G",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 89,
+      "rssi": -109,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u003-h",
+    "name": "SeatSense NBR1-U003 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U003",
+      "coach": "H",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 106,
+      "rssi": -110,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u004-a",
+    "name": "SeatSense NBR1-U004 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U004",
+      "coach": "A",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 88,
+      "rssi": -83,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u004-b",
+    "name": "SeatSense NBR1-U004 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U004",
+      "coach": "B",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 103,
+      "rssi": -112,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u004-c",
+    "name": "SeatSense NBR1-U004 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U004",
+      "coach": "C",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 93,
+      "rssi": -90,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u004-d",
+    "name": "SeatSense NBR1-U004 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U004",
+      "coach": "D",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 87,
+      "rssi": -100,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u004-e",
+    "name": "SeatSense NBR1-U004 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U004",
+      "coach": "E",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 97,
+      "rssi": -82,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u004-f",
+    "name": "SeatSense NBR1-U004 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U004",
+      "coach": "F",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 101,
+      "rssi": -84,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u004-g",
+    "name": "SeatSense NBR1-U004 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U004",
+      "coach": "G",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 92,
+      "rssi": -98,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u004-h",
+    "name": "SeatSense NBR1-U004 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U004",
+      "coach": "H",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 92,
+      "rssi": -100,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u005-a",
+    "name": "SeatSense NBR1-U005 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U005",
+      "coach": "A",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 99,
+      "rssi": -106,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u005-b",
+    "name": "SeatSense NBR1-U005 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U005",
+      "coach": "B",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 104,
+      "rssi": -101,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u005-c",
+    "name": "SeatSense NBR1-U005 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U005",
+      "coach": "C",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 100,
+      "rssi": -99,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u005-d",
+    "name": "SeatSense NBR1-U005 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U005",
+      "coach": "D",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 109,
+      "rssi": -111,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u005-e",
+    "name": "SeatSense NBR1-U005 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U005",
+      "coach": "E",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 91,
+      "rssi": -107,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u005-f",
+    "name": "SeatSense NBR1-U005 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U005",
+      "coach": "F",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 98,
+      "rssi": -94,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u005-g",
+    "name": "SeatSense NBR1-U005 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U005",
+      "coach": "G",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 97,
+      "rssi": -88,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u005-h",
+    "name": "SeatSense NBR1-U005 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U005",
+      "coach": "H",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 109,
+      "rssi": -97,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u006-a",
+    "name": "SeatSense NBR1-U006 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U006",
+      "coach": "A",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 98,
+      "rssi": -101,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u006-b",
+    "name": "SeatSense NBR1-U006 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U006",
+      "coach": "B",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 104,
+      "rssi": -84,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u006-c",
+    "name": "SeatSense NBR1-U006 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U006",
+      "coach": "C",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 88,
+      "rssi": -88,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u006-d",
+    "name": "SeatSense NBR1-U006 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U006",
+      "coach": "D",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 110,
+      "rssi": -114,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u006-e",
+    "name": "SeatSense NBR1-U006 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U006",
+      "coach": "E",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 93,
+      "rssi": -113,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u006-f",
+    "name": "SeatSense NBR1-U006 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U006",
+      "coach": "F",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 110,
+      "rssi": -78,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u006-g",
+    "name": "SeatSense NBR1-U006 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U006",
+      "coach": "G",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 96,
+      "rssi": -103,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u006-h",
+    "name": "SeatSense NBR1-U006 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U006",
+      "coach": "H",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 91,
+      "rssi": -115,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u007-a",
+    "name": "SeatSense NBR1-U007 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U007",
+      "coach": "A",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 89,
+      "rssi": -82,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u007-b",
+    "name": "SeatSense NBR1-U007 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U007",
+      "coach": "B",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 99,
+      "rssi": -90,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u007-c",
+    "name": "SeatSense NBR1-U007 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U007",
+      "coach": "C",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 95,
+      "rssi": -84,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u007-d",
+    "name": "SeatSense NBR1-U007 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U007",
+      "coach": "D",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 105,
+      "rssi": -87,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u007-e",
+    "name": "SeatSense NBR1-U007 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U007",
+      "coach": "E",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 88,
+      "rssi": -78,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u007-f",
+    "name": "SeatSense NBR1-U007 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U007",
+      "coach": "F",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 98,
+      "rssi": -98,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u007-g",
+    "name": "SeatSense NBR1-U007 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U007",
+      "coach": "G",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 99,
+      "rssi": -107,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u007-h",
+    "name": "SeatSense NBR1-U007 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U007",
+      "coach": "H",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 111,
+      "rssi": -105,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u008-a",
+    "name": "SeatSense NBR1-U008 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U008",
+      "coach": "A",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 110,
+      "rssi": -88,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u008-b",
+    "name": "SeatSense NBR1-U008 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U008",
+      "coach": "B",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 103,
+      "rssi": -87,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u008-c",
+    "name": "SeatSense NBR1-U008 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U008",
+      "coach": "C",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 94,
+      "rssi": -114,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u008-d",
+    "name": "SeatSense NBR1-U008 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U008",
+      "coach": "D",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 108,
+      "rssi": -80,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u008-e",
+    "name": "SeatSense NBR1-U008 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U008",
+      "coach": "E",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 106,
+      "rssi": -107,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u008-f",
+    "name": "SeatSense NBR1-U008 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U008",
+      "coach": "F",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 110,
+      "rssi": -78,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u008-g",
+    "name": "SeatSense NBR1-U008 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U008",
+      "coach": "G",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 91,
+      "rssi": -82,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u008-h",
+    "name": "SeatSense NBR1-U008 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U008",
+      "coach": "H",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 90,
+      "rssi": -106,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u009-a",
+    "name": "SeatSense NBR1-U009 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U009",
+      "coach": "A",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 109,
+      "rssi": -112,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u009-b",
+    "name": "SeatSense NBR1-U009 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U009",
+      "coach": "B",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 98,
+      "rssi": -104,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u009-c",
+    "name": "SeatSense NBR1-U009 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U009",
+      "coach": "C",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 89,
+      "rssi": -82,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u009-d",
+    "name": "SeatSense NBR1-U009 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U009",
+      "coach": "D",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 105,
+      "rssi": -97,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u009-e",
+    "name": "SeatSense NBR1-U009 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U009",
+      "coach": "E",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 95,
+      "rssi": -88,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u009-f",
+    "name": "SeatSense NBR1-U009 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U009",
+      "coach": "F",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 98,
+      "rssi": -99,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u009-g",
+    "name": "SeatSense NBR1-U009 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U009",
+      "coach": "G",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 97,
+      "rssi": -88,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u009-h",
+    "name": "SeatSense NBR1-U009 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U009",
+      "coach": "H",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 93,
+      "rssi": -83,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u010-a",
+    "name": "SeatSense NBR1-U010 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U010",
+      "coach": "A",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 95,
+      "rssi": -91,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u010-b",
+    "name": "SeatSense NBR1-U010 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U010",
+      "coach": "B",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 90,
+      "rssi": -91,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u010-c",
+    "name": "SeatSense NBR1-U010 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U010",
+      "coach": "C",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 93,
+      "rssi": -97,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u010-d",
+    "name": "SeatSense NBR1-U010 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U010",
+      "coach": "D",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 91,
+      "rssi": -82,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u010-e",
+    "name": "SeatSense NBR1-U010 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U010",
+      "coach": "E",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 98,
+      "rssi": -101,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u010-f",
+    "name": "SeatSense NBR1-U010 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U010",
+      "coach": "F",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 97,
+      "rssi": -113,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u010-g",
+    "name": "SeatSense NBR1-U010 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U010",
+      "coach": "G",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 103,
+      "rssi": -109,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u010-h",
+    "name": "SeatSense NBR1-U010 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U010",
+      "coach": "H",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 95,
+      "rssi": -110,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u011-a",
+    "name": "SeatSense NBR1-U011 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U011",
+      "coach": "A",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 91,
+      "rssi": -81,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u011-b",
+    "name": "SeatSense NBR1-U011 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U011",
+      "coach": "B",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 90,
+      "rssi": -108,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u011-c",
+    "name": "SeatSense NBR1-U011 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U011",
+      "coach": "C",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 99,
+      "rssi": -80,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u011-d",
+    "name": "SeatSense NBR1-U011 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U011",
+      "coach": "D",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 93,
+      "rssi": -109,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u011-e",
+    "name": "SeatSense NBR1-U011 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U011",
+      "coach": "E",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 96,
+      "rssi": -95,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u011-f",
+    "name": "SeatSense NBR1-U011 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U011",
+      "coach": "F",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 100,
+      "rssi": -101,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u011-g",
+    "name": "SeatSense NBR1-U011 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U011",
+      "coach": "G",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 89,
+      "rssi": -96,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u011-h",
+    "name": "SeatSense NBR1-U011 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U011",
+      "coach": "H",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 102,
+      "rssi": -91,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u012-a",
+    "name": "SeatSense NBR1-U012 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U012",
+      "coach": "A",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 89,
+      "rssi": -114,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u012-b",
+    "name": "SeatSense NBR1-U012 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U012",
+      "coach": "B",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 92,
+      "rssi": -104,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u012-c",
+    "name": "SeatSense NBR1-U012 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U012",
+      "coach": "C",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 88,
+      "rssi": -87,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u012-d",
+    "name": "SeatSense NBR1-U012 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U012",
+      "coach": "D",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 107,
+      "rssi": -114,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u012-e",
+    "name": "SeatSense NBR1-U012 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U012",
+      "coach": "E",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 90,
+      "rssi": -108,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u012-f",
+    "name": "SeatSense NBR1-U012 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U012",
+      "coach": "F",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 89,
+      "rssi": -114,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u012-g",
+    "name": "SeatSense NBR1-U012 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U012",
+      "coach": "G",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 110,
+      "rssi": -111,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr1-u012-h",
+    "name": "SeatSense NBR1-U012 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR1",
+      "unit_id": "NBR1-U012",
+      "coach": "H",
+      "seat_count": 60,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 92,
+      "rssi": -82,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u001-a",
+    "name": "SeatSense NBR2-U001 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U001",
+      "coach": "A",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 96,
+      "rssi": -104,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u001-b",
+    "name": "SeatSense NBR2-U001 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U001",
+      "coach": "B",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 105,
+      "rssi": -80,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u001-c",
+    "name": "SeatSense NBR2-U001 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U001",
+      "coach": "C",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 104,
+      "rssi": -99,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u001-d",
+    "name": "SeatSense NBR2-U001 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U001",
+      "coach": "D",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 105,
+      "rssi": -115,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u001-e",
+    "name": "SeatSense NBR2-U001 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U001",
+      "coach": "E",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 97,
+      "rssi": -84,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u001-f",
+    "name": "SeatSense NBR2-U001 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U001",
+      "coach": "F",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 111,
+      "rssi": -81,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u001-g",
+    "name": "SeatSense NBR2-U001 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U001",
+      "coach": "G",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 105,
+      "rssi": -113,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u001-h",
+    "name": "SeatSense NBR2-U001 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U001",
+      "coach": "H",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 105,
+      "rssi": -84,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u001-i",
+    "name": "SeatSense NBR2-U001 coach I",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U001",
+      "coach": "I",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 97,
+      "rssi": -112,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u002-a",
+    "name": "SeatSense NBR2-U002 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U002",
+      "coach": "A",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 100,
+      "rssi": -104,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u002-b",
+    "name": "SeatSense NBR2-U002 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U002",
+      "coach": "B",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 95,
+      "rssi": -99,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u002-c",
+    "name": "SeatSense NBR2-U002 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U002",
+      "coach": "C",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 111,
+      "rssi": -104,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u002-d",
+    "name": "SeatSense NBR2-U002 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U002",
+      "coach": "D",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 93,
+      "rssi": -101,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u002-e",
+    "name": "SeatSense NBR2-U002 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U002",
+      "coach": "E",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 90,
+      "rssi": -81,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u002-f",
+    "name": "SeatSense NBR2-U002 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U002",
+      "coach": "F",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 97,
+      "rssi": -98,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u002-g",
+    "name": "SeatSense NBR2-U002 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U002",
+      "coach": "G",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 93,
+      "rssi": -102,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u002-h",
+    "name": "SeatSense NBR2-U002 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U002",
+      "coach": "H",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 91,
+      "rssi": -78,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u002-i",
+    "name": "SeatSense NBR2-U002 coach I",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U002",
+      "coach": "I",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 88,
+      "rssi": -87,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u003-a",
+    "name": "SeatSense NBR2-U003 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U003",
+      "coach": "A",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 102,
+      "rssi": -86,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u003-b",
+    "name": "SeatSense NBR2-U003 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U003",
+      "coach": "B",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 96,
+      "rssi": -78,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u003-c",
+    "name": "SeatSense NBR2-U003 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U003",
+      "coach": "C",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 99,
+      "rssi": -88,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u003-d",
+    "name": "SeatSense NBR2-U003 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U003",
+      "coach": "D",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 104,
+      "rssi": -87,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u003-e",
+    "name": "SeatSense NBR2-U003 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U003",
+      "coach": "E",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 104,
+      "rssi": -87,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u003-f",
+    "name": "SeatSense NBR2-U003 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U003",
+      "coach": "F",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 91,
+      "rssi": -111,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u003-g",
+    "name": "SeatSense NBR2-U003 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U003",
+      "coach": "G",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 105,
+      "rssi": -108,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u003-h",
+    "name": "SeatSense NBR2-U003 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U003",
+      "coach": "H",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 97,
+      "rssi": -79,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u003-i",
+    "name": "SeatSense NBR2-U003 coach I",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U003",
+      "coach": "I",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 103,
+      "rssi": -114,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u004-a",
+    "name": "SeatSense NBR2-U004 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U004",
+      "coach": "A",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 110,
+      "rssi": -80,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u004-b",
+    "name": "SeatSense NBR2-U004 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U004",
+      "coach": "B",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 107,
+      "rssi": -87,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u004-c",
+    "name": "SeatSense NBR2-U004 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U004",
+      "coach": "C",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 99,
+      "rssi": -79,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u004-d",
+    "name": "SeatSense NBR2-U004 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U004",
+      "coach": "D",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 109,
+      "rssi": -78,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u004-e",
+    "name": "SeatSense NBR2-U004 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U004",
+      "coach": "E",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 98,
+      "rssi": -97,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u004-f",
+    "name": "SeatSense NBR2-U004 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U004",
+      "coach": "F",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 90,
+      "rssi": -90,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u004-g",
+    "name": "SeatSense NBR2-U004 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U004",
+      "coach": "G",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 89,
+      "rssi": -94,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u004-h",
+    "name": "SeatSense NBR2-U004 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U004",
+      "coach": "H",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 108,
+      "rssi": -87,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u004-i",
+    "name": "SeatSense NBR2-U004 coach I",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U004",
+      "coach": "I",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 101,
+      "rssi": -98,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u005-a",
+    "name": "SeatSense NBR2-U005 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U005",
+      "coach": "A",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 87,
+      "rssi": -114,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u005-b",
+    "name": "SeatSense NBR2-U005 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U005",
+      "coach": "B",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 95,
+      "rssi": -102,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u005-c",
+    "name": "SeatSense NBR2-U005 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U005",
+      "coach": "C",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 100,
+      "rssi": -110,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u005-d",
+    "name": "SeatSense NBR2-U005 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U005",
+      "coach": "D",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 96,
+      "rssi": -109,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u005-e",
+    "name": "SeatSense NBR2-U005 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U005",
+      "coach": "E",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 108,
+      "rssi": -100,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u005-f",
+    "name": "SeatSense NBR2-U005 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U005",
+      "coach": "F",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 109,
+      "rssi": -106,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u005-g",
+    "name": "SeatSense NBR2-U005 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U005",
+      "coach": "G",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 106,
+      "rssi": -84,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u005-h",
+    "name": "SeatSense NBR2-U005 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U005",
+      "coach": "H",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 99,
+      "rssi": -106,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u005-i",
+    "name": "SeatSense NBR2-U005 coach I",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U005",
+      "coach": "I",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 102,
+      "rssi": -95,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u006-a",
+    "name": "SeatSense NBR2-U006 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U006",
+      "coach": "A",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 103,
+      "rssi": -87,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u006-b",
+    "name": "SeatSense NBR2-U006 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U006",
+      "coach": "B",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 95,
+      "rssi": -91,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u006-c",
+    "name": "SeatSense NBR2-U006 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U006",
+      "coach": "C",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 102,
+      "rssi": -86,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u006-d",
+    "name": "SeatSense NBR2-U006 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U006",
+      "coach": "D",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 104,
+      "rssi": -79,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u006-e",
+    "name": "SeatSense NBR2-U006 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U006",
+      "coach": "E",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 104,
+      "rssi": -113,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u006-f",
+    "name": "SeatSense NBR2-U006 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U006",
+      "coach": "F",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 106,
+      "rssi": -108,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u006-g",
+    "name": "SeatSense NBR2-U006 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U006",
+      "coach": "G",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 110,
+      "rssi": -114,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u006-h",
+    "name": "SeatSense NBR2-U006 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U006",
+      "coach": "H",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 100,
+      "rssi": -90,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u006-i",
+    "name": "SeatSense NBR2-U006 coach I",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U006",
+      "coach": "I",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 93,
+      "rssi": -80,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u007-a",
+    "name": "SeatSense NBR2-U007 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U007",
+      "coach": "A",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 92,
+      "rssi": -89,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u007-b",
+    "name": "SeatSense NBR2-U007 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U007",
+      "coach": "B",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 95,
+      "rssi": -112,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u007-c",
+    "name": "SeatSense NBR2-U007 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U007",
+      "coach": "C",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 109,
+      "rssi": -104,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u007-d",
+    "name": "SeatSense NBR2-U007 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U007",
+      "coach": "D",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 101,
+      "rssi": -79,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u007-e",
+    "name": "SeatSense NBR2-U007 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U007",
+      "coach": "E",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 106,
+      "rssi": -98,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u007-f",
+    "name": "SeatSense NBR2-U007 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U007",
+      "coach": "F",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 103,
+      "rssi": -79,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u007-g",
+    "name": "SeatSense NBR2-U007 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U007",
+      "coach": "G",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 106,
+      "rssi": -114,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u007-h",
+    "name": "SeatSense NBR2-U007 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U007",
+      "coach": "H",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 99,
+      "rssi": -111,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u007-i",
+    "name": "SeatSense NBR2-U007 coach I",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U007",
+      "coach": "I",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 99,
+      "rssi": -87,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u008-a",
+    "name": "SeatSense NBR2-U008 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U008",
+      "coach": "A",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 91,
+      "rssi": -99,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u008-b",
+    "name": "SeatSense NBR2-U008 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U008",
+      "coach": "B",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 97,
+      "rssi": -91,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u008-c",
+    "name": "SeatSense NBR2-U008 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U008",
+      "coach": "C",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 89,
+      "rssi": -87,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u008-d",
+    "name": "SeatSense NBR2-U008 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U008",
+      "coach": "D",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 95,
+      "rssi": -80,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u008-e",
+    "name": "SeatSense NBR2-U008 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U008",
+      "coach": "E",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 111,
+      "rssi": -91,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u008-f",
+    "name": "SeatSense NBR2-U008 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U008",
+      "coach": "F",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 87,
+      "rssi": -105,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u008-g",
+    "name": "SeatSense NBR2-U008 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U008",
+      "coach": "G",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 101,
+      "rssi": -90,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u008-h",
+    "name": "SeatSense NBR2-U008 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U008",
+      "coach": "H",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 109,
+      "rssi": -83,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u008-i",
+    "name": "SeatSense NBR2-U008 coach I",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U008",
+      "coach": "I",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 97,
+      "rssi": -104,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u009-a",
+    "name": "SeatSense NBR2-U009 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U009",
+      "coach": "A",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 89,
+      "rssi": -86,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u009-b",
+    "name": "SeatSense NBR2-U009 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U009",
+      "coach": "B",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 93,
+      "rssi": -86,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u009-c",
+    "name": "SeatSense NBR2-U009 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U009",
+      "coach": "C",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 103,
+      "rssi": -97,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u009-d",
+    "name": "SeatSense NBR2-U009 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U009",
+      "coach": "D",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 88,
+      "rssi": -86,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u009-e",
+    "name": "SeatSense NBR2-U009 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U009",
+      "coach": "E",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 108,
+      "rssi": -84,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u009-f",
+    "name": "SeatSense NBR2-U009 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U009",
+      "coach": "F",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 89,
+      "rssi": -94,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u009-g",
+    "name": "SeatSense NBR2-U009 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U009",
+      "coach": "G",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 98,
+      "rssi": -91,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u009-h",
+    "name": "SeatSense NBR2-U009 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U009",
+      "coach": "H",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 110,
+      "rssi": -103,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u009-i",
+    "name": "SeatSense NBR2-U009 coach I",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U009",
+      "coach": "I",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 95,
+      "rssi": -105,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u010-a",
+    "name": "SeatSense NBR2-U010 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U010",
+      "coach": "A",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 102,
+      "rssi": -114,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u010-b",
+    "name": "SeatSense NBR2-U010 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U010",
+      "coach": "B",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 106,
+      "rssi": -114,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u010-c",
+    "name": "SeatSense NBR2-U010 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U010",
+      "coach": "C",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 89,
+      "rssi": -95,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u010-d",
+    "name": "SeatSense NBR2-U010 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U010",
+      "coach": "D",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 89,
+      "rssi": -92,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u010-e",
+    "name": "SeatSense NBR2-U010 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U010",
+      "coach": "E",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 88,
+      "rssi": -95,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u010-f",
+    "name": "SeatSense NBR2-U010 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U010",
+      "coach": "F",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 104,
+      "rssi": -82,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u010-g",
+    "name": "SeatSense NBR2-U010 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U010",
+      "coach": "G",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 88,
+      "rssi": -96,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u010-h",
+    "name": "SeatSense NBR2-U010 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U010",
+      "coach": "H",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 88,
+      "rssi": -113,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u010-i",
+    "name": "SeatSense NBR2-U010 coach I",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U010",
+      "coach": "I",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 106,
+      "rssi": -79,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u011-a",
+    "name": "SeatSense NBR2-U011 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U011",
+      "coach": "A",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 106,
+      "rssi": -104,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u011-b",
+    "name": "SeatSense NBR2-U011 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U011",
+      "coach": "B",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 98,
+      "rssi": -91,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u011-c",
+    "name": "SeatSense NBR2-U011 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U011",
+      "coach": "C",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 92,
+      "rssi": -95,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u011-d",
+    "name": "SeatSense NBR2-U011 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U011",
+      "coach": "D",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 89,
+      "rssi": -94,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u011-e",
+    "name": "SeatSense NBR2-U011 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U011",
+      "coach": "E",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 111,
+      "rssi": -110,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u011-f",
+    "name": "SeatSense NBR2-U011 coach F",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U011",
+      "coach": "F",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 92,
+      "rssi": -97,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u011-g",
+    "name": "SeatSense NBR2-U011 coach G",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U011",
+      "coach": "G",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 101,
+      "rssi": -106,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u011-h",
+    "name": "SeatSense NBR2-U011 coach H",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U011",
+      "coach": "H",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 110,
+      "rssi": -88,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr2-u011-i",
+    "name": "SeatSense NBR2-U011 coach I",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR2",
+      "unit_id": "NBR2-U011",
+      "coach": "I",
+      "seat_count": 56,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 98,
+      "rssi": -97,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u001-a",
+    "name": "SeatSense NBR3-U001 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U001",
+      "coach": "A",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 87,
+      "rssi": -108,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u001-b",
+    "name": "SeatSense NBR3-U001 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U001",
+      "coach": "B",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 90,
+      "rssi": -113,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u001-c",
+    "name": "SeatSense NBR3-U001 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U001",
+      "coach": "C",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 93,
+      "rssi": -84,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u001-d",
+    "name": "SeatSense NBR3-U001 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U001",
+      "coach": "D",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 97,
+      "rssi": -97,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u001-e",
+    "name": "SeatSense NBR3-U001 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U001",
+      "coach": "E",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 98,
+      "rssi": -103,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u002-a",
+    "name": "SeatSense NBR3-U002 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U002",
+      "coach": "A",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 102,
+      "rssi": -98,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u002-b",
+    "name": "SeatSense NBR3-U002 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U002",
+      "coach": "B",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 102,
+      "rssi": -108,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u002-c",
+    "name": "SeatSense NBR3-U002 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U002",
+      "coach": "C",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 104,
+      "rssi": -108,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u002-d",
+    "name": "SeatSense NBR3-U002 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U002",
+      "coach": "D",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 88,
+      "rssi": -114,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u002-e",
+    "name": "SeatSense NBR3-U002 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U002",
+      "coach": "E",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 96,
+      "rssi": -114,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u003-a",
+    "name": "SeatSense NBR3-U003 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U003",
+      "coach": "A",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 110,
+      "rssi": -77,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u003-b",
+    "name": "SeatSense NBR3-U003 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U003",
+      "coach": "B",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 99,
+      "rssi": -83,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u003-c",
+    "name": "SeatSense NBR3-U003 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U003",
+      "coach": "C",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 90,
+      "rssi": -98,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u003-d",
+    "name": "SeatSense NBR3-U003 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U003",
+      "coach": "D",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 87,
+      "rssi": -82,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u003-e",
+    "name": "SeatSense NBR3-U003 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U003",
+      "coach": "E",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 93,
+      "rssi": -94,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u004-a",
+    "name": "SeatSense NBR3-U004 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U004",
+      "coach": "A",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 92,
+      "rssi": -94,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u004-b",
+    "name": "SeatSense NBR3-U004 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U004",
+      "coach": "B",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 106,
+      "rssi": -83,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u004-c",
+    "name": "SeatSense NBR3-U004 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U004",
+      "coach": "C",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 89,
+      "rssi": -110,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u004-d",
+    "name": "SeatSense NBR3-U004 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U004",
+      "coach": "D",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 106,
+      "rssi": -81,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u004-e",
+    "name": "SeatSense NBR3-U004 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U004",
+      "coach": "E",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 88,
+      "rssi": -105,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u005-a",
+    "name": "SeatSense NBR3-U005 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U005",
+      "coach": "A",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 96,
+      "rssi": -95,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u005-b",
+    "name": "SeatSense NBR3-U005 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U005",
+      "coach": "B",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 107,
+      "rssi": -80,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u005-c",
+    "name": "SeatSense NBR3-U005 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U005",
+      "coach": "C",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 98,
+      "rssi": -80,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u005-d",
+    "name": "SeatSense NBR3-U005 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U005",
+      "coach": "D",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 110,
+      "rssi": -92,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u005-e",
+    "name": "SeatSense NBR3-U005 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U005",
+      "coach": "E",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 108,
+      "rssi": -114,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u006-a",
+    "name": "SeatSense NBR3-U006 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U006",
+      "coach": "A",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 94,
+      "rssi": -88,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u006-b",
+    "name": "SeatSense NBR3-U006 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U006",
+      "coach": "B",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 101,
+      "rssi": -115,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u006-c",
+    "name": "SeatSense NBR3-U006 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U006",
+      "coach": "C",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 100,
+      "rssi": -91,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u006-d",
+    "name": "SeatSense NBR3-U006 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U006",
+      "coach": "D",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 103,
+      "rssi": -88,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u006-e",
+    "name": "SeatSense NBR3-U006 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U006",
+      "coach": "E",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 97,
+      "rssi": -103,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u007-a",
+    "name": "SeatSense NBR3-U007 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U007",
+      "coach": "A",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 100,
+      "rssi": -114,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u007-b",
+    "name": "SeatSense NBR3-U007 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U007",
+      "coach": "B",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 104,
+      "rssi": -96,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u007-c",
+    "name": "SeatSense NBR3-U007 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U007",
+      "coach": "C",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 89,
+      "rssi": -102,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u007-d",
+    "name": "SeatSense NBR3-U007 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U007",
+      "coach": "D",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 101,
+      "rssi": -88,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u007-e",
+    "name": "SeatSense NBR3-U007 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U007",
+      "coach": "E",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 106,
+      "rssi": -84,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u008-a",
+    "name": "SeatSense NBR3-U008 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U008",
+      "coach": "A",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 90,
+      "rssi": -104,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u008-b",
+    "name": "SeatSense NBR3-U008 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U008",
+      "coach": "B",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 105,
+      "rssi": -112,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u008-c",
+    "name": "SeatSense NBR3-U008 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U008",
+      "coach": "C",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 98,
+      "rssi": -99,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u008-d",
+    "name": "SeatSense NBR3-U008 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U008",
+      "coach": "D",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 92,
+      "rssi": -81,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u008-e",
+    "name": "SeatSense NBR3-U008 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U008",
+      "coach": "E",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 102,
+      "rssi": -97,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u009-a",
+    "name": "SeatSense NBR3-U009 coach A",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U009",
+      "coach": "A",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 106,
+      "rssi": -98,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u009-b",
+    "name": "SeatSense NBR3-U009 coach B",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U009",
+      "coach": "B",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "offline",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 100,
+      "rssi": -109,
+      "reportedAt": "2026-08-19T04:12:07Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u009-c",
+    "name": "SeatSense NBR3-U009 coach C",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U009",
+      "coach": "C",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 97,
+      "rssi": -107,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u009-d",
+    "name": "SeatSense NBR3-U009 coach D",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U009",
+      "coach": "D",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 99,
+      "rssi": -79,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  },
+  {
+    "_id": "iot-nbr3-u009-e",
+    "name": "SeatSense NBR3-U009 coach E",
+    "deviceModelName": "sensative-seatsense-v2",
+    "contextMap": {
+      "operator": "northbank-rail",
+      "route_id": "NBR3",
+      "unit_id": "NBR3-U009",
+      "coach": "E",
+      "seat_count": 68,
+      "installed_at": "2026-01-01",
+      "firmware": "2.4.1"
+    },
+    "status": "online",
+    "latestValues": {
+      "seatsOccupied": null,
+      "batteryPercent": 88,
+      "rssi": -107,
+      "reportedAt": "2026-08-31T23:58:02Z"
+    }
+  }
+]

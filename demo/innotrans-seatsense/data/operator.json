@@ -1,0 +1,135 @@
+{
+  "operator": {
+    "id": "northbank-rail",
+    "name": "Northbank Rail",
+    "legalName": "Northbank Rail Operations Ltd",
+    "country": "United Kingdom",
+    "headquarters": "London, UK",
+    "currency": "GBP",
+    "fictional": true,
+    "disclaimer": "Northbank Rail is a fictional train operating company. All figures in this dataset are synthetic and generated for demonstration purposes.",
+    "yggioTenant": "northbank-rail-prod",
+    "seatsense": {
+      "product": "Sensative SeatSense",
+      "deviceModel": "sensative-seatsense-v2",
+      "measures": "Per-seat occupancy - whether a seat is physically occupied by a person, reported continuously per coach.",
+      "fleetGoLive": "2026-01-01",
+      "pilot": {
+        "window": "2025-10-01 .. 2025-12-19",
+        "scope": "3 units on the Anglia Metro (NBR1), 24 coaches instrumented",
+        "findings": [
+          "On departures sold at 100% or more of seated capacity, an average of 11.2% of seats travelled empty.",
+          "Median 54 paid-but-empty seats per peak departure; worst observed 81 seats.",
+          "Ticket sales overstated the number of people on board peak trains by 9-12%.",
+          "Sales caps were being applied to trains that had seats available the whole journey."
+        ]
+      }
+    }
+  },
+  "coverage": {
+    "baselineYear": 2025,
+    "seatsenseYear": 2026,
+    "start": "2025-01-01",
+    "end": "2026-08-31",
+    "seatsenseGoLive": "2026-01-01"
+  },
+  "routes": [
+    {
+      "route_id": "NBR1",
+      "name": "Anglia Metro",
+      "origin": "Colchester",
+      "destination": "London Liverpool Street",
+      "calling_points": [
+        "Colchester",
+        "Marks Tey",
+        "Kelvedon",
+        "Witham",
+        "Chelmsford",
+        "Shenfield",
+        "London Liverpool Street"
+      ],
+      "profile": "High-frequency commuter",
+      "units": 12,
+      "coaches_per_unit": 8,
+      "seats_per_coach": 60,
+      "seats_per_train": 480,
+      "daily_departures": 18,
+      "peak_fare_gbp": 24.6
+    },
+    {
+      "route_id": "NBR2",
+      "name": "Great Northern Line",
+      "origin": "Peterborough",
+      "destination": "London King's Cross",
+      "calling_points": [
+        "Peterborough",
+        "Huntingdon",
+        "St Neots",
+        "Sandy",
+        "Biggleswade",
+        "Hitchin",
+        "Stevenage",
+        "London King's Cross"
+      ],
+      "profile": "Long-distance commuter",
+      "units": 11,
+      "coaches_per_unit": 9,
+      "seats_per_coach": 56,
+      "seats_per_train": 504,
+      "daily_departures": 18,
+      "peak_fare_gbp": 41.2
+    },
+    {
+      "route_id": "NBR3",
+      "name": "Pennine Shuttle",
+      "origin": "Huddersfield",
+      "destination": "York",
+      "calling_points": [
+        "Huddersfield",
+        "Dewsbury",
+        "Leeds",
+        "Garforth",
+        "Church Fenton",
+        "York"
+      ],
+      "profile": "Regional commuter",
+      "units": 9,
+      "coaches_per_unit": 5,
+      "seats_per_coach": 68,
+      "seats_per_train": 340,
+      "daily_departures": 16,
+      "peak_fare_gbp": 11.4
+    }
+  ],
+  "demand_classes": [
+    {
+      "demand_class": "peak_core",
+      "label": "Morning peak core",
+      "description": "The 07:00-08:30 arrivals. Sold out, capped, standing passengers."
+    },
+    {
+      "demand_class": "peak_shoulder",
+      "label": "Peak shoulder",
+      "description": "The half-empty departures either side of the crush - the demo's real prize."
+    },
+    {
+      "demand_class": "offpeak",
+      "label": "Off-peak",
+      "description": "Midday and late evening leisure travel."
+    },
+    {
+      "demand_class": "evening_peak",
+      "label": "Evening peak",
+      "description": "The 16:30-18:00 exodus out of the city."
+    },
+    {
+      "demand_class": "early_late",
+      "label": "Early / late",
+      "description": "First and last departures of the day."
+    }
+  ],
+  "generator": {
+    "version": "1.0.0",
+    "generated_at": "2026-08-28"
+  }
+}

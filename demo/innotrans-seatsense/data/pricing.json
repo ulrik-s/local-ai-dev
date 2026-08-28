@@ -1,0 +1,202 @@
+{
+  "effective_from": "2026-01-01",
+  "mechanism": "SeatSense-informed demand-based pricing",
+  "rationale": "Fares are set from measured seat occupancy rather than ticket sales. Departures that SeatSense proves are physically full take a fare increase; the half-empty departures either side are discounted to attract the displaced demand; paid seats that SeatSense sees empty after departure are released for on-day sale.",
+  "phase_in": "Rules were tuned monthly through 2026 as SeatSense history accumulated. January reflects ~45% of the end-state effect, August ~100%.",
+  "class_actions": [
+    {
+      "demand_class": "peak_core",
+      "label": "Morning peak core",
+      "fare_change_pct": 14,
+      "intent": "Suppress marginal demand on physically full departures and raise yield",
+      "sold_load_2025_pct": 106,
+      "sold_load_2026_target_pct": 102
+    },
+    {
+      "demand_class": "peak_shoulder",
+      "label": "Peak shoulder",
+      "fare_change_pct": -5,
+      "intent": "Attract displaced demand into measured spare capacity",
+      "sold_load_2025_pct": 64,
+      "sold_load_2026_target_pct": 79
+    },
+    {
+      "demand_class": "offpeak",
+      "label": "Off-peak",
+      "fare_change_pct": -4,
+      "intent": "Attract displaced demand into measured spare capacity",
+      "sold_load_2025_pct": 43,
+      "sold_load_2026_target_pct": 48
+    },
+    {
+      "demand_class": "evening_peak",
+      "label": "Evening peak",
+      "fare_change_pct": 10,
+      "intent": "Suppress marginal demand on physically full departures and raise yield",
+      "sold_load_2025_pct": 98,
+      "sold_load_2026_target_pct": 92
+    },
+    {
+      "demand_class": "early_late",
+      "label": "Early / late",
+      "fare_change_pct": -6,
+      "intent": "Attract displaced demand into measured spare capacity",
+      "sold_load_2025_pct": 31,
+      "sold_load_2026_target_pct": 36
+    }
+  ],
+  "service_actions": [
+    {
+      "service_id": "NBR1-0611",
+      "departure_time": "06:11",
+      "demand_class": "peak_shoulder",
+      "fare_2025_gbp": 21.89,
+      "fare_2026_target_gbp": 20.8,
+      "fare_change_pct": -5
+    },
+    {
+      "service_id": "NBR1-0641",
+      "departure_time": "06:41",
+      "demand_class": "peak_shoulder",
+      "fare_2025_gbp": 21.89,
+      "fare_2026_target_gbp": 20.8,
+      "fare_change_pct": -5
+    },
+    {
+      "service_id": "NBR1-0711",
+      "departure_time": "07:11",
+      "demand_class": "peak_core",
+      "fare_2025_gbp": 24.6,
+      "fare_2026_target_gbp": 28.04,
+      "fare_change_pct": 14
+    },
+    {
+      "service_id": "NBR1-0741",
+      "departure_time": "07:41",
+      "demand_class": "peak_core",
+      "fare_2025_gbp": 24.6,
+      "fare_2026_target_gbp": 28.04,
+      "fare_change_pct": 14
+    },
+    {
+      "service_id": "NBR1-0811",
+      "departure_time": "08:11",
+      "demand_class": "peak_core",
+      "fare_2025_gbp": 24.6,
+      "fare_2026_target_gbp": 28.04,
+      "fare_change_pct": 14
+    },
+    {
+      "service_id": "NBR1-0841",
+      "departure_time": "08:41",
+      "demand_class": "peak_shoulder",
+      "fare_2025_gbp": 21.89,
+      "fare_2026_target_gbp": 20.8,
+      "fare_change_pct": -5
+    },
+    {
+      "service_id": "NBR1-0911",
+      "departure_time": "09:11",
+      "demand_class": "peak_shoulder",
+      "fare_2025_gbp": 21.89,
+      "fare_2026_target_gbp": 20.8,
+      "fare_change_pct": -5
+    },
+    {
+      "service_id": "NBR2-0618",
+      "departure_time": "06:18",
+      "demand_class": "peak_shoulder",
+      "fare_2025_gbp": 36.67,
+      "fare_2026_target_gbp": 34.93,
+      "fare_change_pct": -4.7
+    },
+    {
+      "service_id": "NBR2-0648",
+      "departure_time": "06:48",
+      "demand_class": "peak_shoulder",
+      "fare_2025_gbp": 36.67,
+      "fare_2026_target_gbp": 34.93,
+      "fare_change_pct": -4.7
+    },
+    {
+      "service_id": "NBR2-0718",
+      "departure_time": "07:18",
+      "demand_class": "peak_core",
+      "fare_2025_gbp": 41.2,
+      "fare_2026_target_gbp": 46.68,
+      "fare_change_pct": 13.3
+    },
+    {
+      "service_id": "NBR2-0748",
+      "departure_time": "07:48",
+      "demand_class": "peak_core",
+      "fare_2025_gbp": 41.2,
+      "fare_2026_target_gbp": 46.68,
+      "fare_change_pct": 13.3
+    },
+    {
+      "service_id": "NBR2-0818",
+      "departure_time": "08:18",
+      "demand_class": "peak_core",
+      "fare_2025_gbp": 41.2,
+      "fare_2026_target_gbp": 46.68,
+      "fare_change_pct": 13.3
+    },
+    {
+      "service_id": "NBR2-0848",
+      "departure_time": "08:48",
+      "demand_class": "peak_shoulder",
+      "fare_2025_gbp": 36.67,
+      "fare_2026_target_gbp": 34.93,
+      "fare_change_pct": -4.7
+    },
+    {
+      "service_id": "NBR2-0918",
+      "departure_time": "09:18",
+      "demand_class": "peak_shoulder",
+      "fare_2025_gbp": 36.67,
+      "fare_2026_target_gbp": 34.93,
+      "fare_change_pct": -4.7
+    },
+    {
+      "service_id": "NBR3-0622",
+      "departure_time": "06:22",
+      "demand_class": "peak_shoulder",
+      "fare_2025_gbp": 10.15,
+      "fare_2026_target_gbp": 9.6,
+      "fare_change_pct": -5.4
+    },
+    {
+      "service_id": "NBR3-0652",
+      "departure_time": "06:52",
+      "demand_class": "peak_shoulder",
+      "fare_2025_gbp": 10.15,
+      "fare_2026_target_gbp": 9.6,
+      "fare_change_pct": -5.4
+    },
+    {
+      "service_id": "NBR3-0722",
+      "departure_time": "07:22",
+      "demand_class": "peak_core",
+      "fare_2025_gbp": 11.4,
+      "fare_2026_target_gbp": 13.12,
+      "fare_change_pct": 15.1
+    },
+    {
+      "service_id": "NBR3-0752",
+      "departure_time": "07:52",
+      "demand_class": "peak_core",
+      "fare_2025_gbp": 11.4,
+      "fare_2026_target_gbp": 13.12,
+      "fare_change_pct": 15.1
+    },
+    {
+      "service_id": "NBR3-0822",
+      "departure_time": "08:22",
+      "demand_class": "peak_shoulder",
+      "fare_2025_gbp": 10.15,
+      "fare_2026_target_gbp": 9.6,
+      "fare_change_pct": -5.4
+    }
+  ]
+}
