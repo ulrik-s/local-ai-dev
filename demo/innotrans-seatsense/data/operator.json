@@ -128,6 +128,50 @@
       "description": "First and last departures of the day."
     }
   ],
+  "ticket_data": {
+    "what_2025_had": [
+      "Tickets sold per departure, and the revenue from them.",
+      "Gateline entries and exits at staffed stations - a station total, not a seat.",
+      "Manual load surveys: a counter with a clicker on a handful of days a year.",
+      "Whether sales were closed on a departure, and at what threshold."
+    ],
+    "what_2025_could_not_have": [
+      "How many people were actually on board - a no-show is invisible to ticket data.",
+      "Whether a seat was occupied, reserved-and-empty, or holding a bag.",
+      "The cabin factor of any given departure on any given day.",
+      "Therefore: whether closing sales on a departure was justified."
+    ],
+    "reported_metric_2025": "assumed_load_factor_pct = tickets sold / seats. Overstates the people on board by the no-show rate.",
+    "loadSurveyDates2025": [
+      "2025-02-12",
+      "2025-05-14",
+      "2025-09-17",
+      "2025-11-12"
+    ],
+    "loadSurveyMethod": "Manual count of passengers on board at the busiest point of the journey, morning up services only, plus or minus a few percent counting error. Four days out of 365.",
+    "pilotNoShowRange": [
+      0.09,
+      0.12
+    ]
+  },
+  "data_dictionary": {
+    "both_years": {
+      "tickets_sold": "Tickets sold for the departure. A sale, not a person in a seat.",
+      "revenue_gbp": "Ticket revenue for the departure.",
+      "sales_closed": "True if the operator stopped selling this departure before demand ran out.",
+      "demand_turned_away": "Passengers who wanted this departure after sales closed."
+    },
+    "2025_only": {
+      "manual_load_survey": "Passengers counted by hand on board, on the four survey days only. The single 2025 field that saw actual people.",
+      "note": "There is no occupancy field for 2025 because no such measurement existed. tickets_sold / seats is an assumed load factor and overstates the people on board by the no-show rate."
+    },
+    "2026_only": {
+      "boarded": "People SeatSense saw on board. Tickets sold minus no-shows.",
+      "seats_occupied": "Seats SeatSense measured as physically occupied - the cabin factor numerator.",
+      "standing": "People on board with no seat, measured.",
+      "ghost_seats": "Seats paid for that travelled empty."
+    }
+  },
   "generator": {
     "version": "1.0.0",
     "generated_at": "2026-08-28"

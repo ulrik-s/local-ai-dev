@@ -14,6 +14,8 @@ const DATA_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', 'data');
 const load = (f) => JSON.parse(readFileSync(join(DATA_DIR, f), 'utf8'));
 
 const META = load('operator.json');
+const TICKET_DATA = META.ticket_data;
+const OPERATOR_PILOT = META.operator.seatsense.pilot;
 const SERVICES = load('services.json');
 const DEVICES = load('devices.json');
 const PRICING = load('pricing.json');
@@ -38,6 +40,21 @@ const clamp = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
 
 const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'];
+
+/**
+ * The vocabulary this dataset insists on, because the difference between the
+ * first two entries is the entire argument for SeatSense.
+ */
+export const DEFINITIONS = {
+  assumed_load_factor_pct:
+    'Tickets sold / seats. This is what an operator without seat sensors reports as its load factor. It counts every no-show as a passenger on board, so it overstates how full the train was - and it is the number capacity and pricing decisions get made on.',
+  cabin_factor_pct:
+    'Seats SeatSense measured as physically occupied / seats. The real number. 2026 only: it did not exist before the sensors were fitted.',
+  ghost_seats: 'Seats that were paid for and travelled empty.',
+  sales_closed_departures_pct:
+    'Share of departures where the operator stopped selling before demand ran out. In 2025 that threshold was set from ticket counts, with no way to check whether the train was actually full.',
+  passengers_turned_away: 'Passengers who wanted a departure after sales had closed.',
+};
 
 /** The window both years have data for - the only honest comparison. */
 export const LIKE_FOR_LIKE = {
@@ -74,28 +91,40 @@ function aggregate(rows, year) {
   const seats = rows.reduce((a, r) => a + SVC[r.service_id].seats, 0);
   const sold = sum(rows, 'tickets_sold');
   const revenue = sum(rows, 'revenue_gbp');
+  const assumed = r1((sold / seats) * 100);
   const out = {
     departures,
     seats_offered: seats,
     tickets_sold: sold,
     revenue_gbp: r2(revenue),
     avg_fare_gbp: r2(revenue / sold),
-    sold_load_pct: r1((sold / seats) * 100),
+    assumed_load_factor_pct: assumed,
+    sales_closed_departures_pct: r1((rows.filter((r) => r.sales_closed).length / departures) * 100),
+    passengers_turned_away: sum(rows, 'demand_turned_away'),
   };
   if (year >= CURRENT) {
     const occupied = sum(rows, 'seats_occupied');
     const ghost = sum(rows, 'ghost_seats');
+    const cabin = r1((occupied / seats) * 100);
+    out.cabin_factor_pct = cabin;
     out.seatsense = {
       boarded: sum(rows, 'boarded'),
       seats_occupied: occupied,
-      measured_occupancy_pct: r1((occupied / seats) * 100),
+      cabin_factor_pct: cabin,
+      ticket_data_would_have_reported_pct: assumed,
+      overstatement_pp: r1(assumed - cabin),
+      overstatement_pct: r1((assumed / cabin - 1) * 100),
       ghost_seats: ghost,
       ghost_seat_pct: r1((ghost / seats) * 100),
       standing_passengers: sum(rows, 'standing'),
     };
   } else {
+    // Deliberately null. Ticket data cannot see a no-show, so there is no
+    // honest occupancy figure for 2025 - only the assumption above.
+    out.cabin_factor_pct = null;
+    out.cabin_factor_status =
+      'Not measurable in 2025: no seat sensors, and ticket data cannot see a no-show. Only assumed_load_factor_pct exists, and it overstates how full the train was.';
     out.seatsense = null;
-    out.measurement_note = 'No SeatSense sensors were fitted in 2025 - seat-level occupancy cannot be reported for this period, only tickets sold.';
   }
   return out;
 }
@@ -170,8 +199,15 @@ export function overview() {
     },
     routes: META.routes,
     demand_classes: META.demand_classes,
+    blind_spot_2025: {
+      what_2025_measured: 'Tickets sold. Nothing that saw a seat.',
+      so_the_2025_load_factor_is: DEFINITIONS.assumed_load_factor_pct,
+      there_is_no_2025_cabin_factor:
+        'Not in this dataset and not at the operator: ticket data cannot see a no-show, so the number never existed. Use ticket_data_blind_spot for what it most likely was and what the gap cost.',
+    },
     suggested_questions: [
       'How did revenue and passenger numbers change after SeatSense went live?',
+      'What did they think their load factor was in 2025, and what was it really?',
       'Break the year-on-year change down by demand class - where did the money come from?',
       'Show me the morning peak on the Anglia Metro before and after.',
       'How many paid seats travelled empty on the 07:41 last Tuesday?',
@@ -217,7 +253,9 @@ export function compareYears({ group_by = 'total', route_id, demand_class, servi
         revenue_pct: growth(y2025.revenue_gbp, y2026.revenue_gbp),
         revenue_gbp_abs: r2(y2026.revenue_gbp - y2025.revenue_gbp),
         avg_fare_pct: growth(y2025.avg_fare_gbp, y2026.avg_fare_gbp),
-        sold_load_pp: r1(y2026.sold_load_pct - y2025.sold_load_pct),
+        assumed_load_factor_pp: r1(y2026.assumed_load_factor_pct - y2025.assumed_load_factor_pct),
+        sales_closed_departures_pp: r1(y2026.sales_closed_departures_pct - y2025.sales_closed_departures_pct),
+        passengers_turned_away_abs: y2026.passengers_turned_away - y2025.passengers_turned_away,
       } : null,
     };
   });
@@ -235,16 +273,17 @@ export function compareYears({ group_by = 'total', route_id, demand_class, servi
     filters: { group_by, route_id: route_id ?? 'all', demand_class: demand_class ?? 'all', service_id: service_id ?? 'all', day_type: day_type ?? 'all' },
     rows,
     notes: [
-      `tickets_sold and revenue_gbp are directly comparable between years. Measured occupancy, ghost seats and standing exist for ${CURRENT} only - nothing measured seats in ${BASELINE}.`,
-      'A ghost seat is a seat that was paid for and travelled empty.',
+      `tickets_sold and revenue_gbp are directly comparable between years. Cabin factor, ghost seats and standing exist for ${CURRENT} only - nothing measured seats in ${BASELINE}.`,
+      'assumed_load_factor_pct is available for both years but is not an occupancy figure: it is tickets / seats, which counts no-shows as passengers.',
     ],
+    definitions: DEFINITIONS,
   };
 
   if (group_by === 'total') {
     out.run_rate = runRate({ route_id, demand_class, service_id });
     const t = rows[0];
     out.narrative = t?.delta
-      ? `${LIKE_FOR_LIKE.label}: tickets sold ${t.y2025.tickets_sold.toLocaleString('en-GB')} -> ${t.y2026.tickets_sold.toLocaleString('en-GB')} (${pct(t.delta.tickets_sold_pct)}), revenue ${gbp(t.y2025.revenue_gbp)} -> ${gbp(t.y2026.revenue_gbp)} (${pct(t.delta.revenue_pct)}, ${gbp(t.delta.revenue_gbp_abs)} more), average fare GBP ${t.y2025.avg_fare_gbp} -> GBP ${t.y2026.avg_fare_gbp} (${pct(t.delta.avg_fare_pct)}). Sold load ${t.y2025.sold_load_pct}% -> ${t.y2026.sold_load_pct}%.`
+      ? `${LIKE_FOR_LIKE.label}: tickets sold ${t.y2025.tickets_sold.toLocaleString('en-GB')} -> ${t.y2026.tickets_sold.toLocaleString('en-GB')} (${pct(t.delta.tickets_sold_pct)}), revenue ${gbp(t.y2025.revenue_gbp)} -> ${gbp(t.y2026.revenue_gbp)} (${pct(t.delta.revenue_pct)}, ${gbp(t.delta.revenue_gbp_abs)} more), average fare GBP ${t.y2025.avg_fare_gbp} -> GBP ${t.y2026.avg_fare_gbp} (${pct(t.delta.avg_fare_pct)}). Ticket-derived load factor ${t.y2025.assumed_load_factor_pct}% -> ${t.y2026.assumed_load_factor_pct}%, and in 2026 SeatSense puts the real cabin factor at ${t.y2026.cabin_factor_pct}% - ${t.y2026.seatsense.overstatement_pp} points below what ticket data alone would have reported. 2025 has no cabin factor at all: nobody measured it.`
       : 'No data for the requested filters.';
   } else {
     const best = rows[0], worst = rows[rows.length - 1];
@@ -267,8 +306,8 @@ export function runRate({ route_id, demand_class, service_id } = {}) {
     tickets_sold_pct: growth(a.tickets_sold, b.tickets_sold),
     revenue_pct: revPct,
     avg_fare_pct: growth(a.avg_fare_gbp, b.avg_fare_gbp),
-    network_avg_measured_occupancy_pct: b.seatsense?.measured_occupancy_pct ?? null,
-    network_avg_measured_occupancy_note: 'Averaged over every departure of the day including the quiet ones - not a peak figure. Use peak_spreading_report for the peak.',
+    network_avg_cabin_factor_pct: b.seatsense?.cabin_factor_pct ?? null,
+    network_avg_cabin_factor_note: 'Averaged over every departure of the day including the quiet ones - not a peak figure. Use peak_spreading_report for the peak.',
     ghost_seat_pct: b.seatsense?.ghost_seat_pct ?? null,
     annualised_revenue_uplift_gbp: r2((fullYear2025.revenue_gbp * revPct) / 100),
     annualised_basis: `Full ${BASELINE} revenue ${gbp(fullYear2025.revenue_gbp)} x ${pct(revPct)}`,
@@ -347,10 +386,11 @@ export function seatsenseSnapshot({ service_id, date }) {
     unit_id: unit,
     train: {
       tickets_sold: row.tickets_sold,
-      sold_load_pct: soldLoad,
+      assumed_load_factor_pct: soldLoad,
       boarded: row.boarded,
       seats_occupied: row.seats_occupied,
-      measured_occupancy_pct: r1((row.seats_occupied / svc.seats) * 100),
+      cabin_factor_pct: r1((row.seats_occupied / svc.seats) * 100),
+      overstatement_pp: r1(soldLoad - (row.seats_occupied / svc.seats) * 100),
       ghost_seats: row.ghost_seats,
       ghost_seat_pct: r1((row.ghost_seats / svc.seats) * 100),
       standing_passengers: row.standing,
@@ -359,9 +399,11 @@ export function seatsenseSnapshot({ service_id, date }) {
     },
     coaches,
     definitions: {
-      tickets_sold: 'Tickets sold for this departure. The only number the operator had in 2025.',
-      boarded: 'People SeatSense saw take a seat or stand. Sold minus no-shows.',
-      ghost_seats: 'Seats that were paid for and travelled empty.',
+      tickets_sold: 'Tickets sold for this departure. In 2025 this was the only number the operator had, and it was treated as the passenger count.',
+      boarded: 'People SeatSense saw on board. Tickets sold minus no-shows.',
+      assumed_load_factor_pct: DEFINITIONS.assumed_load_factor_pct,
+      cabin_factor_pct: DEFINITIONS.cabin_factor_pct,
+      ghost_seats: DEFINITIONS.ghost_seats,
     },
     narrative: `${svc.departure_time} ${svc.origin} - ${svc.destination} on ${date}: ${row.tickets_sold} tickets sold against ${svc.seats} seats (${soldLoad}% sold). SeatSense measured ${row.seats_occupied} seats occupied, ${row.standing} passengers standing and ${row.ghost_seats} ghost seats worth ${gbp(row.ghost_seats * (row.revenue_gbp / row.tickets_sold))}${row.standing > 0 && row.ghost_seats > 0 ? ` - people were standing while ${row.ghost_seats} paid-for seats travelled empty` : ''}. Emptiest coach: ${worst.coach} with ${worst.seats_empty} free seats out of ${svc.seats_per_coach}.`,
   };
@@ -393,9 +435,10 @@ export function peakSpreadingReport({ route_id, month } = {}) {
       fare_2025_gbp: a ? a.avg_fare_gbp : null,
       fare_2026_gbp: b ? b.avg_fare_gbp : null,
       fare_change_pct: a && b ? growth(a.avg_fare_gbp, b.avg_fare_gbp) : null,
-      sold_load_2025_pct: a?.sold_load_pct ?? null,
-      sold_load_2026_pct: b?.sold_load_pct ?? null,
-      measured_occupancy_2026_pct: b?.seatsense?.measured_occupancy_pct ?? null,
+      assumed_load_factor_2025_pct: a?.assumed_load_factor_pct ?? null,
+      assumed_load_factor_2026_pct: b?.assumed_load_factor_pct ?? null,
+      cabin_factor_2026_pct: b?.cabin_factor_pct ?? null,
+      cabin_factor_2025_pct: null,
       ghost_seats_per_departure_2026: b && weekdays ? r1(b.seatsense.ghost_seats / weekdays) : null,
       passengers_per_weekday_2025: a ? Math.round(a.tickets_sold / a.departures) : null,
       passengers_per_weekday_2026: b ? Math.round(b.tickets_sold / weekdays) : null,
@@ -421,8 +464,9 @@ export function peakSpreadingReport({ route_id, month } = {}) {
     scope: { route_id: route_id ?? 'all routes', month: `${MONTH_NAMES[m - 1]}, weekdays only, ${BASELINE} vs ${CURRENT}`, services: morning.length },
     summary: {
       peak_core: {
-        sold_load_pct: { [BASELINE]: a25?.sold_load_pct, [CURRENT]: a26?.sold_load_pct },
-        measured_occupancy_pct_2026: a26?.seatsense?.measured_occupancy_pct ?? null,
+        assumed_load_factor_pct: { [BASELINE]: a25?.assumed_load_factor_pct, [CURRENT]: a26?.assumed_load_factor_pct },
+        cabin_factor_pct: { [BASELINE]: null, [CURRENT]: a26?.cabin_factor_pct ?? null },
+        ticket_data_overstatement_2026_pp: a26?.seatsense?.overstatement_pp ?? null,
         passengers: { [BASELINE]: a25?.tickets_sold, [CURRENT]: a26?.tickets_sold, change_pct: growth(a25?.tickets_sold, a26?.tickets_sold) },
         avg_fare_gbp: { [BASELINE]: a25?.avg_fare_gbp, [CURRENT]: a26?.avg_fare_gbp, change_pct: growth(a25?.avg_fare_gbp, a26?.avg_fare_gbp) },
         revenue_gbp: { [BASELINE]: a25?.revenue_gbp, [CURRENT]: a26?.revenue_gbp, change_pct: growth(a25?.revenue_gbp, a26?.revenue_gbp) },
@@ -430,7 +474,8 @@ export function peakSpreadingReport({ route_id, month } = {}) {
         standing_passengers_2026: a26?.seatsense?.standing_passengers ?? null,
       },
       peak_shoulder: {
-        sold_load_pct: { [BASELINE]: s25?.sold_load_pct, [CURRENT]: s26?.sold_load_pct },
+        assumed_load_factor_pct: { [BASELINE]: s25?.assumed_load_factor_pct, [CURRENT]: s26?.assumed_load_factor_pct },
+        cabin_factor_pct: { [BASELINE]: null, [CURRENT]: s26?.cabin_factor_pct ?? null },
         passengers: { [BASELINE]: s25?.tickets_sold, [CURRENT]: s26?.tickets_sold, change_pct: growth(s25?.tickets_sold, s26?.tickets_sold) },
         avg_fare_gbp: { [BASELINE]: s25?.avg_fare_gbp, [CURRENT]: s26?.avg_fare_gbp, change_pct: growth(s25?.avg_fare_gbp, s26?.avg_fare_gbp) },
         revenue_gbp: { [BASELINE]: s25?.revenue_gbp, [CURRENT]: s26?.revenue_gbp, change_pct: growth(s25?.revenue_gbp, s26?.revenue_gbp) },
@@ -446,7 +491,8 @@ export function peakSpreadingReport({ route_id, month } = {}) {
       },
     },
     services: perService,
-    narrative: `Morning peak, ${MONTH_NAMES[m - 1]} weekdays. Peak-core's share of morning peak passengers fell from ${share(BASELINE)}% to ${share(CURRENT)}% - that is the spreading. The crush departures went from ${a25?.sold_load_pct}% sold to ${a26?.sold_load_pct}% sold (SeatSense measures ${a26?.seatsense?.measured_occupancy_pct}% of seats physically occupied) while their fares rose ${pct(growth(a25?.avg_fare_gbp, a26?.avg_fare_gbp))}. The shoulder departures went from ${s25?.sold_load_pct}% to ${s26?.sold_load_pct}% sold on fares ${pct(growth(s25?.avg_fare_gbp, s26?.avg_fare_gbp))}. Across the whole morning peak that is ${pct(growth((a25?.tickets_sold ?? 0) + (s25?.tickets_sold ?? 0), (a26?.tickets_sold ?? 0) + (s26?.tickets_sold ?? 0)))} passengers and ${pct(growth((a25?.revenue_gbp ?? 0) + (s25?.revenue_gbp ?? 0), (a26?.revenue_gbp ?? 0) + (s26?.revenue_gbp ?? 0)))} revenue.`,
+    definitions: DEFINITIONS,
+    narrative: `Morning peak, ${MONTH_NAMES[m - 1]} weekdays. Peak-core's share of morning peak passengers fell from ${share(BASELINE)}% to ${share(CURRENT)}% - that is the spreading. The crush departures went from ${a25?.assumed_load_factor_pct}% to ${a26?.assumed_load_factor_pct}% on ticket-derived load factor - and SeatSense now measures the real cabin factor at ${a26?.cabin_factor_pct}%, ${a26?.seatsense?.overstatement_pp} points below what tickets alone would have said - while their fares rose ${pct(growth(a25?.avg_fare_gbp, a26?.avg_fare_gbp))}. The shoulder departures went from ${s25?.assumed_load_factor_pct}% to ${s26?.assumed_load_factor_pct}% sold on fares ${pct(growth(s25?.avg_fare_gbp, s26?.avg_fare_gbp))}. Across the whole morning peak that is ${pct(growth((a25?.tickets_sold ?? 0) + (s25?.tickets_sold ?? 0), (a26?.tickets_sold ?? 0) + (s26?.tickets_sold ?? 0)))} passengers and ${pct(growth((a25?.revenue_gbp ?? 0) + (s25?.revenue_gbp ?? 0), (a26?.revenue_gbp ?? 0) + (s26?.revenue_gbp ?? 0)))} revenue.`,
   };
 }
 
@@ -548,6 +594,15 @@ export function crowdingAndPerformance({ month } = {}) {
     return r1((rows.filter((r) => r.tickets_sold / SVC[r.service_id].seats >= threshold).length / rows.length) * 100);
   };
   const b = aggregate(select(CURRENT, { from_month: m, to_month: m, day_type: 'weekday' }), CURRENT);
+  const a = aggregate(select(BASELINE, { from_month: m, to_month: m, day_type: 'weekday' }), BASELINE);
+  // Sales caps and turn-aways only bite in busy months, so those two are
+  // reported over the whole like-for-like window instead of one month.
+  const lfl = { day_type: 'weekday', from_month: LIKE_FOR_LIKE.from_month, to_month: LIKE_FOR_LIKE.to_month };
+  const yA = aggregate(select(BASELINE, lfl), BASELINE);
+  const yB = aggregate(select(CURRENT, lfl), CURRENT);
+  const yWeekdays = (year) => new Set(select(year, lfl).map((r) => r.date)).size;
+  const pk = (year) => aggregate(select(year, { ...lfl, demand_class: 'peak_core' }), year);
+  const pkA = pk(BASELINE), pkB = pk(CURRENT);
   const monthly = [];
   for (let i = 1; i <= LAST_MONTH; i++) {
     const rows = select(CURRENT, { from_month: i, to_month: i, day_type: 'weekday' });
@@ -555,7 +610,7 @@ export function crowdingAndPerformance({ month } = {}) {
     monthly.push({
       month: MONTH_NAMES[i - 1],
       ghost_seat_pct: agg.seatsense.ghost_seat_pct,
-      measured_occupancy_pct: agg.seatsense.measured_occupancy_pct,
+      cabin_factor_pct: agg.seatsense.cabin_factor_pct,
       standing_passengers: agg.seatsense.standing_passengers,
       crowding_complaints_per_100k: r1(KPIS.endpoints.crowding_complaints_per_100k_journeys.y2025 +
         (KPIS.endpoints.crowding_complaints_per_100k_journeys.y2026End - KPIS.endpoints.crowding_complaints_per_100k_journeys.y2025) * Math.min(1, 0.45 + 0.08 * (i - 1))),
@@ -568,15 +623,23 @@ export function crowdingAndPerformance({ month } = {}) {
       departures_sold_at_95pct_or_more: { [BASELINE]: over(BASELINE, 0.95), [CURRENT]: over(CURRENT, 0.95) },
       departures_sold_over_100pct: { [BASELINE]: over(BASELINE, 1.0), [CURRENT]: over(CURRENT, 1.0) },
       standing_passengers_2026: b.seatsense.standing_passengers,
-      measured_occupancy_pct_2026: b.seatsense.measured_occupancy_pct,
+      cabin_factor_pct_2026: b.seatsense.cabin_factor_pct,
       ghost_seat_pct_2026: b.seatsense.ghost_seat_pct,
+      sales_closed_departures_pct: { [BASELINE]: yA.sales_closed_departures_pct, [CURRENT]: yB.sales_closed_departures_pct, window: LIKE_FOR_LIKE.label },
+      sales_closed_peak_core_departures_pct: { [BASELINE]: pkA.sales_closed_departures_pct, [CURRENT]: pkB.sales_closed_departures_pct, window: LIKE_FOR_LIKE.label, note: 'The network figure above is diluted by the 44 departures a day that never approach the threshold. This is the morning crush only.' },
+      passengers_turned_away_per_weekday: {
+        [BASELINE]: r1(yA.passengers_turned_away / yWeekdays(BASELINE)),
+        [CURRENT]: r1(yB.passengers_turned_away / yWeekdays(CURRENT)),
+        window: LIKE_FOR_LIKE.label,
+        means: 'Passengers who wanted a departure after sales had closed. In 2025 sales were closed on a ticket-derived threshold, so some of these were turned away from trains that had empty seats. Measured over the like-for-like window rather than a single month, since a quiet month never hits the threshold.',
+      },
     },
     monthly_2026: monthly,
     notes: [
       'Service-quality KPIs are modelled to follow the same monthly phase-in as the pricing rules; the crowding percentages are counted directly from the departure data.',
       `${BASELINE} has no seat-level measurement, so standing and ghost seats are ${CURRENT}-only.`,
     ],
-    narrative: `Crush departures (sold at 95%+ of seats) fell from ${over(BASELINE, 0.95)}% of weekday departures to ${over(CURRENT, 0.95)}%. Crowding complaints ${KPIS.endpoints.crowding_complaints_per_100k_journeys.y2025} -> ${kpis.crowding_complaints_per_100k_journeys[CURRENT]} per 100k journeys, PPM punctuality ${KPIS.endpoints.ppm_punctuality_pct.y2025}% -> ${kpis.ppm_punctuality_pct[CURRENT]}%, passengers left behind per weekday ${KPIS.endpoints.passengers_left_behind_per_weekday.y2025} -> ${kpis.passengers_left_behind_per_weekday[CURRENT]}.`,
+    narrative: `Crush departures (sold at 95%+ of seats) fell from ${over(BASELINE, 0.95)}% of weekday departures to ${over(CURRENT, 0.95)}%. Crowding complaints ${KPIS.endpoints.crowding_complaints_per_100k_journeys.y2025} -> ${kpis.crowding_complaints_per_100k_journeys[CURRENT]} per 100k journeys, PPM punctuality ${KPIS.endpoints.ppm_punctuality_pct.y2025}% -> ${kpis.ppm_punctuality_pct[CURRENT]}%. Over ${LIKE_FOR_LIKE.label}, sales were closed on ${yA.sales_closed_departures_pct}% of weekday departures in ${BASELINE} against ${yB.sales_closed_departures_pct}% in ${CURRENT}, turning away ${r1(yA.passengers_turned_away / yWeekdays(BASELINE))} passengers a weekday then versus ${r1(yB.passengers_turned_away / yWeekdays(CURRENT))} now - and in ${BASELINE} nobody could check whether those trains were actually full.`,
   };
 }
 
@@ -603,9 +666,9 @@ export function repricingCandidates({ limit = 8, days = 28, month } = {}) {
     const rows = select(CURRENT, { ...window, service_id: svc.service_id, day_type: 'weekday' });
     if (!rows.length) continue;
     const agg = aggregate(rows, CURRENT);
-    const soldLoad = agg.sold_load_pct;
+    const soldLoad = agg.assumed_load_factor_pct;
     const ghost = agg.seatsense.ghost_seat_pct;
-    const occ = agg.seatsense.measured_occupancy_pct;
+    const occ = agg.seatsense.cabin_factor_pct;
     const standingPerDeparture = agg.seatsense.standing_passengers / agg.departures;
 
     let action = null, move = 0;
@@ -622,8 +685,8 @@ export function repricingCandidates({ limit = 8, days = 28, month } = {}) {
       route_id: svc.route_id,
       demand_class: svc.demand_class,
       measured: {
-        sold_load_pct: soldLoad,
-        measured_occupancy_pct: occ,
+        assumed_load_factor_pct: soldLoad,
+        cabin_factor_pct: occ,
         ghost_seat_pct: ghost,
         ghost_seats_per_departure: r1(agg.seatsense.ghost_seats / agg.departures),
         standing_per_departure: r1(standingPerDeparture),
@@ -660,6 +723,119 @@ export function repricingCandidates({ limit = 8, days = 28, month } = {}) {
     by_action: counts,
     indicative_total_annual_effect_gbp: r2(top.reduce((a, c) => a + c.indicative_annual_revenue_effect_gbp, 0)),
     narrative: `${out.length} departures have a clear next move (${Object.entries(counts).map(([k, v]) => `${v} x ${k}`).join(', ')}); showing the ${top.length} largest. ${top[0] ? `Top: ${top[0].service_id} at ${top[0].departure_time} - ${top[0].recommended_action}. ${top[0].reason}` : ''}`,
+  };
+}
+
+
+/**
+ * The 2025 blind spot, quantified.
+ *
+ * This is the tool for "but operators already have ticket data". It shows what
+ * the operator reported in 2025 and what it decided on that basis, why the
+ * number could not be an occupancy figure, what the four manual load surveys
+ * hinted at, what SeatSense now measures the same gap to be in 2026, and -
+ * clearly flagged as an inference - what 2025 most likely actually looked like.
+ */
+export function ticketDataBlindSpot({ demand_class = 'peak_core', month } = {}) {
+  const m = month ?? LAST_MONTH;
+  const yearWin = { demand_class, day_type: 'weekday' };
+  const a = aggregate(select(BASELINE, yearWin), BASELINE);           // all of 2025
+  const monthWin = { demand_class, day_type: 'weekday', from_month: m, to_month: m };
+  const aM = aggregate(select(BASELINE, monthWin), BASELINE);
+  const bM = aggregate(select(CURRENT, monthWin), CURRENT);
+  const weekdays2025 = new Set(select(BASELINE, yearWin).map((r) => r.date)).size;
+  const perWeekday = (n) => r1(n / weekdays2025);
+
+  // The four 2025 manual load surveys - the only 2025 data that saw bodies.
+  const surveyRows = ROWS[BASELINE].filter((r) => r.manual_load_survey !== undefined);
+  const surveys = TICKET_DATA.loadSurveyDates2025.map((date) => {
+    const rows = surveyRows.filter((r) => r.date === date);
+    const tickets = sum(rows, 'tickets_sold');
+    const counted = sum(rows, 'manual_load_survey');
+    return { date, services_counted: rows.length, tickets_sold: tickets, passengers_counted_by_hand: counted, tickets_overstated_by_pct: r1((tickets / counted - 1) * 100) };
+  });
+  const surveyGapPct = r1((sum(surveyRows, 'tickets_sold') / sum(surveyRows, 'manual_load_survey') - 1) * 100);
+
+  // Inference: apply the pilot's no-show range to what 2025 reported.
+  const [lo, hi] = TICKET_DATA.pilotNoShowRange;
+  const bodies = (loadPct) => [r1(loadPct * (1 - hi)), r1(loadPct * (1 - lo))];
+  const [estLow, estHigh] = bodies(a.assumed_load_factor_pct);
+  const seatsPerTrain = Math.round(a.seats_offered / a.departures);
+  const emptyRange = [
+    Math.round((seatsPerTrain * Math.max(0, 100 - estHigh)) / 100),
+    Math.round((seatsPerTrain * Math.max(0, 100 - estLow)) / 100),
+  ];
+
+  // The departures where the operator actually stopped selling.
+  const closedRows = select(BASELINE, yearWin).filter((r) => r.sales_closed);
+  const closedLoad = closedRows.length
+    ? r1((sum(closedRows, 'tickets_sold') / closedRows.reduce((s, r) => s + SVC[r.service_id].seats, 0)) * 100)
+    : null;
+  const threshold = SERVICES.find((x) => x.demand_class === demand_class)?.sales_close_threshold_2025_pct ?? null;
+  const turnedAwayPerYear = (a.passengers_turned_away / weekdays2025) * 253;
+
+  return {
+    scope: {
+      demand_class,
+      baseline: `All ${BASELINE} weekdays (${a.departures} departures)`,
+      measured_comparison: `${MONTH_NAMES[m - 1]} ${BASELINE} vs ${MONTH_NAMES[m - 1]} ${CURRENT}`,
+    },
+    what_2025_reported: {
+      assumed_load_factor_pct: a.assumed_load_factor_pct,
+      how_it_was_calculated: DEFINITIONS.assumed_load_factor_pct,
+      cabin_factor_pct: null,
+      cabin_factor_status: a.cabin_factor_status,
+      sales_close_threshold_pct: threshold,
+      threshold_basis: 'Seats plus an assumed standing allowance. Set from ticket counts, because there was no way to see how many people were actually on board.',
+      sales_closed_departures_pct: a.sales_closed_departures_pct,
+      mean_assumed_load_factor_when_sales_closed_pct: closedLoad,
+      passengers_turned_away_per_weekday: perWeekday(a.passengers_turned_away),
+      decisions_made_on_it: 'Where to close sales, which departures to lengthen, and what to charge.',
+    },
+    why_ticket_data_cannot_answer_it: {
+      available_in_2025: TICKET_DATA.what_2025_had,
+      not_available_in_2025: TICKET_DATA.what_2025_could_not_have,
+    },
+    manual_load_surveys_2025: {
+      method: TICKET_DATA.loadSurveyMethod,
+      surveys,
+      tickets_overstated_passengers_by_pct: surveyGapPct,
+      why_it_was_not_enough:
+        'Four days out of 365, one direction, counted by hand. Enough to suspect the gap, nowhere near enough to price a network on - and it still says nothing about which seats were empty.',
+    },
+    pilot_2025_q4: OPERATOR_PILOT,
+    measured_in_2026: {
+      month: `${MONTH_NAMES[m - 1]}, both years`,
+      assumed_load_factor_pct: { [BASELINE]: aM.assumed_load_factor_pct, [CURRENT]: bM.assumed_load_factor_pct },
+      cabin_factor_pct: { [BASELINE]: null, [CURRENT]: bM.cabin_factor_pct },
+      ticket_data_overstates_by_pp: bM.seatsense.overstatement_pp,
+      ticket_data_overstates_by_pct: bM.seatsense.overstatement_pct,
+      note: 'Same trains, same ticketing system. The gap is what an operator running on ticket sales alone is still carrying, unmeasured.',
+    },
+    inferred_for_2025: {
+      inference: true,
+      method: `${BASELINE} assumed load factor x (1 - no-show rate), using the ${lo * 100}-${hi * 100}% range that the Q4 ${BASELINE} pilot and the four manual surveys both landed in. The operator could not have computed this at the time.`,
+      estimated_cabin_factor_pct_range: [estLow, estHigh],
+      estimated_empty_seats_per_departure_range: emptyRange,
+      seats_per_train: seatsPerTrain,
+      on_departures_where_sales_closed: closedLoad ? {
+        share_of_departures_pct: a.sales_closed_departures_pct,
+        assumed_load_factor_pct: closedLoad,
+        estimated_passengers_on_board_pct_of_seats_range: bodies(closedLoad),
+        what_that_means:
+          `Sales were closed at ${threshold}% of seats to protect a standing allowance. With ${lo * 100}-${hi * 100}% no-shows, the people who actually turned up were roughly ${bodies(closedLoad)[0]}-${bodies(closedLoad)[1]}% of seats - so most of that allowance was never used, and passengers were turned away from trains that had room.`,
+      } : null,
+      cost_of_the_blind_spot: {
+        revenue_turned_away_gbp_per_year: r2(turnedAwayPerYear * a.avg_fare_gbp),
+        revenue_turned_away_basis: `${perWeekday(a.passengers_turned_away)} passengers a weekday x 253 weekdays x ${gbp(a.avg_fare_gbp)} average fare. Directly foregone - these people wanted to travel and were refused.`,
+        seats_travelling_empty_per_weekday_range: [emptyRange[0] * Math.round(a.departures / weekdays2025), emptyRange[1] * Math.round(a.departures / weekdays2025)],
+        bigger_cost_note:
+          `The turned-away fares are the small half. The larger cost was pricing the entire network off a load factor roughly ${surveyGapPct}% too high - peak departures looked full so they were never repriced, and the half-empty departures either side were never discounted. What that was worth is what ${CURRENT} shows: see seatsense_attribution.`,
+      },
+      caveat: `An estimate built on a measured range, not a measurement. ${CURRENT} is the first year these numbers are observed rather than inferred.`,
+    },
+    definitions: DEFINITIONS,
+    narrative: `Across ${BASELINE} the operator reported a ${a.assumed_load_factor_pct}% load factor on its ${demand_class} departures, closed sales on ${a.sales_closed_departures_pct}% of them (threshold ${threshold}% of seats) and turned away ${perWeekday(a.passengers_turned_away)} passengers a weekday. That figure was tickets divided by seats: it counted every no-show as a passenger, and no cabin factor existed - ticket data cannot see an empty seat. The four manual load surveys that year found ticket sales overstating passengers by ${surveyGapPct}%. In ${MONTH_NAMES[m - 1]} ${CURRENT} SeatSense measures the gap directly: ticket data would report ${bM.assumed_load_factor_pct}%, the real cabin factor is ${bM.cabin_factor_pct}%, ${bM.seatsense.overstatement_pp} points lower. Applying the pilot's ${lo * 100}-${hi * 100}% range to ${BASELINE} puts the real cabin factor then at ${estLow}-${estHigh}% - an estimated ${emptyRange[0]}-${emptyRange[1]} of ${seatsPerTrain} seats travelling empty on trains the operator believed were full.`,
   };
 }
 

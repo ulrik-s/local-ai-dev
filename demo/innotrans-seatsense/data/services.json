@@ -13,7 +13,9 @@
     "seats_per_coach": 60,
     "fare_2025_gbp": 13.78,
     "fare_2026_target_gbp": 12.95,
-    "fare_change_pct": -6
+    "fare_change_pct": -6,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR1-0611",
@@ -29,7 +31,9 @@
     "seats_per_coach": 60,
     "fare_2025_gbp": 21.89,
     "fare_2026_target_gbp": 20.8,
-    "fare_change_pct": -5
+    "fare_change_pct": -5,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR1-0641",
@@ -45,7 +49,9 @@
     "seats_per_coach": 60,
     "fare_2025_gbp": 21.89,
     "fare_2026_target_gbp": 20.8,
-    "fare_change_pct": -5
+    "fare_change_pct": -5,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR1-0711",
@@ -61,7 +67,9 @@
     "seats_per_coach": 60,
     "fare_2025_gbp": 24.6,
     "fare_2026_target_gbp": 28.04,
-    "fare_change_pct": 14
+    "fare_change_pct": 14,
+    "sales_close_threshold_2025_pct": 112,
+    "sales_close_threshold_2026_pct": 114
   },
   {
     "service_id": "NBR1-0741",
@@ -77,7 +85,9 @@
     "seats_per_coach": 60,
     "fare_2025_gbp": 24.6,
     "fare_2026_target_gbp": 28.04,
-    "fare_change_pct": 14
+    "fare_change_pct": 14,
+    "sales_close_threshold_2025_pct": 112,
+    "sales_close_threshold_2026_pct": 114
   },
   {
     "service_id": "NBR1-0811",
@@ -93,7 +103,9 @@
     "seats_per_coach": 60,
     "fare_2025_gbp": 24.6,
     "fare_2026_target_gbp": 28.04,
-    "fare_change_pct": 14
+    "fare_change_pct": 14,
+    "sales_close_threshold_2025_pct": 112,
+    "sales_close_threshold_2026_pct": 114
   },
   {
     "service_id": "NBR1-0841",
@@ -109,7 +121,9 @@
     "seats_per_coach": 60,
     "fare_2025_gbp": 21.89,
     "fare_2026_target_gbp": 20.8,
-    "fare_change_pct": -5
+    "fare_change_pct": -5,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR1-0911",
@@ -125,7 +139,9 @@
     "seats_per_coach": 60,
     "fare_2025_gbp": 21.89,
     "fare_2026_target_gbp": 20.8,
-    "fare_change_pct": -5
+    "fare_change_pct": -5,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR1-1011",
@@ -141,7 +157,9 @@
     "seats_per_coach": 60,
     "fare_2025_gbp": 15.25,
     "fare_2026_target_gbp": 14.64,
-    "fare_change_pct": -4
+    "fare_change_pct": -4,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR1-1211",
@@ -157,7 +175,9 @@
     "seats_per_coach": 60,
     "fare_2025_gbp": 15.25,
     "fare_2026_target_gbp": 14.64,
-    "fare_change_pct": -4
+    "fare_change_pct": -4,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR1-1411",
@@ -173,7 +193,9 @@
     "seats_per_coach": 60,
     "fare_2025_gbp": 15.25,
     "fare_2026_target_gbp": 14.64,
-    "fare_change_pct": -4
+    "fare_change_pct": -4,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR1-1657",
@@ -189,7 +211,9 @@
     "seats_per_coach": 60,
     "fare_2025_gbp": 23.12,
     "fare_2026_target_gbp": 25.43,
-    "fare_change_pct": 10
+    "fare_change_pct": 10,
+    "sales_close_threshold_2025_pct": 110,
+    "sales_close_threshold_2026_pct": 113
   },
   {
     "service_id": "NBR1-1727",
@@ -205,7 +229,9 @@
     "seats_per_coach": 60,
     "fare_2025_gbp": 23.12,
     "fare_2026_target_gbp": 25.43,
-    "fare_change_pct": 10
+    "fare_change_pct": 10,
+    "sales_close_threshold_2025_pct": 110,
+    "sales_close_threshold_2026_pct": 113
   },
   {
     "service_id": "NBR1-1757",
@@ -221,7 +247,9 @@
     "seats_per_coach": 60,
     "fare_2025_gbp": 23.12,
     "fare_2026_target_gbp": 25.43,
-    "fare_change_pct": 10
+    "fare_change_pct": 10,
+    "sales_close_threshold_2025_pct": 110,
+    "sales_close_threshold_2026_pct": 113
   },
   {
     "service_id": "NBR1-1927",
@@ -237,7 +265,9 @@
     "seats_per_coach": 60,
     "fare_2025_gbp": 15.25,
     "fare_2026_target_gbp": 14.64,
-    "fare_change_pct": -4
+    "fare_change_pct": -4,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR1-2057",
@@ -253,7 +283,9 @@
     "seats_per_coach": 60,
     "fare_2025_gbp": 15.25,
     "fare_2026_target_gbp": 14.64,
-    "fare_change_pct": -4
+    "fare_change_pct": -4,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR1-2227",
@@ -269,7 +301,9 @@
     "seats_per_coach": 60,
     "fare_2025_gbp": 13.78,
     "fare_2026_target_gbp": 12.95,
-    "fare_change_pct": -6
+    "fare_change_pct": -6,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR1-2327",
@@ -285,7 +319,9 @@
     "seats_per_coach": 60,
     "fare_2025_gbp": 13.78,
     "fare_2026_target_gbp": 12.95,
-    "fare_change_pct": -6
+    "fare_change_pct": -6,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR2-0548",
@@ -301,7 +337,9 @@
     "seats_per_coach": 56,
     "fare_2025_gbp": 23.07,
     "fare_2026_target_gbp": 21.76,
-    "fare_change_pct": -5.7
+    "fare_change_pct": -5.7,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR2-0618",
@@ -317,7 +355,9 @@
     "seats_per_coach": 56,
     "fare_2025_gbp": 36.67,
     "fare_2026_target_gbp": 34.93,
-    "fare_change_pct": -4.7
+    "fare_change_pct": -4.7,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR2-0648",
@@ -333,7 +373,9 @@
     "seats_per_coach": 56,
     "fare_2025_gbp": 36.67,
     "fare_2026_target_gbp": 34.93,
-    "fare_change_pct": -4.7
+    "fare_change_pct": -4.7,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR2-0718",
@@ -349,7 +391,9 @@
     "seats_per_coach": 56,
     "fare_2025_gbp": 41.2,
     "fare_2026_target_gbp": 46.68,
-    "fare_change_pct": 13.3
+    "fare_change_pct": 13.3,
+    "sales_close_threshold_2025_pct": 112,
+    "sales_close_threshold_2026_pct": 114
   },
   {
     "service_id": "NBR2-0748",
@@ -365,7 +409,9 @@
     "seats_per_coach": 56,
     "fare_2025_gbp": 41.2,
     "fare_2026_target_gbp": 46.68,
-    "fare_change_pct": 13.3
+    "fare_change_pct": 13.3,
+    "sales_close_threshold_2025_pct": 112,
+    "sales_close_threshold_2026_pct": 114
   },
   {
     "service_id": "NBR2-0818",
@@ -381,7 +427,9 @@
     "seats_per_coach": 56,
     "fare_2025_gbp": 41.2,
     "fare_2026_target_gbp": 46.68,
-    "fare_change_pct": 13.3
+    "fare_change_pct": 13.3,
+    "sales_close_threshold_2025_pct": 112,
+    "sales_close_threshold_2026_pct": 114
   },
   {
     "service_id": "NBR2-0848",
@@ -397,7 +445,9 @@
     "seats_per_coach": 56,
     "fare_2025_gbp": 36.67,
     "fare_2026_target_gbp": 34.93,
-    "fare_change_pct": -4.7
+    "fare_change_pct": -4.7,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR2-0918",
@@ -413,7 +463,9 @@
     "seats_per_coach": 56,
     "fare_2025_gbp": 36.67,
     "fare_2026_target_gbp": 34.93,
-    "fare_change_pct": -4.7
+    "fare_change_pct": -4.7,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR2-1018",
@@ -429,7 +481,9 @@
     "seats_per_coach": 56,
     "fare_2025_gbp": 25.54,
     "fare_2026_target_gbp": 24.57,
-    "fare_change_pct": -3.8
+    "fare_change_pct": -3.8,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR2-1218",
@@ -445,7 +499,9 @@
     "seats_per_coach": 56,
     "fare_2025_gbp": 25.54,
     "fare_2026_target_gbp": 24.57,
-    "fare_change_pct": -3.8
+    "fare_change_pct": -3.8,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR2-1418",
@@ -461,7 +517,9 @@
     "seats_per_coach": 56,
     "fare_2025_gbp": 25.54,
     "fare_2026_target_gbp": 24.57,
-    "fare_change_pct": -3.8
+    "fare_change_pct": -3.8,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR2-1633",
@@ -477,7 +535,9 @@
     "seats_per_coach": 56,
     "fare_2025_gbp": 38.73,
     "fare_2026_target_gbp": 42.41,
-    "fare_change_pct": 9.5
+    "fare_change_pct": 9.5,
+    "sales_close_threshold_2025_pct": 110,
+    "sales_close_threshold_2026_pct": 113
   },
   {
     "service_id": "NBR2-1703",
@@ -493,7 +553,9 @@
     "seats_per_coach": 56,
     "fare_2025_gbp": 38.73,
     "fare_2026_target_gbp": 42.41,
-    "fare_change_pct": 9.5
+    "fare_change_pct": 9.5,
+    "sales_close_threshold_2025_pct": 110,
+    "sales_close_threshold_2026_pct": 113
   },
   {
     "service_id": "NBR2-1733",
@@ -509,7 +571,9 @@
     "seats_per_coach": 56,
     "fare_2025_gbp": 38.73,
     "fare_2026_target_gbp": 42.41,
-    "fare_change_pct": 9.5
+    "fare_change_pct": 9.5,
+    "sales_close_threshold_2025_pct": 110,
+    "sales_close_threshold_2026_pct": 113
   },
   {
     "service_id": "NBR2-1903",
@@ -525,7 +589,9 @@
     "seats_per_coach": 56,
     "fare_2025_gbp": 25.54,
     "fare_2026_target_gbp": 24.57,
-    "fare_change_pct": -3.8
+    "fare_change_pct": -3.8,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR2-2033",
@@ -541,7 +607,9 @@
     "seats_per_coach": 56,
     "fare_2025_gbp": 25.54,
     "fare_2026_target_gbp": 24.57,
-    "fare_change_pct": -3.8
+    "fare_change_pct": -3.8,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR2-2203",
@@ -557,7 +625,9 @@
     "seats_per_coach": 56,
     "fare_2025_gbp": 23.07,
     "fare_2026_target_gbp": 21.76,
-    "fare_change_pct": -5.7
+    "fare_change_pct": -5.7,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR2-2303",
@@ -573,7 +643,9 @@
     "seats_per_coach": 56,
     "fare_2025_gbp": 23.07,
     "fare_2026_target_gbp": 21.76,
-    "fare_change_pct": -5.7
+    "fare_change_pct": -5.7,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR3-0552",
@@ -589,7 +661,9 @@
     "seats_per_coach": 68,
     "fare_2025_gbp": 6.38,
     "fare_2026_target_gbp": 5.97,
-    "fare_change_pct": -6.5
+    "fare_change_pct": -6.5,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR3-0622",
@@ -605,7 +679,9 @@
     "seats_per_coach": 68,
     "fare_2025_gbp": 10.15,
     "fare_2026_target_gbp": 9.6,
-    "fare_change_pct": -5.4
+    "fare_change_pct": -5.4,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR3-0652",
@@ -621,7 +697,9 @@
     "seats_per_coach": 68,
     "fare_2025_gbp": 10.15,
     "fare_2026_target_gbp": 9.6,
-    "fare_change_pct": -5.4
+    "fare_change_pct": -5.4,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR3-0722",
@@ -637,7 +715,9 @@
     "seats_per_coach": 68,
     "fare_2025_gbp": 11.4,
     "fare_2026_target_gbp": 13.12,
-    "fare_change_pct": 15.1
+    "fare_change_pct": 15.1,
+    "sales_close_threshold_2025_pct": 112,
+    "sales_close_threshold_2026_pct": 114
   },
   {
     "service_id": "NBR3-0752",
@@ -653,7 +733,9 @@
     "seats_per_coach": 68,
     "fare_2025_gbp": 11.4,
     "fare_2026_target_gbp": 13.12,
-    "fare_change_pct": 15.1
+    "fare_change_pct": 15.1,
+    "sales_close_threshold_2025_pct": 112,
+    "sales_close_threshold_2026_pct": 114
   },
   {
     "service_id": "NBR3-0822",
@@ -669,7 +751,9 @@
     "seats_per_coach": 68,
     "fare_2025_gbp": 10.15,
     "fare_2026_target_gbp": 9.6,
-    "fare_change_pct": -5.4
+    "fare_change_pct": -5.4,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR3-0922",
@@ -685,7 +769,9 @@
     "seats_per_coach": 68,
     "fare_2025_gbp": 7.07,
     "fare_2026_target_gbp": 6.76,
-    "fare_change_pct": -4.3
+    "fare_change_pct": -4.3,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR3-1122",
@@ -701,7 +787,9 @@
     "seats_per_coach": 68,
     "fare_2025_gbp": 7.07,
     "fare_2026_target_gbp": 6.76,
-    "fare_change_pct": -4.3
+    "fare_change_pct": -4.3,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR3-1322",
@@ -717,7 +805,9 @@
     "seats_per_coach": 68,
     "fare_2025_gbp": 7.07,
     "fare_2026_target_gbp": 6.76,
-    "fare_change_pct": -4.3
+    "fare_change_pct": -4.3,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR3-1644",
@@ -733,7 +823,9 @@
     "seats_per_coach": 68,
     "fare_2025_gbp": 10.72,
     "fare_2026_target_gbp": 11.88,
-    "fare_change_pct": 10.8
+    "fare_change_pct": 10.8,
+    "sales_close_threshold_2025_pct": 110,
+    "sales_close_threshold_2026_pct": 113
   },
   {
     "service_id": "NBR3-1714",
@@ -749,7 +841,9 @@
     "seats_per_coach": 68,
     "fare_2025_gbp": 10.72,
     "fare_2026_target_gbp": 11.88,
-    "fare_change_pct": 10.8
+    "fare_change_pct": 10.8,
+    "sales_close_threshold_2025_pct": 110,
+    "sales_close_threshold_2026_pct": 113
   },
   {
     "service_id": "NBR3-1744",
@@ -765,7 +859,9 @@
     "seats_per_coach": 68,
     "fare_2025_gbp": 10.72,
     "fare_2026_target_gbp": 11.88,
-    "fare_change_pct": 10.8
+    "fare_change_pct": 10.8,
+    "sales_close_threshold_2025_pct": 110,
+    "sales_close_threshold_2026_pct": 113
   },
   {
     "service_id": "NBR3-1914",
@@ -781,7 +877,9 @@
     "seats_per_coach": 68,
     "fare_2025_gbp": 7.07,
     "fare_2026_target_gbp": 6.76,
-    "fare_change_pct": -4.3
+    "fare_change_pct": -4.3,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR3-2044",
@@ -797,7 +895,9 @@
     "seats_per_coach": 68,
     "fare_2025_gbp": 7.07,
     "fare_2026_target_gbp": 6.76,
-    "fare_change_pct": -4.3
+    "fare_change_pct": -4.3,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR3-2214",
@@ -813,7 +913,9 @@
     "seats_per_coach": 68,
     "fare_2025_gbp": 6.38,
     "fare_2026_target_gbp": 5.97,
-    "fare_change_pct": -6.5
+    "fare_change_pct": -6.5,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   },
   {
     "service_id": "NBR3-2314",
@@ -829,6 +931,8 @@
     "seats_per_coach": 68,
     "fare_2025_gbp": 6.38,
     "fare_2026_target_gbp": 5.97,
-    "fare_change_pct": -6.5
+    "fare_change_pct": -6.5,
+    "sales_close_threshold_2025_pct": 120,
+    "sales_close_threshold_2026_pct": 120
   }
 ]

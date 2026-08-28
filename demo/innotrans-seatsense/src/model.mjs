@@ -76,6 +76,8 @@ export const DEMAND_CLASSES = {
     noShowEnd: 0.038,
     wasteStart: 0.075,
     wasteEnd: 0.03,
+    salesCap2025: 1.12,
+    salesCap2026: 1.14,
     weekendFactor: 0.34,
   },
   peak_shoulder: {
@@ -89,6 +91,8 @@ export const DEMAND_CLASSES = {
     noShowEnd: 0.03,
     wasteStart: 0.05,
     wasteEnd: 0.025,
+    salesCap2025: 1.2,
+    salesCap2026: 1.2,
     weekendFactor: 0.46,
   },
   offpeak: {
@@ -102,6 +106,8 @@ export const DEMAND_CLASSES = {
     noShowEnd: 0.028,
     wasteStart: 0.032,
     wasteEnd: 0.02,
+    salesCap2025: 1.2,
+    salesCap2026: 1.2,
     weekendFactor: 0.74,
   },
   evening_peak: {
@@ -115,6 +121,8 @@ export const DEMAND_CLASSES = {
     noShowEnd: 0.035,
     wasteStart: 0.066,
     wasteEnd: 0.028,
+    salesCap2025: 1.1,
+    salesCap2026: 1.13,
     weekendFactor: 0.58,
   },
   early_late: {
@@ -128,6 +136,8 @@ export const DEMAND_CLASSES = {
     noShowEnd: 0.025,
     wasteStart: 0.03,
     wasteEnd: 0.02,
+    salesCap2025: 1.2,
+    salesCap2026: 1.2,
     weekendFactor: 0.44,
   },
 };
@@ -262,8 +272,39 @@ export const KPI_ENDPOINTS = {
   crowding_complaints_per_100k_journeys: { y2025: 41.2, y2026End: 23.8 },
   mean_peak_dwell_seconds: { y2025: 78, y2026End: 66 },
   ppm_punctuality_pct: { y2025: 88.4, y2026End: 91.1 },
-  passengers_left_behind_per_weekday: { y2025: 137, y2026End: 21 },
   net_promoter_score: { y2025: 12, y2026End: 27 },
+};
+
+/**
+ * The 2025 blind spot, stated explicitly because it is the whole argument.
+ *
+ * An operator without seat sensors has ticket sales, gateline counts and a
+ * handful of manual load surveys a year. None of those see an empty seat:
+ * a ticket is a sale, not a person in a seat. So the "load factor" such an
+ * operator reports is tickets / seats - a number that silently counts every
+ * no-show as a passenger, and it is the number capacity and pricing decisions
+ * are then made on.
+ */
+export const TICKET_DATA = {
+  what_2025_had: [
+    'Tickets sold per departure, and the revenue from them.',
+    'Gateline entries and exits at staffed stations - a station total, not a seat.',
+    'Manual load surveys: a counter with a clicker on a handful of days a year.',
+    'Whether sales were closed on a departure, and at what threshold.',
+  ],
+  what_2025_could_not_have: [
+    'How many people were actually on board - a no-show is invisible to ticket data.',
+    'Whether a seat was occupied, reserved-and-empty, or holding a bag.',
+    'The cabin factor of any given departure on any given day.',
+    'Therefore: whether closing sales on a departure was justified.',
+  ],
+  reported_metric_2025: 'assumed_load_factor_pct = tickets sold / seats. Overstates the people on board by the no-show rate.',
+  /** Four manual load-survey days in 2025 - the only 2025 data that saw bodies. */
+  loadSurveyDates2025: ['2025-02-12', '2025-05-14', '2025-09-17', '2025-11-12'],
+  loadSurveyMethod:
+    'Manual count of passengers on board at the busiest point of the journey, morning up services only, plus or minus a few percent counting error. Four days out of 365.',
+  /** No-show rate the pilot measured in Q4 2025, used for the 2025 inference. */
+  pilotNoShowRange: [0.09, 0.12],
 };
 
 /** Assumption used when attributing revenue growth to SeatSense. */
@@ -324,6 +365,8 @@ export function buildServices() {
         fare_2025_gbp: fare2025,
         fare_2026_target_gbp: round2(fare2025 * (1 + cls.fareDelta2026 * route.effectStrength)),
         fare_change_pct: round1(cls.fareDelta2026 * route.effectStrength * 100),
+        sales_close_threshold_2025_pct: round1(cls.salesCap2025 * 100),
+        sales_close_threshold_2026_pct: round1(cls.salesCap2026 * 100),
       });
     }
   }

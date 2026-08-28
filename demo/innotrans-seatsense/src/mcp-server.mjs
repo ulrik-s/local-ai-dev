@@ -45,6 +45,19 @@ const TOOLS = [
     handler: (a) => db.compareYears(a),
   },
   {
+    name: 'ticket_data_blind_spot',
+    description:
+      "Why 2025's numbers are not just lower but wrong. An operator without seat sensors reports tickets/seats as its load factor, which counts every no-show as a passenger on board - so it cannot know its cabin factor at all. This tool shows what the operator reported in 2025 and decided on that basis, the four manual load surveys that hinted at the gap, the gap SeatSense measures directly in 2026, and an explicitly-flagged inference of what 2025 actually looked like. Use it whenever someone says operators already have ticket data.",
+    inputSchema: {
+      type: 'object',
+      properties: {
+        demand_class: { type: 'string', enum: ['peak_core', 'peak_shoulder', 'offpeak', 'evening_peak', 'early_late'], description: "Which departures to examine. Default 'peak_core' - where the blind spot cost the most." },
+        month: int('Calendar month 1-12 for the measured 2026 comparison. Defaults to the latest month with data.'),
+      },
+    },
+    handler: (a) => db.ticketDataBlindSpot(a),
+  },
+  {
     name: 'peak_spreading_report',
     description:
       'The heart of the story: how morning peak demand redistributed after SeatSense-informed pricing. Shows every morning departure before and after - fares, sold load, measured occupancy and ghost seats - plus how much of the peak load moved out of the crush trains into the half-empty shoulder departures.',

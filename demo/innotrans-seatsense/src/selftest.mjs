@@ -45,6 +45,8 @@ const CALLS = [
   ['compare_years', { group_by: 'demand_class' }],
   ['compare_years', { group_by: 'route' }],
   ['compare_years', { group_by: 'service', route_id: 'NBR1' }],
+  ['ticket_data_blind_spot', {}],
+  ['ticket_data_blind_spot', { demand_class: 'evening_peak' }],
   ['peak_spreading_report', { route_id: 'NBR1' }],
   ['peak_spreading_report', {}],
   ['seatsense_snapshot', { service_id: 'NBR1-0741', date: '2026-06-16' }],

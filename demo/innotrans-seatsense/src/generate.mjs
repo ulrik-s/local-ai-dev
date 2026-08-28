@@ -13,8 +13,8 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import {
   GENERATOR_VERSION, COVERAGE, OPERATOR, ROUTES, DEMAND_CLASSES, SEASONALITY,
-  BANK_HOLIDAYS, KPI_ENDPOINTS, ATTRIBUTION, rampFor, jitter, lerp,
-  buildServices, round1, round2,
+  BANK_HOLIDAYS, KPI_ENDPOINTS, ATTRIBUTION, TICKET_DATA, rampFor, jitter, lerp,
+  buildServices, round1, round2, rng,
 } from './model.mjs';
 
 const DATA_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', 'data');
@@ -74,7 +74,12 @@ function makeRow(svc, date) {
   const demand =
     svc.seats * load * route.loadAdjust * SEASONALITY[m - 1] *
     dayTypeFactor(date, svc.demand_class) * jitter(seed + '|vol', 0.035);
-  const sold = Math.max(0, Math.round(demand));
+
+  // Sales close at a threshold the operator sets. In 2025 that threshold is a
+  // guess built on ticket counts; demand above it walks away.
+  const cap = svc.seats * (y >= COVERAGE.seatsenseYear ? cls.salesCap2026 : cls.salesCap2025);
+  const sold = Math.max(0, Math.round(Math.min(demand, cap)));
+  const turnedAway = Math.max(0, Math.round(demand) - sold);
   const fare = round2(svc.fare_2025_gbp * fareMult * jitter(seed + '|fare', 0.02));
 
   const row = {
@@ -83,7 +88,18 @@ function makeRow(svc, date) {
     day_type: dayType(date),
     tickets_sold: sold,
     revenue_gbp: round2(sold * fare),
+    sales_closed: turnedAway > 0,
+    demand_turned_away: turnedAway,
   };
+
+  // The only 2025 data that ever saw an actual passenger: four manual load
+  // surveys, morning up services, with a counting error.
+  if (y < COVERAGE.seatsenseYear && TICKET_DATA.loadSurveyDates2025.includes(date) &&
+      svc.direction === 'up' && svc.departure_time < '10:00') {
+    const [lo, hi] = TICKET_DATA.pilotNoShowRange;
+    const noShow = lerp(lo, hi, rng(seed + '|survey')());
+    row.manual_load_survey = Math.round(sold * (1 - noShow) * jitter(seed + '|count', 0.03));
+  }
 
   if (y >= COVERAGE.seatsenseYear) {
     const noShowRate = lerp(cls.noShowStart, cls.noShowEnd, ramp) * jitter(seed + '|ns', 0.18);
@@ -211,6 +227,25 @@ const files = [
     demand_classes: Object.entries(DEMAND_CLASSES).map(([id, c]) => ({
       demand_class: id, label: c.label, description: c.description,
     })),
+    ticket_data: TICKET_DATA,
+    data_dictionary: {
+      both_years: {
+        tickets_sold: 'Tickets sold for the departure. A sale, not a person in a seat.',
+        revenue_gbp: 'Ticket revenue for the departure.',
+        sales_closed: 'True if the operator stopped selling this departure before demand ran out.',
+        demand_turned_away: 'Passengers who wanted this departure after sales closed.',
+      },
+      [`${COVERAGE.baselineYear}_only`]: {
+        manual_load_survey: 'Passengers counted by hand on board, on the four survey days only. The single 2025 field that saw actual people.',
+        note: 'There is no occupancy field for 2025 because no such measurement existed. tickets_sold / seats is an assumed load factor and overstates the people on board by the no-show rate.',
+      },
+      [`${COVERAGE.seatsenseYear}_only`]: {
+        boarded: 'People SeatSense saw on board. Tickets sold minus no-shows.',
+        seats_occupied: 'Seats SeatSense measured as physically occupied - the cabin factor numerator.',
+        standing: 'People on board with no seat, measured.',
+        ghost_seats: 'Seats paid for that travelled empty.',
+      },
+    },
     generator: { version: GENERATOR_VERSION, generated_at: new Date().toISOString().slice(0, 10) },
   }),
   write('services.json', services),
