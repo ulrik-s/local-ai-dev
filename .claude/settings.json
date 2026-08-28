@@ -1,0 +1,21 @@
+{
+  "enabledMcpjsonServers": ["yggio"],
+  "permissions": {
+    "allow": [
+      "mcp__yggio__yggio_overview",
+      "mcp__yggio__capacity_pressure",
+      "mcp__yggio__ticket_data_blind_spot",
+      "mcp__yggio__fullness_ranking",
+      "mcp__yggio__seatsense_attribution",
+      "mcp__yggio__pricing_actions",
+      "mcp__yggio__compare_years",
+      "mcp__yggio__morning_peak_report",
+      "mcp__yggio__seatsense_snapshot",
+      "mcp__yggio__repricing_candidates",
+      "mcp__yggio__list_services",
+      "mcp__yggio__service_history",
+      "mcp__yggio__yggio_list_iotnodes",
+      "mcp__yggio__yggio_iotnode_readings"
+    ]
+  }
+}

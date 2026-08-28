@@ -15,7 +15,7 @@ no API keys. Node 20+ is the only requirement.
 
 ```bash
 cd demo/innotrans-seatsense
-node src/selftest.mjs        # pre-flight: anropar alla 15 verktyg, ska ge "All checks passed"
+node src/selftest.mjs        # pre-flight: anropar alla 14 verktyg, ska ge "All checks passed"
 claude                       # starta Claude i den här katalogen - .mcp.json kopplar in fejk-Yggio
 ```
 
@@ -31,7 +31,7 @@ Kör i det här repots container istället: `make demo` från repo-roten.
 ```bash
 cd demo/innotrans-seatsense
 
-node src/selftest.mjs        # pre-flight check - calls all 15 tools, prints OK per tool
+node src/selftest.mjs        # pre-flight check - calls all 14 tools, prints OK per tool
 claude                      # Claude Code picks up ./.mcp.json and connects to the fake Yggio
 ```
 
@@ -249,7 +249,7 @@ Rail people will test these, so the tools state them:
   ┌────────────┐   MCP over stdio    ┌──────────────────┐   reads   ┌──────────┐
   │  Claude    │ ──────────────────▶ │  fake Yggio      │ ────────▶ │ data/    │
   │  Code      │ ◀────────────────── │  mcp-server.mjs  │           │ *.json   │
-  └────────────┘   15 tools, JSON    │  + dataset.mjs   │           └──────────┘
+  └────────────┘   14 tools, JSON    │  + dataset.mjs   │           └──────────┘
                                      └──────────────────┘                ▲
                                      ┌──────────────────┐                │
    second screen ──── HTTP ─────────▶│  yggio-api.mjs   │────────────────┘
@@ -317,7 +317,7 @@ happens between them. `generate.mjs` allocates each route's whole day at once:
 | `DEMO-SCRIPT.md` | The stage script: questions, expected answers, talking points, recovery. |
 | `data/*.json` | Generated data, committed so the demo needs no build step. `operator.json` carries both policies, the business case and a data dictionary of which fields exist in which year, and why. |
 
-## The 15 tools
+## The 14 tools
 
 | Tool | Answers |
 | --- | --- |

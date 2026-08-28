@@ -84,7 +84,7 @@ lands on the discounted departures either side, which are the seats that finally
 get sold.
 
 ```bash
-make demo-check      # pre-flight: calls all 15 fake-Yggio tools, prints OK per tool
+make demo-check      # pre-flight: calls all 14 fake-Yggio tools, prints OK per tool
 make demo            # Claude + fake Yggio, ready for questions
 make demo-yggio      # optional: the same data as REST on http://localhost:8787
 make demo-data       # regenerate the dataset
