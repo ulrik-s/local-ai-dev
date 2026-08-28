@@ -8,8 +8,8 @@
   "parameters": {
     "target_cabin_factor_pct": 88,
     "sold_ceiling_pct": 97,
-    "max_premium_pct": 7,
-    "elasticity_between_adjacent_departures": 2.5,
+    "max_premium_pct": 4.5,
+    "elasticity_between_adjacent_departures": 5.5,
     "market_participation_elasticity": 0.3,
     "share_of_refused_demand_that_takes_another_departure": 0.88
   },
@@ -25,82 +25,127 @@
     {
       "demand_class": "peak_core",
       "label": "Morning peak core",
+      "priced": "to_target",
       "priced_by": "solved per day, held just below full against a measured cabin-factor target",
-      "fare_change_pct": 4.7,
+      "fare_change_pct": 1.4,
       "fare_change_range_pct": [
-        4.2,
-        5.2
+        0.8,
+        1.8
       ],
       "departures_in_a_competition_window": 8,
       "departures_total": 8,
       "rationale": "Demand exceeds the seats, so in 2025 these closed sales and refused passengers. The 2026 fare is set per departure so predicted sales land on the measured cabin-factor target instead - never at the cap.",
       "mean_no_show_rate_pct": 10.5,
-      "preferred_demand_pct_of_seats": 108,
-      "demand_exceeds_seats": true
+      "demand_pct_of_seats_offered_by_route": {
+        "NBR1": 104.5,
+        "NBR2": 105.5,
+        "NBR3": 100.8
+      },
+      "formation_units_by_route": {
+        "NBR1": 2,
+        "NBR2": 3,
+        "NBR3": 2
+      }
     },
     {
       "demand_class": "peak_shoulder",
       "label": "Peak shoulder",
+      "priced": "discount",
       "priced_by": "discounted in proportion to the peak premium that day, but only on the departures that sit next to a peak",
-      "fare_change_pct": -7,
+      "fare_change_pct": -4.5,
       "fare_change_range_pct": [
-        -7.6,
-        -6.6
+        -4.9,
+        -4.3
       ],
       "departures_in_a_competition_window": 17,
       "departures_total": 17,
       "rationale": "Discounted to receive the passengers priced off the crush departures, and the ones who used to be refused outright. Measured occupancy is what proves the room is really there.",
       "mean_no_show_rate_pct": 7.5,
-      "preferred_demand_pct_of_seats": 55,
-      "demand_exceeds_seats": false
+      "demand_pct_of_seats_offered_by_route": {
+        "NBR1": 58,
+        "NBR2": 54,
+        "NBR3": 52
+      },
+      "formation_units_by_route": {
+        "NBR1": 2,
+        "NBR2": 2,
+        "NBR3": 1
+      }
     },
     {
       "demand_class": "offpeak",
       "label": "Off-peak",
+      "priced": "unchanged",
       "priced_by": "discounted in proportion to the peak premium that day, but only on the departures that sit next to a peak",
-      "fare_change_pct": -1.4,
+      "fare_change_pct": -0.7,
       "fare_change_range_pct": [
-        -5.4,
+        -2.9,
         0
       ],
       "departures_in_a_competition_window": 4,
       "departures_total": 15,
       "rationale": "Left alone. These departures do not compete with the peak - nobody moves a midday leisure trip to 07:41 - so a discount here would buy almost no volume and simply give away yield.",
       "mean_no_show_rate_pct": 4.2,
-      "preferred_demand_pct_of_seats": 42,
-      "demand_exceeds_seats": false
+      "demand_pct_of_seats_offered_by_route": {
+        "NBR1": 56,
+        "NBR2": 54,
+        "NBR3": 48
+      },
+      "formation_units_by_route": {
+        "NBR1": 1,
+        "NBR2": 1,
+        "NBR3": 1
+      }
     },
     {
       "demand_class": "evening_peak",
       "label": "Evening peak",
+      "priced": "to_target",
       "priced_by": "solved per day, held just below full against a measured cabin-factor target",
-      "fare_change_pct": 3.2,
+      "fare_change_pct": 0.7,
       "fare_change_range_pct": [
-        2.7,
-        3.7
+        0,
+        1.4
       ],
       "departures_in_a_competition_window": 9,
       "departures_total": 9,
       "rationale": "Same rule as the morning peak, on a slightly smaller demand overhang.",
       "mean_no_show_rate_pct": 9,
-      "preferred_demand_pct_of_seats": 104,
-      "demand_exceeds_seats": true
+      "demand_pct_of_seats_offered_by_route": {
+        "NBR1": 101.8,
+        "NBR2": 102.5,
+        "NBR3": 95
+      },
+      "formation_units_by_route": {
+        "NBR1": 2,
+        "NBR2": 3,
+        "NBR3": 2
+      }
     },
     {
       "demand_class": "early_late",
       "label": "Early / late",
+      "priced": "discount",
       "priced_by": "discounted in proportion to the peak premium that day, but only on the departures that sit next to a peak",
-      "fare_change_pct": -1.3,
+      "fare_change_pct": -0.6,
       "fare_change_range_pct": [
-        -4.3,
+        -1.9,
         0
       ],
       "departures_in_a_competition_window": 3,
       "departures_total": 9,
       "rationale": "The first departures of the morning sit inside the peak window, so they get a smaller version of the shoulder discount on the days there is displaced demand to receive.",
       "mean_no_show_rate_pct": 3.5,
-      "preferred_demand_pct_of_seats": 30,
-      "demand_exceeds_seats": false
+      "demand_pct_of_seats_offered_by_route": {
+        "NBR1": 38,
+        "NBR2": 39,
+        "NBR3": 34
+      },
+      "formation_units_by_route": {
+        "NBR1": 1,
+        "NBR2": 1,
+        "NBR3": 1
+      }
     }
   ],
   "service_actions": [
@@ -109,8 +154,8 @@
       "departure_time": "06:11",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 21.89,
-      "fare_2026_target_gbp": 20.36,
-      "fare_change_pct": -7,
+      "fare_2026_target_gbp": 20.9,
+      "fare_change_pct": -4.5,
       "no_show_rate_pct": 7.9,
       "sold_target_pct": null
     },
@@ -119,8 +164,8 @@
       "departure_time": "06:41",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 21.89,
-      "fare_2026_target_gbp": 20.36,
-      "fare_change_pct": -7,
+      "fare_2026_target_gbp": 20.9,
+      "fare_change_pct": -4.5,
       "no_show_rate_pct": 5.1,
       "sold_target_pct": null
     },
@@ -129,8 +174,8 @@
       "departure_time": "07:11",
       "demand_class": "peak_core",
       "fare_2025_gbp": 24.6,
-      "fare_2026_target_gbp": 25.88,
-      "fare_change_pct": 5.2,
+      "fare_2026_target_gbp": 25.02,
+      "fare_change_pct": 1.7,
       "no_show_rate_pct": 7.2,
       "sold_target_pct": 95.2
     },
@@ -139,8 +184,8 @@
       "departure_time": "07:41",
       "demand_class": "peak_core",
       "fare_2025_gbp": 24.6,
-      "fare_2026_target_gbp": 25.68,
-      "fare_change_pct": 4.4,
+      "fare_2026_target_gbp": 24.94,
+      "fare_change_pct": 1.4,
       "no_show_rate_pct": 12,
       "sold_target_pct": 97
     },
@@ -149,8 +194,8 @@
       "departure_time": "08:11",
       "demand_class": "peak_core",
       "fare_2025_gbp": 24.6,
-      "fare_2026_target_gbp": 25.86,
-      "fare_change_pct": 5.1,
+      "fare_2026_target_gbp": 25.02,
+      "fare_change_pct": 1.7,
       "no_show_rate_pct": 7.3,
       "sold_target_pct": 95.3
     },
@@ -159,8 +204,8 @@
       "departure_time": "08:41",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 21.89,
-      "fare_2026_target_gbp": 20.36,
-      "fare_change_pct": -7,
+      "fare_2026_target_gbp": 20.9,
+      "fare_change_pct": -4.5,
       "no_show_rate_pct": 8.1,
       "sold_target_pct": null
     },
@@ -169,8 +214,8 @@
       "departure_time": "09:11",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 21.89,
-      "fare_2026_target_gbp": 20.36,
-      "fare_change_pct": -7,
+      "fare_2026_target_gbp": 20.9,
+      "fare_change_pct": -4.5,
       "no_show_rate_pct": 8.5,
       "sold_target_pct": null
     },
@@ -179,8 +224,8 @@
       "departure_time": "16:27",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 21.89,
-      "fare_2026_target_gbp": 20.36,
-      "fare_change_pct": -7,
+      "fare_2026_target_gbp": 20.9,
+      "fare_change_pct": -4.5,
       "no_show_rate_pct": 9.5,
       "sold_target_pct": null
     },
@@ -189,8 +234,8 @@
       "departure_time": "18:27",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 21.89,
-      "fare_2026_target_gbp": 20.36,
-      "fare_change_pct": -7,
+      "fare_2026_target_gbp": 20.9,
+      "fare_change_pct": -4.5,
       "no_show_rate_pct": 9.6,
       "sold_target_pct": null
     },
@@ -199,8 +244,8 @@
       "departure_time": "06:18",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 36.67,
-      "fare_2026_target_gbp": 34.23,
-      "fare_change_pct": -6.6,
+      "fare_2026_target_gbp": 35.1,
+      "fare_change_pct": -4.3,
       "no_show_rate_pct": 8.6,
       "sold_target_pct": null
     },
@@ -209,8 +254,8 @@
       "departure_time": "06:48",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 36.67,
-      "fare_2026_target_gbp": 34.23,
-      "fare_change_pct": -6.6,
+      "fare_2026_target_gbp": 35.1,
+      "fare_change_pct": -4.3,
       "no_show_rate_pct": 8.6,
       "sold_target_pct": null
     },
@@ -219,8 +264,8 @@
       "departure_time": "07:18",
       "demand_class": "peak_core",
       "fare_2025_gbp": 41.2,
-      "fare_2026_target_gbp": 42.92,
-      "fare_change_pct": 4.2,
+      "fare_2026_target_gbp": 41.8,
+      "fare_change_pct": 1.5,
       "no_show_rate_pct": 11.6,
       "sold_target_pct": 97
     },
@@ -229,8 +274,8 @@
       "departure_time": "07:48",
       "demand_class": "peak_core",
       "fare_2025_gbp": 41.2,
-      "fare_2026_target_gbp": 43.21,
-      "fare_change_pct": 4.9,
+      "fare_2026_target_gbp": 41.93,
+      "fare_change_pct": 1.8,
       "no_show_rate_pct": 7.3,
       "sold_target_pct": 95.3
     },
@@ -239,8 +284,8 @@
       "departure_time": "08:18",
       "demand_class": "peak_core",
       "fare_2025_gbp": 41.2,
-      "fare_2026_target_gbp": 43.04,
-      "fare_change_pct": 4.5,
+      "fare_2026_target_gbp": 41.85,
+      "fare_change_pct": 1.6,
       "no_show_rate_pct": 8.3,
       "sold_target_pct": 96.3
     },
@@ -249,8 +294,8 @@
       "departure_time": "08:48",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 36.67,
-      "fare_2026_target_gbp": 34.23,
-      "fare_change_pct": -6.6,
+      "fare_2026_target_gbp": 35.1,
+      "fare_change_pct": -4.3,
       "no_show_rate_pct": 6,
       "sold_target_pct": null
     },
@@ -259,8 +304,8 @@
       "departure_time": "09:18",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 36.67,
-      "fare_2026_target_gbp": 34.23,
-      "fare_change_pct": -6.6,
+      "fare_2026_target_gbp": 35.1,
+      "fare_change_pct": -4.3,
       "no_show_rate_pct": 5.6,
       "sold_target_pct": null
     },
@@ -269,8 +314,8 @@
       "departure_time": "16:03",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 36.67,
-      "fare_2026_target_gbp": 34.23,
-      "fare_change_pct": -6.6,
+      "fare_2026_target_gbp": 35.1,
+      "fare_change_pct": -4.3,
       "no_show_rate_pct": 8.1,
       "sold_target_pct": null
     },
@@ -279,8 +324,8 @@
       "departure_time": "18:03",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 36.67,
-      "fare_2026_target_gbp": 34.23,
-      "fare_change_pct": -6.6,
+      "fare_2026_target_gbp": 35.1,
+      "fare_change_pct": -4.3,
       "no_show_rate_pct": 6.7,
       "sold_target_pct": null
     },
@@ -289,8 +334,8 @@
       "departure_time": "06:22",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 10.15,
-      "fare_2026_target_gbp": 9.38,
-      "fare_change_pct": -7.6,
+      "fare_2026_target_gbp": 9.66,
+      "fare_change_pct": -4.9,
       "no_show_rate_pct": 6.2,
       "sold_target_pct": null
     },
@@ -299,8 +344,8 @@
       "departure_time": "06:52",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 10.15,
-      "fare_2026_target_gbp": 9.38,
-      "fare_change_pct": -7.6,
+      "fare_2026_target_gbp": 9.66,
+      "fare_change_pct": -4.9,
       "no_show_rate_pct": 9.2,
       "sold_target_pct": null
     },
@@ -309,8 +354,8 @@
       "departure_time": "07:22",
       "demand_class": "peak_core",
       "fare_2025_gbp": 11.4,
-      "fare_2026_target_gbp": 11.94,
-      "fare_change_pct": 4.7,
+      "fare_2026_target_gbp": 11.49,
+      "fare_change_pct": 0.8,
       "no_show_rate_pct": 9.5,
       "sold_target_pct": 97
     },
@@ -319,8 +364,8 @@
       "departure_time": "07:52",
       "demand_class": "peak_core",
       "fare_2025_gbp": 11.4,
-      "fare_2026_target_gbp": 11.94,
-      "fare_change_pct": 4.7,
+      "fare_2026_target_gbp": 11.49,
+      "fare_change_pct": 0.8,
       "no_show_rate_pct": 10.1,
       "sold_target_pct": 97
     },
@@ -329,8 +374,8 @@
       "departure_time": "08:22",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 10.15,
-      "fare_2026_target_gbp": 9.38,
-      "fare_change_pct": -7.6,
+      "fare_2026_target_gbp": 9.66,
+      "fare_change_pct": -4.9,
       "no_show_rate_pct": 6.5,
       "sold_target_pct": null
     },
@@ -339,8 +384,8 @@
       "departure_time": "16:14",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 10.15,
-      "fare_2026_target_gbp": 9.38,
-      "fare_change_pct": -7.6,
+      "fare_2026_target_gbp": 9.66,
+      "fare_change_pct": -4.9,
       "no_show_rate_pct": 7.1,
       "sold_target_pct": null
     },
@@ -349,8 +394,8 @@
       "departure_time": "18:14",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 10.15,
-      "fare_2026_target_gbp": 9.38,
-      "fare_change_pct": -7.6,
+      "fare_2026_target_gbp": 9.66,
+      "fare_change_pct": -4.9,
       "no_show_rate_pct": 6.1,
       "sold_target_pct": null
     }

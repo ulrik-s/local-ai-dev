@@ -1,6 +1,6 @@
 # Stage script
 
-Eleven questions, roughly nine minutes, building from "what is this?" to "what
+Twelve questions, roughly ten minutes, building from "what is this?" to "what
 do we do next?". Type them in English into Claude running in this directory.
 Each block gives the question, the number to look for, and the line to say
 while the audience reads it.
@@ -8,13 +8,14 @@ while the audience reads it.
 Every figure comes from the shipped data - if a number in the answer does not
 match, the data has been regenerated with different parameters.
 
-**Two things not to get wrong on stage:**
+**Three things not to get wrong on stage:**
 
-1. Observed revenue is up **2.4%**, but the SeatSense number is **0.757%**. The
-   rest is market growth. Quote the small one - it is the customer's own
-   business case, and it is the one that survives scrutiny.
-2. Nothing here comes from overselling or from reselling a no-show seat. If you
-   imply it does, the first rail person in the room will stop listening.
+1. Observed revenue is up **2.4%**; the SeatSense number is **0.758%**. The rest
+   is market growth. Quote the small one.
+2. **The premium earns nothing** (−£3,181). The money lands on the discounted
+   departures either side. If you present this as a peak fare rise, you have
+   described the opposite of what happened.
+3. Nothing comes from overselling or from reselling a no-show seat.
 
 ---
 
@@ -26,10 +27,10 @@ node src/selftest.mjs      # must end with "All checks passed"
 claude                     # approve the yggio MCP server when asked
 ```
 
-Optionally on a second screen: `node src/yggio-api.mjs`, browser at
+Optionally on a second screen: `node src/yggio-api.mjs` at
 `http://localhost:8787`.
 
-One sentence of setup:
+Setup line:
 
 > A British operator, reserved seats, one ticket per seat - so no overselling.
 > SeatSense on every coach since 1 January. Ask it anything.
@@ -40,200 +41,203 @@ One sentence of setup:
 
 **Tool:** `yggio_overview`
 
-Look for: three routes, 58 daily departures, **240 SeatSense nodes**, 2025 =
+Look for: three routes, 58 daily departures, **241 SeatSense nodes**, 2025 =
 ticket sales only, 2026 = ticket sales *plus* measured cabin factor, and the
 sales policy: **one ticket per seat, overselling not permitted.**
 
 > The policy first, because it's what makes this a rail problem and not an
-> airline one. And note what's missing from 2025: they knew what they sold.
-> They did not know who actually sat down.
+> airline one.
 
-## 2. "A train sold out at 100% can't take another passenger. What did that cost?"
+## 2. "How big are the trains? Do they vary?"
+
+**Tool:** `list_services` (with `route_id=NBR2` for the extreme case)
+
+Look for `formations_by_route_and_demand_class`: NBR2 runs **3 units, 12 cars,
+672 seats** at 07:48 and **1 unit, 4 cars, 224 seats** at 12:18. NBR1 runs 8
+cars at peak, 4 off-peak. NBR3 runs 6 and 3.
+
+> Right-sized formations, which is why this network runs at a 67% cabin factor
+> and not the forty-odd percent you get from hauling full-length trains around
+> at eleven in the morning. It also means "how full is it" only means anything
+> if you know what was coupled up.
+
+## 3. "A train sold out at 100% can't take another passenger. What did that cost?"
 
 **Tool:** `capacity_pressure`
 
-Look for the 2025 column: peak core closed sales on **82.3%** of weekdays, the
-evening peak on **67.7%**, and **47 passengers a weekday** were refused across
-the network.
+Look for 2025: peak core closed sales on **67.5%** of weekdays, evening peak
+**43.8%**, and **31 passengers a weekday** refused.
 
-> Every one of those is a fare that didn't happen. An airline absorbs them -
-> it overbooks and prices the denied-boarding risk in. A European operator
-> selling reserved seats can't do that: the seat is contractually somebody's,
-> and refusing a boarding triggers passenger rights. So the only way to keep
-> those passengers is to make sure the train never fills in the first place.
+> Every one of those is a fare that didn't happen. An airline absorbs them by
+> overbooking and prices the denied-boarding risk in. Selling reserved seats you
+> can't: the seat is contractually somebody's. So the only way to keep those
+> passengers is to make sure the train never fills.
 
-## 3. "So what did they change?"
+## 4. "So what did they change?"
 
-**Tool:** `pricing_actions`
+**Tool:** `pricing_actions`, then back to `capacity_pressure`
 
 Look for the principle - **"it must always be possible to travel on the
-departure you want; it may cost more"** - and the parameters: target cabin
-factor **88%**, sold ceiling **97%**, maximum premium **7%**. Realised fares:
-peak core **+4.7%**, evening peak **+3.2%**, peak shoulder **−7%**.
+departure you want; it may cost more"** - the parameters (target cabin factor
+**88%**, sold ceiling **97%**, premium cap **4.5%**), and the realised moves:
+peak **+1.4 to +1.8%**, shoulders **−4.5%**.
 
-Then back to `capacity_pressure` for the result: peak core closing sales
-**82.3% → 9.1%**, evening peak **67.7% → 10.8%**, turn-aways **47 → 1 a
-weekday**, peak shoulder sold **58.5% → 61.9%**.
+Result: peak core closing sales **67.5% → 2.4%**, evening peak **43.8% →
+3.9%**, turn-aways **31.5 → 0.5 a weekday**, shoulder sold **58.0% → 62.6%**.
 
-> The fare is solved against each day's demand, not set once a year. Raise the
-> popular departure until it lands just under full, discount the ones either
-> side so the people it prices off have somewhere to go. Nobody is refused any
-> more. The train you want is still available - it just costs about a fiver
-> more.
+> Under two percent on the peak. That's the whole intervention. The fare is
+> solved against each day's demand, so a quiet Tuesday in August carries no
+> premium at all.
 
-## 4. "Why do you need a sensor for that? The booking system knows what's sold."
-
-**Tool:** `fullness_ranking` with `month=6` - **the proof, and the best table
-in the demo**
-
-Look for: ticket sales spread these eight peak departures across **0.8
-points** - the booking system genuinely cannot tell them apart. Measured
-occupancy spreads them across **5.1 points**, and **six of eight change rank**.
-Specifically **NBR1-0741**: 3rd by tickets sold, **7th** by actual fullness,
-because 12% of its ticket holders don't turn up.
-
-> It does know what's sold. What it can't know is who turns up, because the
-> revenue is booked either way. And the headroom has to be measured against
-> the people, not the tickets - otherwise you hold a train at 96% sold that's
-> actually running at 84%, and you've priced away passengers to protect seats
-> that were never going to be used.
-
-## 5. "Show me two departures where that changes the price."
-
-**Tool:** `list_services` with `route_id=NBR1`, or read them off question 4
-
-- **NBR1-0711**: no-show **7.2%** → held to **95.2%** sold → premium **+5.2%**
-- **NBR1-0741**: no-show **12.0%** → can be sold to **97%** → premium **+4.4%**
-
-> Thirty minutes apart. Sold within a point of each other. The one that looks
-> fuller gets the *smaller* increase, because more of its passengers won't
-> show up, so it can safely be sold closer to the cap. Ticket data would have
-> done the exact opposite.
-
-## 6. "How much is this worth, and how do you know?"
+## 5. "How much is it worth?"
 
 **Tool:** `seatsense_attribution`
 
-Look for: observed **+2.4%** (£1.86m), split into **£1,276,352 market growth**
-and **£587,324 SeatSense = 0.757% of total revenue**, against a business case
-of **0.75%**. Annualised, about **£0.9m**. Price effect **£601k**, volume
-**−£23k**.
+Look for: observed **+2.4%** (£1.89m) split into **£1,289,613 market growth**
+and **£596,914 SeatSense = 0.758% of total revenue**, against a business case
+of **0.75%**. Annualised **£904,307**.
 
-> Not a flat growth assumption - that would be wrong, because the peak was
-> already sold out and physically couldn't absorb growth. Every 2026 departure
-> carries what it *would* have taken on the old fares, so the counterfactual
-> is per departure. And notice it's almost all yield: passenger numbers are
-> flat. They're not carrying more people, they're charging the right fare on
-> the right train and no longer turning anyone away.
+Then the part worth pausing on - `two_halves_of_the_policy`:
 
-**Ready for "0.757% sounds small":** about £0.9m a year, from 240 sensors, with
-no overselling and nothing resold.
+| | |
+| --- | --- |
+| Premium on the departures held below full | **−£3,181** |
+| Discount on the departures either side | **+£600,095** |
 
-## 7. "Break it down by month."
+> The premium earns nothing. It's solved to land sales on target, so the fare it
+> adds and the volume it sheds cancel out. All the money is on the trains either
+> side - those are the seats that now get sold. The premium is the instrument;
+> the shoulder is the till. Which settles the first objection anyone raises:
+> this is not a fare rise. A fare rise would show the gain on the peak.
+
+## 6. "What did the sensors cost? What's the payback?"
+
+**Tool:** `seatsense_attribution` with `cost_per_coach_gbp`
+
+With no cost passed it says plainly that no sensor price is stored and reports
+**241 coaches instrumented**. Pass your own figure and it returns capex,
+payback and a five-year net. At £1,800 a coach: **£433,800 capex, payback 5.8
+months, five-year net £4.09m.**
+
+> Use your own number here. The tool carries none, on purpose - and it flags
+> that the figure is capex only: no install, no connectivity, no integration.
+
+## 7. "Why do you need a sensor? The booking system knows what's sold."
+
+**Tool:** `fullness_ranking` with `month=6` - **the proof**
+
+Look for: ticket sales spread these eight peak departures across 3.6 points,
+measured occupancy across **6.2 points**, and **seven of eight change rank**.
+**NBR1-0741** goes from 4th by tickets sold to **8th** by actual fullness -
+12% of its ticket holders don't turn up.
+
+> It does know what's sold. What it can't know is who turns up, because the
+> revenue is booked either way. And the sold-target is the occupancy target
+> *plus that departure's own no-show rate* - so you can't set it without
+> measuring.
+
+## 8. "Show me two departures where that changes the price."
+
+**Tool:** `list_services` with `route_id=NBR1`
+
+- **NBR1-0711**: no-show **7.2%** → held to **95.2%** sold → premium **+1.7%**
+- **NBR1-0741**: no-show **12.0%** → sold to **97%** → premium **+1.4%**
+
+> Thirty minutes apart, both 8-car, both about as sold. The one with more
+> no-shows gets the *smaller* increase, because it can safely be sold closer to
+> the cap. Ticket data would have done the exact opposite.
+
+## 9. "Which route benefited most?"
+
+**Tool:** `compare_years` with `group_by=route`
+
+| Route | Attributable |
+| --- | --- |
+| **NBR2 Great Northern** | **0.951% (£457,630)** |
+| NBR1 Anglia Metro | 0.510% (£123,414) |
+| NBR3 Pennine Shuttle | **0.246% (£15,870)** |
+
+> NBR2 is the peakiest - twelve cars at 07:48, four at midday - so it had the
+> most rationing to fix. And say the third line before someone finds it: the
+> Pennine Shuttle earned almost nothing, because its evening peak was never
+> rationed in the first place. Where nothing is scarce, measuring it is worth
+> very little.
+
+## 10. "Break it down by month."
 
 **Tool:** `capacity_pressure` or `compare_years group_by=month`
 
-Look for: Jan **0.19%**, Mar 1.28%, May 1.36%, Jun **1.49%**, Aug **0.07%** -
-next to how often the peak sold out in 2025: 46%, 100%, 100%, 100%, 15%.
+Look for: Jan **0.11%**, Mar 1.33%, Jun **1.61%**, Aug **0.02%** - next to how
+often the peak sold out in 2025: 3%, 99%, 100%, 0%.
 
-> My favourite number in the demo. The fare is solved per day, so a departure
-> that wouldn't have filled carries no premium at all. In August nothing was
-> being rationed, so there was nothing to price and the effect is 0.07%. You
-> get paid for pricing a train that would otherwise have refused someone -
-> which is precisely the thing you couldn't measure.
+> My favourite number here. The fare is solved per day, so a departure that
+> wouldn't have filled carries no premium. August earns 0.02% because in August
+> nothing was being rationed. **You only get paid for pricing a train that
+> would otherwise have refused someone.**
 
-## 8. "How many paid seats travelled empty on the 07:41 on 17 March?"
+Note if asked: individual months hold different numbers of working days, so use
+`revenue_pct_calendar_adjusted`. The attributable figure is immune - it compares
+each departure with itself.
 
-**Tool:** `seatsense_snapshot`, `service_id=NBR1-0741`, `date=2026-03-17`
+## 11. "How many paid seats travelled empty on the 07:48 on 17 March?"
 
-Look for: **469 of 480 sold, sales still open, nobody refused**, 405 boarded,
-cabin factor **84.4%** against the 97.7% the ticket system reported, **64 ghost
-seats** - plus the per-coach breakdown.
+**Tool:** `seatsense_snapshot`, `service_id=NBR2-0748`, `date=2026-03-17`
 
-> Sixty-four seats paid for and empty, on a train the booking system called
-> 98% full. We can't sell them - they're already sold, to people who didn't
-> come. We can't oversell to cover them. What we can do is know it, and that's
-> what set this departure's price.
+Look for: **661 of 672 sold, sales still open, nobody refused**, formation
+**NBR2-U021 + U015 + U009 - twelve cars**, 616 seats occupied, cabin factor
+**91.7%** against the reported 98.4%, **45 ghost seats worth £1,907**, and the
+rear unit emptiest: **U009-D with 14 free seats of 56.**
 
-**Optional:** try `date=2026-06-16` for the other case - one of the 9% of days
-where the premium cap binds and the train fills anyway.
+> Forty-five seats paid for and empty, and they're all in the back unit. We
+> can't sell them - they're already sold, to people who didn't come. We can't
+> oversell to cover them. What we can do is know it, and that's what set this
+> departure's price.
 
-## 9. "What did they think their load factor was in 2025?"
-
-**Tool:** `ticket_data_blind_spot`
-
-Look for: reported **99.6%** on the morning crush, **`cabin_factor_pct: null`**,
-the four manual load surveys finding ticket sales overstating passengers by
-**8.8%**, and the inferred truth: **87.6-90.6%**, an estimated **43-56 of 454
-seats** departing empty.
-
-> Four people with clickers, four days a year. That was the state of the art.
-> And every pricing and capacity decision was made on a number nine percent
-> too high.
-
-## 10. "What still needs attention?"
+## 12. "What still needs attention?"
 
 **Tool:** `repricing_candidates`
 
-Look for **3 `lengthen_the_train`, 4 `premium_cap_is_binding`**, and the
-contrast inside them:
+Look for the two `lengthen_the_train` and one `premium_cap_is_binding` on
+**NBR2's evening peak** - the only place still closing sales more than 10% of
+weekdays.
 
-- **NBR1-0711**: cabin **89.6%**, still closing sales 12.6% of weekdays,
-  no-show 7.2% → *lengthen the train.* Price has done its job.
-- **NBR1-0741**: cabin **85.9%**, closing sales 13.2%, no-show 12% → *the
-  premium cap is binding.* It fills on tickets while travelling 14 points
-  empty.
-
-> Same route, thirty minutes apart, and the answers are opposite. One needs
-> steel; the other needs a decision about how much premium is defensible.
-> That's the conversation the sensor data makes possible - and note what's not
-> on this list, because it isn't legal: overselling, and reselling the empty
-> seats.
-
-## 11. "What would you tell the board?"
-
-No specific tool - Claude summarises what it has already pulled.
-
-> Same fleet, same timetable, nothing oversold and nothing resold. One sensor
-> per coach, 0.757% of revenue, and a peak that stopped turning people away.
+> Same answer a revenue meeting would reach: on this route price has done what
+> it can, and the next step is steel, not tariff. Note what's not on the list,
+> because it isn't legal: overselling, and reselling the empty seats.
 
 ---
 
 ## If the visitor goes off-script
 
 - *"What was the cabin factor in 2025?"* → the tools **refuse**: `null` with an
-  explanation. The best moment in the demo, not a failure.
-- *"Couldn't you resell the empty seat mid-journey?"* → no, and
-  `seatsense_snapshot` says why: the reservation belongs to its buyer for the
-  whole journey.
+  explanation. The best moment in the demo.
+- *"So how many actually travelled in 2025?"* → `ticket_data_blind_spot` with
+  `demand_class="all"`: 3,877,840 weekday journeys ticketed, most likely
+  **3.41-3.53 million** people, flagged `inference: true`.
+- *"Couldn't you resell the empty seat mid-journey?"* → no; the reservation
+  belongs to its buyer for the whole journey.
 - *"So no-shows went down?"* → no. Identical in both years by construction.
-  SeatSense measures them; it doesn't prevent them.
-- *"Did crowding improve?"* → `capacity_pressure` says no service-quality claim
-  is made. What improved is that far fewer passengers meet a closed sale.
-- *"Aren't you just putting peak fares up?"* → +4.7% on peak core, −7% on the
-  shoulders, and passenger numbers flat. `pricing_actions` shows the whole
-  parameter set including the 7% cap.
-- *"Which route benefited most?"* → `compare_years group_by=route`
+- *"Did crowding improve?"* → `capacity_pressure` claims no service-quality
+  improvement. What improved is that almost nobody meets a closed sale.
+- *"Aren't you just putting peak fares up?"* → the premium earned −£3,181. See
+  question 5.
 - *"Show me one train over time."* → `service_history`
-- *"Are all the sensors working?"* → `yggio_list_iotnodes` (a handful offline
-  with a last-reported timestamp - it's a fleet, not a lab)
+- *"Are all the sensors working?"* → `yggio_list_iotnodes`
 - *"What's the legal basis in my market?"* → the demo frames it contractually
   and cites no statute. Say that plainly and offer to follow up.
 
 ## Recovery
 
-- **Claude doesn't see the tools** - it wasn't started in this directory, or
-  the MCP server wasn't approved. Quit, `cd demo/innotrans-seatsense`, restart,
-  approve.
-- **A number looks wrong** - run `node src/selftest.mjs`. It calls every tool
-  and prints the headline of each.
-- **The model quotes 2.4% as the SeatSense figure** - it has confused observed
-  with attributable. Ask "how much of that is attributable to SeatSense rather
-  than market growth?" and it will correct itself.
-- **The model quotes a 2025 cabin factor** - it has invented it. Ask it to
-  check with `ticket_data_blind_spot`; the tool returns `null` and says why.
-- **The model waffles instead of calling a tool** - name the tool:
-  *"Use fullness_ranking for peak core in June."*
-- **Someone asks whether this is real** - the operator is fictional and the
-  data synthetic, generated to be internally consistent. The constraint, the
-  blind spot and the pricing mechanism are real.
+- **Claude doesn't see the tools** - wrong directory, or the MCP server wasn't
+  approved. Quit, `cd demo/innotrans-seatsense`, restart, approve.
+- **A number looks wrong** - `node src/selftest.mjs` calls every tool and prints
+  each headline.
+- **The model quotes 2.4% as the SeatSense figure** - ask "how much of that is
+  attributable rather than market growth?"
+- **The model says the peak premium earned the money** - ask it for
+  `two_halves_of_the_policy`.
+- **The model quotes a 2025 cabin factor** - it invented it. Send it to
+  `ticket_data_blind_spot`.
+- **Someone asks whether this is real** - the operator is fictional and the data
+  synthetic, generated to be internally consistent. The constraint, the blind
+  spot and the pricing mechanism are real.

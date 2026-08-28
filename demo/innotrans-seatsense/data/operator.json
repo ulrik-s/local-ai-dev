@@ -50,13 +50,51 @@
         "Shenfield",
         "London Liverpool Street"
       ],
-      "profile": "Seat-reserved commuter",
-      "units": 12,
-      "coaches_per_unit": 8,
-      "seats_per_coach": 60,
-      "seats_per_train": 480,
+      "profile": "Seat-reserved inner-suburban commuter",
+      "fleet": {
+        "units": 24,
+        "unit_type": "4-car, 240 seats",
+        "coaches": 96,
+        "seats_per_coach": 60
+      },
+      "formations": {
+        "peak_core": {
+          "units": 2,
+          "coaches": 8,
+          "seats": 480
+        },
+        "peak_shoulder": {
+          "units": 2,
+          "coaches": 8,
+          "seats": 480
+        },
+        "evening_peak": {
+          "units": 2,
+          "coaches": 8,
+          "seats": 480
+        },
+        "offpeak": {
+          "units": 1,
+          "coaches": 4,
+          "seats": 240
+        },
+        "early_late": {
+          "units": 1,
+          "coaches": 4,
+          "seats": 240
+        }
+      },
+      "longest_formation_seats": 480,
+      "shortest_formation_seats": 240,
       "daily_departures": 20,
-      "peak_fare_gbp": 24.6
+      "peak_fare_gbp": 24.6,
+      "demand_index_pct_of_longest_formation": {
+        "peak_core": 104.5,
+        "peak_shoulder": 58,
+        "offpeak": 28,
+        "evening_peak": 101.8,
+        "early_late": 19
+      }
     },
     {
       "route_id": "NBR2",
@@ -74,12 +112,50 @@
         "London King's Cross"
       ],
       "profile": "Seat-reserved long-distance commuter",
-      "units": 11,
-      "coaches_per_unit": 9,
-      "seats_per_coach": 56,
-      "seats_per_train": 504,
+      "fleet": {
+        "units": 25,
+        "unit_type": "4-car, 224 seats",
+        "coaches": 100,
+        "seats_per_coach": 56
+      },
+      "formations": {
+        "peak_core": {
+          "units": 3,
+          "coaches": 12,
+          "seats": 672
+        },
+        "peak_shoulder": {
+          "units": 2,
+          "coaches": 8,
+          "seats": 448
+        },
+        "evening_peak": {
+          "units": 3,
+          "coaches": 12,
+          "seats": 672
+        },
+        "offpeak": {
+          "units": 1,
+          "coaches": 4,
+          "seats": 224
+        },
+        "early_late": {
+          "units": 1,
+          "coaches": 4,
+          "seats": 224
+        }
+      },
+      "longest_formation_seats": 672,
+      "shortest_formation_seats": 224,
       "daily_departures": 20,
-      "peak_fare_gbp": 41.2
+      "peak_fare_gbp": 41.2,
+      "demand_index_pct_of_longest_formation": {
+        "peak_core": 105.5,
+        "peak_shoulder": 36,
+        "offpeak": 18,
+        "evening_peak": 102.5,
+        "early_late": 13
+      }
     },
     {
       "route_id": "NBR3",
@@ -95,12 +171,50 @@
         "York"
       ],
       "profile": "Seat-reserved regional",
-      "units": 9,
-      "coaches_per_unit": 5,
-      "seats_per_coach": 68,
-      "seats_per_train": 340,
+      "fleet": {
+        "units": 15,
+        "unit_type": "3-car, 204 seats",
+        "coaches": 45,
+        "seats_per_coach": 68
+      },
+      "formations": {
+        "peak_core": {
+          "units": 2,
+          "coaches": 6,
+          "seats": 408
+        },
+        "peak_shoulder": {
+          "units": 1,
+          "coaches": 3,
+          "seats": 204
+        },
+        "evening_peak": {
+          "units": 2,
+          "coaches": 6,
+          "seats": 408
+        },
+        "offpeak": {
+          "units": 1,
+          "coaches": 3,
+          "seats": 204
+        },
+        "early_late": {
+          "units": 1,
+          "coaches": 3,
+          "seats": 204
+        }
+      },
+      "longest_formation_seats": 408,
+      "shortest_formation_seats": 204,
       "daily_departures": 18,
-      "peak_fare_gbp": 11.4
+      "peak_fare_gbp": 11.4,
+      "demand_index_pct_of_longest_formation": {
+        "peak_core": 100.8,
+        "peak_shoulder": 26,
+        "offpeak": 24,
+        "evening_peak": 95,
+        "early_late": 17
+      }
     }
   ],
   "demand_classes": [

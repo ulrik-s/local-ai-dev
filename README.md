@@ -78,7 +78,10 @@ revenue that never happens. So the fares are set to hold the popular departures
 departure you want stays possible, it just costs more. Doing that correctly
 needs measured occupancy, because ticket data cannot see a no-show and
 mis-ranks the operator's own departures by five points of real fullness.
-Worth **+0.757% of total revenue** - matching a real customer's business case.
+Worth **+0.758% of total revenue**, matching a real customer's business case -
+and the counter-intuitive part is that the peak premium earns nothing. The money
+lands on the discounted departures either side, which are the seats that finally
+get sold.
 
 ```bash
 make demo-check      # pre-flight: calls all 15 fake-Yggio tools, prints OK per tool

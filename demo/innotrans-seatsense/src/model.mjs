@@ -69,7 +69,7 @@ export const PRICING_POLICY = {
    * occasionally - the policy gets most of the way to never refusing anyone,
    * not all of it.
    */
-  maxPremium: 0.07,
+  maxPremium: 0.045,
   /**
    * Two elasticities, because a fare move on one departure does two different
    * things. Most of its effect is to move passengers to a neighbouring
@@ -77,7 +77,7 @@ export const PRICING_POLICY = {
    * A much smaller part is people not travelling at all, which responds to what
    * the whole window costs on average, not to one departure's fare.
    */
-  choiceElasticity: 2.5,
+  choiceElasticity: 5.5,
   marketElasticity: 0.3,
   /**
    * When a departure fills, this share of the blocked demand takes a
@@ -120,9 +120,9 @@ export const COMPETITION_WINDOWS = [
  * nothing and is left alone.
  */
 export const MAX_SHOULDER_DISCOUNT = {
-  peak_shoulder: 0.07,
-  offpeak: 0.05,
-  early_late: 0.04,
+  peak_shoulder: 0.045,
+  offpeak: 0.027,
+  early_late: 0.018,
 };
 
 export function windowOf(svc) {
@@ -130,6 +130,24 @@ export function windowOf(svc) {
     (c) => c.direction === svc.direction && svc.departure_time >= c.from && svc.departure_time <= c.to,
   );
   return w ? w.id : `solo:${svc.service_id}`;
+}
+
+/** Seats in one unit of a route's fleet. */
+export const unitSeats = (route) => route.unit.cars * route.unit.seatsPerCar;
+
+/** Units coupled for a demand class, and the seats that gives. */
+export const formationOf = (route, demandClass) => route.formations[demandClass] ?? 1;
+export const seatsFor = (route, demandClass) => unitSeats(route) * formationOf(route, demandClass);
+
+/** The longest formation the route runs - the reference every demand index uses. */
+export const peakFormationSeats = (route) =>
+  unitSeats(route) * Math.max(...Object.values(route.formations));
+
+/** Demand for a class expressed against the seats that class actually offers. */
+export function demandLoadFor(route, demandClass) {
+  if (!route) return null;
+  const index = route.demandIndex?.[demandClass] ?? DEMAND_CLASSES[demandClass].demandIndex;
+  return (peakFormationSeats(route) * index) / seatsFor(route, demandClass);
 }
 
 /** Whether a departure sits in a window where a discount can earn anything. */
@@ -193,9 +211,14 @@ export const OPERATOR = {
 /**
  * Demand classes.
  *
- * `demand2025` is mean weekday demand as a multiple of seated capacity, before
- * the 100% sales cap is applied - so a value above 1.0 means the departure
- * sells out and turns passengers away. `fareIndex` is the mean realised yield
+ * `demandIndex` is mean weekday demand as a share of the route's *longest*
+ * formation, before the 100% sales cap is applied. Measuring against the
+ * longest formation rather than against the seats actually coupled up means the
+ * number keeps its meaning when a departure runs short - and a value above 1.0
+ * on a departure that runs the full formation means it sells out and turns
+ * passengers away. Each route overrides these with its own `demandIndex`,
+ * because the routes have genuinely different shapes; the values here are the
+ * network default. `fareIndex` is the mean realised yield
  * per passenger as a fraction of the route's peak fare.
  *
  * `noShowRate` is the share of ticket holders who do not travel. It is the
@@ -225,7 +248,7 @@ export const DEMAND_CLASSES = {
   peak_core: {
     label: 'Morning peak core',
     description: 'The 07:00-08:30 arrivals. More people want these than there are seats.',
-    preferredLoad: 1.08,
+    demandIndex: 1.08,
     fareIndex: 1.0,
     noShowRate: 0.105,
     /** Priced by the rule: held just below full. See PRICING_POLICY. */
@@ -237,7 +260,7 @@ export const DEMAND_CLASSES = {
   peak_shoulder: {
     label: 'Peak shoulder',
     description: 'The departures either side of the crush. Where the priced-off demand goes.',
-    preferredLoad: 0.55,
+    demandIndex: 0.55,
     fareIndex: 0.89,
     noShowRate: 0.075,
     priced: 'discount',
@@ -250,7 +273,7 @@ export const DEMAND_CLASSES = {
   offpeak: {
     label: 'Off-peak',
     description: 'Midday and late evening leisure travel.',
-    preferredLoad: 0.42,
+    demandIndex: 0.28,
     fareIndex: 0.62,
     noShowRate: 0.042,
     priced: 'unchanged',
@@ -262,7 +285,7 @@ export const DEMAND_CLASSES = {
   evening_peak: {
     label: 'Evening peak',
     description: 'The 16:30-18:00 exodus out of the city. Also demand-constrained.',
-    preferredLoad: 1.04,
+    demandIndex: 1.04,
     fareIndex: 0.94,
     noShowRate: 0.09,
     priced: 'to_target',
@@ -272,7 +295,7 @@ export const DEMAND_CLASSES = {
   early_late: {
     label: 'Early / late',
     description: 'First and last departures of the day.',
-    preferredLoad: 0.3,
+    demandIndex: 0.2,
     fareIndex: 0.56,
     noShowRate: 0.035,
     priced: 'discount',
@@ -302,12 +325,19 @@ export const ROUTES = [
     origin: 'Colchester',
     destination: 'London Liverpool Street',
     calling: ['Colchester', 'Marks Tey', 'Kelvedon', 'Witham', 'Chelmsford', 'Shenfield', 'London Liverpool Street'],
-    profile: 'Seat-reserved commuter',
-    units: 12,
-    coachesPerUnit: 8,
-    seatsPerCoach: 60,
+    profile: 'Seat-reserved inner-suburban commuter',
+    unit: { cars: 4, seatsPerCar: 60 },
+    fleetUnits: 24,
+    /** Units coupled together, by demand class. Peak trains are longer. */
+    formations: { peak_core: 2, peak_shoulder: 2, evening_peak: 2, offpeak: 1, early_late: 1 },
+    /**
+     * Demand as a share of this route's longest formation, so the number means
+     * the same thing whatever is coupled up that hour. A dense inner-suburban
+     * route: sharp peaks, but a genuinely useful off-peak of shoppers and
+     * students.
+     */
+    demandIndex: { peak_core: 1.045, peak_shoulder: 0.58, offpeak: 0.28, evening_peak: 1.018, early_late: 0.19 },
     peakFareGbp: 24.6,
-    loadAdjust: 1.0,
     effectStrength: 1.0,
     services: [
       ['0541', 'up', 'early_late'],
@@ -339,11 +369,17 @@ export const ROUTES = [
     destination: "London King's Cross",
     calling: ['Peterborough', 'Huntingdon', 'St Neots', 'Sandy', 'Biggleswade', 'Hitchin', 'Stevenage', "London King's Cross"],
     profile: 'Seat-reserved long-distance commuter',
-    units: 11,
-    coachesPerUnit: 9,
-    seatsPerCoach: 56,
+    unit: { cars: 4, seatsPerCar: 56 },
+    fleetUnits: 25,
+    /** Twelve cars at peak, four off-peak - the widest swing on the network. */
+    formations: { peak_core: 3, peak_shoulder: 2, evening_peak: 3, offpeak: 1, early_late: 1 },
+    /**
+     * The peakiest route: season-ticket business travel into King's Cross and
+     * very little midday demand, which is why it runs 12 cars at 07:48 and 4
+     * at 12:18.
+     */
+    demandIndex: { peak_core: 1.055, peak_shoulder: 0.36, offpeak: 0.18, evening_peak: 1.025, early_late: 0.13 },
     peakFareGbp: 41.2,
-    loadAdjust: 0.98,
     effectStrength: 0.95,
     services: [
       ['0548', 'up', 'early_late'],
@@ -375,11 +411,17 @@ export const ROUTES = [
     destination: 'York',
     calling: ['Huddersfield', 'Dewsbury', 'Leeds', 'Garforth', 'Church Fenton', 'York'],
     profile: 'Seat-reserved regional',
-    units: 9,
-    coachesPerUnit: 5,
-    seatsPerCoach: 68,
+    unit: { cars: 3, seatsPerCar: 68 },
+    fleetUnits: 15,
+    /** Six cars at peak, three the rest of the day, shoulders included. */
+    formations: { peak_core: 2, peak_shoulder: 1, evening_peak: 2, offpeak: 1, early_late: 1 },
+    /**
+     * The flattest route. Its morning peak is constrained, but the evening peak
+     * is not - which makes it the demo's honest counter-example: where nothing
+     * is being rationed, measurement earns almost nothing.
+     */
+    demandIndex: { peak_core: 1.008, peak_shoulder: 0.26, offpeak: 0.24, evening_peak: 0.95, early_late: 0.17 },
     peakFareGbp: 11.4,
-    loadAdjust: 1.03,
     effectStrength: 1.08,
     services: [
       ['0552', 'up', 'early_late'],
@@ -521,16 +563,19 @@ export function noShowRateFor(serviceId, demandClass) {
  * no-show rate, because it can be sold closer to full without ever refusing
  * anyone. Ticket data would have ranked them the other way round.
  */
-export function fareDelta2026For(serviceId, demandClass, inWindow = true) {
+export function fareDelta2026For(serviceId, demandClass, inWindow = true, route = null) {
   const cls = DEMAND_CLASSES[demandClass];
   if (cls.priced !== 'to_target') {
     return inWindow ? -(MAX_SHOULDER_DISCOUNT[demandClass] ?? 0) : 0;
   }
   const targetSold = soldTargetFor(serviceId, demandClass);
-  if (cls.preferredLoad <= targetSold) return 0;
+  // Demand is indexed on the longest formation; compare it to the seats this
+  // departure actually offers before deciding whether a premium is needed.
+  const load = demandLoadFor(route, demandClass);
+  if (load == null || load <= targetSold) return 0;
   return Math.min(
     PRICING_POLICY.maxPremium,
-    Math.pow(cls.preferredLoad / targetSold, 1 / PRICING_POLICY.choiceElasticity) - 1,
+    Math.pow(load / targetSold, 1 / PRICING_POLICY.choiceElasticity) - 1,
   );
 }
 
@@ -545,8 +590,8 @@ export function soldTargetFor(serviceId, demandClass) {
 export function buildServices() {
   const out = [];
   for (const route of ROUTES) {
-    const seats = route.coachesPerUnit * route.seatsPerCoach;
     for (const [time, direction, demandClass] of route.services) {
+      const seats = seatsFor(route, demandClass);
       const cls = DEMAND_CLASSES[demandClass];
       const fare2025 = round2(route.peakFareGbp * cls.fareIndex);
       const departureTime = `${time.slice(0, 2)}:${time.slice(2)}`;
@@ -565,11 +610,14 @@ export function buildServices() {
         destination: direction === 'up' ? route.destination : route.origin,
         demand_class: demandClass,
         seats,
-        coaches: route.coachesPerUnit,
-        seats_per_coach: route.seatsPerCoach,
+        formation_units: formationOf(route, demandClass),
+        coaches: route.unit.cars * formationOf(route, demandClass),
+        seats_per_coach: route.unit.seatsPerCar,
+        unit_type: `${route.unit.cars}-car, ${unitSeats(route)} seats`,
+        longest_formation_seats: peakFormationSeats(route),
         fare_2025_gbp: fare2025,
-        fare_2026_target_gbp: round2(fare2025 * (1 + fareDelta2026For(`${route.id}-${time}`, demandClass, inWindow) * route.effectStrength)),
-        fare_change_pct: round1(fareDelta2026For(`${route.id}-${time}`, demandClass, inWindow) * route.effectStrength * 100),
+        fare_2026_target_gbp: round2(fare2025 * (1 + fareDelta2026For(`${route.id}-${time}`, demandClass, inWindow, route) * route.effectStrength)),
+        fare_change_pct: round1(fareDelta2026For(`${route.id}-${time}`, demandClass, inWindow, route) * route.effectStrength * 100),
         competition_window: inWindow ? windowId : null,
         priced_by: cls.priced === 'to_target'
           ? 'solved per day, held just below full against a measured cabin-factor target'

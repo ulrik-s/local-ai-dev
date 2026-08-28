@@ -51,8 +51,24 @@ curl -s "localhost:8787/api/demo/fullness-ranking?month=6" | jq .narrative
 ## The argument
 
 **Northbank Rail** is a fictional British operator selling reserved seats:
-three routes, 58 daily departures, ~4.9 million journeys and ~£117m of ticket
-revenue a year.
+three routes, 58 daily departures, ~4.6 million journeys and ~£119m of ticket
+revenue a year, 241 instrumented coaches.
+
+### The fleet, because train length is half the story
+
+Peak departures run units coupled together; off-peak they run singles. Ask the
+demo about train size and it answers per route *and* per time of day:
+
+| Route | Unit | Peak core | Peak shoulder | Off-peak |
+| --- | --- | --- | --- | --- |
+| NBR1 Anglia Metro | 4-car, 240 seats | 2 units, 8 cars, **480** | 2 units, 480 | 1 unit, 240 |
+| NBR2 Great Northern | 4-car, 224 seats | 3 units, 12 cars, **672** | 2 units, 448 | 1 unit, 224 |
+| NBR3 Pennine Shuttle | 3-car, 204 seats | 2 units, 6 cars, **408** | 1 unit, 204 | 1 unit, 204 |
+
+Right-sized formations are why the network runs at a **67% cabin factor** rather
+than the 40-odd percent you get from running full-length trains all day. They
+also mean demand is expressed as a share of each route's *longest* formation, so
+the number keeps its meaning when a departure runs short.
 
 ### The problem: a full train is a lost sale
 
@@ -61,29 +77,33 @@ to that specific seat, and denied boarding triggers passenger-rights
 obligations, so the deliberate overbooking an airline prices into its yield
 model is not available.
 
-Which means: **a departure sold to 100% cannot take another passenger.** In
-2025 the morning peak sold out on **82% of weekdays** and the evening peak on
-**68%**, and everyone who arrived after that was refused - **47 passengers a
-weekday** across the network. An airline absorbs those. This operator cannot.
+So **a departure sold to 100% cannot take another passenger.** In 2025 the
+morning peak closed sales on **67.5%** of weekdays and the evening peak on
+**43.8%**, refusing **31 passengers a weekday** across the network. An airline
+absorbs those. This operator cannot.
 
 ### The policy: never let it fill
 
 > **It must always be possible to travel on the departure you want. It may cost
 > more.**
 
-From 1 January 2026, each popular departure's fare is **solved against that
-day's demand** so that predicted sales land on a measured-occupancy target and
-never reach the sales cap. The departures either side are discounted in
-proportion to the premium the peak is carrying. A quiet Tuesday in August
-carries no premium at all, because nothing would have filled.
+From 1 January 2026 each popular departure's fare is **solved against that
+day's demand** so predicted sales land on a measured-occupancy target and never
+reach the sales cap. The departures either side are discounted in proportion to
+the premium the peak is carrying. A quiet Tuesday in August carries no premium
+at all, because nothing would have filled.
 
 | Parameter | Value |
 | --- | --- |
 | Target cabin factor | 88% measured occupancy |
 | Sold ceiling | 97% of seats - never higher, so it cannot fill |
-| Maximum premium | 7% |
-| Substitution between adjacent departures | elasticity 2.5 |
+| Maximum premium | 4.5% |
+| Substitution between adjacent departures | elasticity 5.5 |
 | Not travelling at all | elasticity 0.3 |
+| Share of refused demand that takes a neighbour | 88% |
+
+Realised fare moves are **+1.4% to +1.8%** on the peak and **−4.5%** on the
+shoulders. That is the whole intervention.
 
 ### What it did
 
@@ -91,83 +111,109 @@ Like-for-like, 1 January - 31 August, weekdays:
 
 | | 2025 | 2026 |
 | --- | --- | --- |
-| Peak core sold | 99.4% | **97.0%** |
-| Peak core closing sales | 82.3% of weekdays | **9.1%** |
-| Evening peak closing sales | 67.7% | **10.8%** |
-| Passengers turned away | 47 a weekday | **1** |
-| Peak core fare | £29.00 | £30.42 (+4.9%) |
-| Peak shoulder sold | 58.5% | **61.9%** |
-| Peak shoulder fare | £24.76 | £24.00 (−3.1%) |
+| Peak core sold | 98.5% | **96.3%** |
+| Peak core cabin factor | *unknown* | **87.5%** |
+| Peak core closing sales | 67.5% of weekdays | **2.4%** |
+| Evening peak closing sales | 43.8% | **3.9%** |
+| Passengers turned away | 31.5 a weekday | **0.5** |
+| Peak core fare | £29.97 | £30.74 |
+| Peak shoulder sold | 58.0% | **62.6%** |
+| Peak shoulder fare | £26.28 | £26.05 |
 
-The peak is now deliberately held below full, the shoulders carry the
-difference, and almost nobody is refused.
-
-### Why it needs SeatSense
-
-The headroom has to be set against **actual** occupancy, not tickets sold - and
-ticket data cannot see the difference, because revenue is booked whether the
-passenger travels or not.
-
-June 2026 weekdays, peak core. Ticket sales spread these eight departures
-across **0.8 points** - the system cannot tell them apart. Measured occupancy
-spreads them across **5.1 points**, and **six of eight change rank**:
-
-| Departure | Sold | **Actually full** | No-show | Rank by sales → by fullness |
-| --- | --- | --- | --- | --- |
-| NBR1-0811 | 99.6% | **92.7%** | 7.3% | 1 → 1 |
-| NBR1-0711 | 99.5% | 92.6% | 7.2% | 2 → 2 |
-| NBR2-0748 | 99.0% | 92.0% | 7.3% | 6 → 3 |
-| NBR2-0818 | 98.8% | 90.7% | 8.3% | 7 → 4 |
-| NBR3-0722 | 99.3% | 89.7% | 9.5% | 4 → 5 |
-| NBR3-0752 | 98.8% | 88.7% | 10.1% | 8 → 6 |
-| **NBR1-0741** | **99.5%** | **87.9%** | **12.0%** | **3 → 7** |
-| NBR2-0718 | 99.0% | 87.6% | 11.6% | 5 → 8 |
-
-So the sold-target and the premium are set **per departure**. The 07:11 has a
-7.2% no-show rate, so it is held to 95.2% sold and takes a **+5.2%** premium.
-The 07:41, thirty minutes later and sold within a point of it, has a 12%
-no-show rate, so it can be sold to 97% and takes only **+4.4%**. Ticket data
-would have ranked them the other way round and priced them the other way round.
-
-### What it is worth
+### The result nobody expects
 
 | | |
 | --- | --- |
-| Observed revenue change | +2.4% (£1.86m) |
-| of which market growth | £1,276,352 |
-| **of which attributable to SeatSense** | **£587,324 = 0.757% of total revenue** |
-| The operator's business case | 0.75% |
-| Annualised on 2025 revenue | **~£0.9m** |
+| Observed revenue change | +2.4% (£1.89m) |
+| of which market growth | £1,289,613 |
+| **attributable to SeatSense** | **£596,914 = 0.758% of total revenue** |
+| Business case | 0.75% |
+| Annualised | **£904,307** |
 
-Almost all of it is yield, not volume: **£601k price effect, −£23k volume.**
-Passenger numbers are flat. The gain is that the passenger who must have the
-07:41 pays for the certainty, the flexible one is paid to move, and the ones
-who used to be refused now travel at all.
+Now split that £596,914 by where it landed:
 
-And by month, which is the most convincing table in the demo:
+| | |
+| --- | --- |
+| The premium on the departures held below full | **−£3,181** |
+| The discount on the departures either side | **+£600,095** |
+
+**The premium earns nothing.** It is solved to land sales on target, so the
+fare it adds and the volume it sheds cancel by construction. The money appears
+on the trains either side - those are the seats that now get sold, to
+passengers who previously paid a peak fare or were refused outright.
+
+The premium is the instrument. The shoulder is the till. Which also settles the
+first objection anyone raises: **this is not a fare rise.** A fare rise would
+show the gain on the peak, and it does not.
+
+### Why it needs SeatSense
+
+The sold-target is the cabin-factor target **plus that departure's own no-show
+rate**, and ticket data cannot see a no-show, because revenue is booked whether
+the passenger travels or not.
+
+June 2026 weekdays, peak core. Ticket sales spread these eight departures
+across 3.6 points. Measured occupancy spreads them across **6.2 points**, and
+**seven of eight change rank**:
+
+| Departure | Sold | **Actually full** | No-show | Rank by sales → by fullness |
+| --- | --- | --- | --- | --- |
+| NBR2-0748 | 99.1% | **92.0%** | 7.3% | 1 → 1 |
+| NBR2-0818 | 98.9% | 90.8% | 8.3% | 3 → 2 |
+| NBR1-0711 | 95.5% | 88.9% | 7.2% | 7 → 3 |
+| NBR1-0811 | 95.5% | 88.9% | 7.3% | 8 → 4 |
+| NBR2-0718 | 99.0% | 87.7% | 11.6% | 2 → 5 |
+| NBR3-0722 | 97.1% | 87.7% | 9.5% | 5 → 6 |
+| NBR3-0752 | 97.1% | 87.1% | 10.1% | 6 → 7 |
+| **NBR1-0741** | 97.1% | **85.8%** | **12.0%** | **4 → 8** |
+
+So the 07:11, with a 7.2% no-show rate, is held to 95.2% sold and takes a
+**+1.7%** premium. The 07:41 thirty minutes later, with 12%, can safely be sold
+to 97% and takes only **+1.4%**. Ticket data would have ranked and priced them
+the other way round.
+
+### Where the money is, and where it is not
+
+| Route | Attributable | Shape |
+| --- | --- | --- |
+| **NBR2 Great Northern** | **0.951% (£457,630)** | Peakiest: 12 cars at 07:48, 4 at 12:18 |
+| NBR1 Anglia Metro | 0.510% (£123,414) | Dense commuter, useful off-peak |
+| NBR3 Pennine Shuttle | **0.246% (£15,870)** | Flattest - and its evening peak was never rationed |
+
+NBR3 is the honest counter-example: where nothing was being rationed,
+measurement earns almost nothing. Say it before someone finds it.
+
+### And by month
 
 | | Jan | Feb | Mar | Apr | May | Jun | Jul | Aug |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Attributable | 0.19% | 0.60% | 1.28% | 0.84% | 1.36% | **1.49%** | 1.18% | **0.07%** |
-| Peak sold out 2025 → 2026 | 46→0% | 97→0% | 100→3% | 100→0% | 100→18% | 100→51% | 100→0% | 15→0% |
+| Attributable | 0.11% | 0.50% | 1.33% | 0.77% | 1.42% | **1.61%** | 1.19% | **0.02%** |
+| Peak sold out 2025 | 3% | 58% | 99% | 82% | 100% | 100% | 97% | 0% |
 
 The fare is solved per day, so a departure that would not have filled carries
-no premium. In August nothing was being rationed, so there was nothing to price
-and the effect is 0.07%. **You get paid for pricing a train that would
-otherwise have refused someone** - which is exactly the thing you could not
-measure.
+no premium. **You get paid only for pricing a train that would otherwise have
+refused someone.**
 
 ### The line to have ready
 
-From `seatsense_snapshot(NBR1-0741, 2026-03-17)`:
+From `seatsense_snapshot(NBR2-0748, 2026-03-17)`:
 
-> 469 of 480 seats sold, **sales still open, nobody refused.** SeatSense
-> measured 405 seats occupied - a cabin factor of 84.4% against the 97.7% the
-> ticket system reported - so **64 paid-for seats travelled empty.** They
-> cannot be resold and cannot be covered by overselling. What they change is
-> the price of this departure next time.
+> 661 of 672 seats sold, sales still open, nobody refused. Formation
+> NBR2-U021 + U015 + U009, twelve cars. SeatSense measured 616 seats occupied -
+> a cabin factor of 91.7% against the 98.4% the ticket system reported - so
+> **45 paid-for seats worth £1,907 departed empty**, and the emptiest coach was
+> the rear one, U009-D with 14 free seats.
 
----
+### Payback
+
+No sensor price is stored in this dataset. Pass your own and
+`seatsense_attribution` returns capex, payback and a five-year net:
+
+```
+seatsense_attribution(cost_per_coach_gbp: 1800)
+→ 241 coaches, £433,800 capex, £904,307 a year, payback 5.8 months,
+  five-year net £4,087,734   (capex only - no install, connectivity or integration)
+```
 
 ## What this demo deliberately does not claim
 
@@ -175,22 +221,24 @@ Rail people will test these, so the tools state them:
 
 - **No revenue from overselling.** Not permitted, and no row in either year
   sells more tickets than there are seats.
-- **No revenue from reselling no-show seats.** The seat is still the buyer's
-  for the whole journey.
+- **No revenue from reselling no-show seats.** The seat is still the buyer's for
+  the whole journey. The 243,636 ghost seats measured in the window are worth
+  £6.3m on paper and nothing in practice.
 - **No claim that ticket data misses unsold seats.** It knows those exactly.
   What it misses is how many sold seats get used.
-- **No reduction in the no-show rate.** Identical in both years by
-  construction - SeatSense measures no-shows, it does not prevent them.
-- **No passenger growth.** Flat. The gain is yield.
+- **No reduction in the no-show rate.** Identical in both years by construction.
+- **No passenger growth.** Flat (−0.04% attributable). The gain is yield.
 - **No service-quality improvement**, and no modelled punctuality or complaint
-  figures anywhere in the dataset. What did improve is that far fewer
-  passengers meet a closed sale.
-- **The policy does not abolish sold-out trains.** 9.1% of peak departures
-  still fill, because the premium is capped at 7%. `repricing_candidates`
-  separates those into the ones that are genuinely full at the target - buy
-  seats - and the ones that fill on tickets while travelling 12 points empty.
-
----
+  figures anywhere in the dataset. What improved is that far fewer passengers
+  meet a closed sale.
+- **Not a fare rise.** The premium earns −£3,181. The measured gain is on the
+  discounted departures.
+- **The policy does not abolish sold-out trains.** 2.4% of peak departures
+  still fill because the premium is capped, and NBR2's evening peak is where
+  `repricing_candidates` says to buy more seats rather than charge more.
+- **No 2025 occupancy figure**, except as an explicitly flagged inference:
+  ticket sales recorded 3,877,840 weekday journeys, of which most likely
+  3.41-3.53 million people actually travelled.
 
 ## How it fits together
 
@@ -223,13 +271,15 @@ happens between them. `generate.mjs` allocates each route's whole day at once:
    were no object.
 2. **Competition windows** - the morning peak plus its shoulders, the evening
    peak plus its shoulders. Inside a window, a fare change moves passengers
-   between departures (elasticity 2.5). What the window costs on average
-   decides how many travel at all (elasticity 0.3). Outside a window a
-   departure competes with nothing, so it is left alone.
+   between departures (elasticity 5.5 - adjacent departures of the same journey
+   are near-perfect substitutes). What the window costs on average decides how
+   many travel at all (elasticity 0.3). Outside a window a departure competes
+   with nothing, so it is left alone: discounting a midday train buys almost no
+   volume and just gives away yield.
 3. **The fare solver** - for each popular departure, raise the fare until
    predicted sales land on its own sold-target (88% cabin factor plus its
-   no-show rate, capped at 97% sold), or until the 7% premium cap. Then set the
-   window's shoulder discount in proportion to the premium the peak ended up
+   no-show rate, capped at 97% sold), or until the 4.5% premium cap. Then set
+   the window's shoulder discount in proportion to the premium the peak ended up
    carrying. Ten passes.
 4. **Capacity and spillover** - sales stop at 100% of seats. Of the demand
    refused, 88% takes a neighbouring departure within 90 minutes; the rest does
@@ -249,6 +299,7 @@ happens between them. `generate.mjs` allocates each route's whole day at once:
 | `cf_tickets_sold` / `cf_revenue_gbp` | 2026 only: the same departure on 2025's fares with the same market growth. Observed minus counterfactual is the business case. |
 | `no_show_rate_pct` | Per departure: 2-12% network-wide, 7-12% on the peak. A property of who buys that particular train, stable enough to price against, invisible to ticket data. |
 | `sold_target_pct` | Per departure, 2026: where the pricing rule aims its sales. Cabin-factor target plus that departure's no-show rate, capped at the ceiling. |
+| `formation_units` / `unit_type` / `seats` | How long the train is on that departure. Peak runs 2-3 units coupled, off-peak a single unit, so `seats` differs by time of day on the same route. |
 | `manual_load_survey` | 2025 only, four dates: passengers counted by hand. The single 2025 field that saw actual people. |
 
 ## Files
@@ -272,15 +323,15 @@ happens between them. `generate.mjs` allocates each route's whole day at once:
 | --- | --- |
 | `yggio_overview` | "What data do you have?" - start here |
 | `capacity_pressure` | The policy in operation: sold-out departures, turn-aways, and where price stops being the answer |
-| `ticket_data_blind_spot` | "Operators already have ticket data" - what 2025 reported, why it could not be an occupancy figure, and what it really was |
+| `ticket_data_blind_spot` | "Operators already have ticket data" - what 2025 reported, why it could not be an occupancy figure, and what it really was. `demand_class: "all"` gives the network-level answer to "how many people actually travelled in 2025?" |
 | `fullness_ranking` | The proof: departures ranked by tickets sold vs by measured occupancy, and which ones change place |
-| `seatsense_attribution` | The 0.757%: observed change split into market growth and pricing effect, plus what the demo does *not* claim |
+| `seatsense_attribution` | The 0.758%: market growth vs pricing effect, the premium/shoulder split, optional payback from your own sensor price, and what the demo does *not* claim |
 | `pricing_actions` | The policy, its parameters, and the fare each class actually realised |
 | `compare_years` | 2025 vs 2026 by total, month, route, service, demand class or day type, each with its attributable revenue |
 | `morning_peak_report` | The morning peak departure by departure, before and after |
-| `seatsense_snapshot` | One train, one day, per coach: sold vs occupied, turn-aways, ghost seats |
+| `seatsense_snapshot` | One train, one day: which units are coupled, then per coach - sold vs occupied, turn-aways, ghost seats |
 | `repricing_candidates` | "What still needs attention?" - separating capacity questions from premium judgement calls |
-| `list_services` | The timetable, each departure's no-show rate and its sold-target |
+| `list_services` | The timetable, formations by route and time of day, each departure's no-show rate and its sold-target |
 | `service_history` | Day-by-day rows for one departure |
 | `yggio_list_iotnodes` | The SeatSense device estate as Yggio IoT nodes |
 | `yggio_iotnode_readings` | One coach's sensor: latest values plus that day's occupancy series |
@@ -297,18 +348,25 @@ The knobs worth knowing, all in `src/model.mjs`:
 
 - `SALES_POLICY` - one ticket per seat, no overselling. Everything follows.
 - `PRICING_POLICY` - the whole 2026 mechanism: `targetCabinFactor` (0.88),
-  `soldCeiling` (0.97), `maxPremium` (0.07), `choiceElasticity` (2.5),
-  `marketElasticity` (0.3), `spillShare` (0.88). Raising `maxPremium` pushes
-  the peak further below full and earns more; raising `spillShare` means less
-  demand was lost outright in 2025 and earns less. These two land the
-  attributable figure on 0.757%.
-- `DEMAND_CLASSES[*].preferredLoad` - demand as a multiple of seats before any
-  cap or price effect. Above 1.0 is what makes a departure ration itself.
+  `soldCeiling` (0.97), `maxPremium` (0.045), `choiceElasticity` (5.5),
+  `marketElasticity` (0.3), `spillShare` (0.88). There is a real tension in
+  here worth understanding before you touch it: a bigger `maxPremium` clears
+  the peak more completely *and* earns more, so "nobody is ever turned away"
+  and "0.75% of revenue" pull against each other. The thing that reconciles
+  them is a high `choiceElasticity` - passengers move readily between
+  departures half an hour apart, so a 1.5% premium shifts a lot of demand.
+- `ROUTES[*].unit`, `fleetUnits`, `formations` - train length per route and per
+  demand class. Change a formation and that route's load factors move with it.
+- `ROUTES[*].demandIndex` - demand per class as a share of that route's longest
+  formation. Above 1.0 is what makes a departure ration itself, and how far
+  above 1.0 sets how much premium is needed to clear it. This is the main lever
+  on the headline: it currently lands the attributable figure on 0.758%.
 - `noShowRate` per class and `noShowRateFor()` per departure (±40%) - the
   variation that makes the two rankings disagree, and that the sold-target is
   built from.
 - `COMPETITION_WINDOWS` and `MAX_SHOULDER_DISCOUNT` - which departures compete,
-  and how far each may be discounted to receive displaced demand.
+  and how far each may be discounted to receive displaced demand. Note that the
+  discount is where the measured gain lands, not the premium.
 - `MARKET_GROWTH_2026` - background growth baked into 2026 demand, netted off
   by each departure's counterfactual.
 - `TICKET_DATA` - what ticket data could and could not see, the manual survey
@@ -330,6 +388,11 @@ The knobs worth knowing, all in `src/model.mjs`:
   range, and gives a range rather than a point figure.
 - The elasticities, the spill share and the indicative effects in
   `repricing_candidates` are modelling assumptions. Each tool states the one it
-  used, and `pricing_actions` prints the whole parameter set.
+  used, and `pricing_actions` prints the whole parameter set. The high
+  substitution elasticity (5.5) is the load-bearing one: it is what lets a
+  1.5% premium clear a peak, and it is defensible for departures half an hour
+  apart with the price difference visible at the point of sale.
+- No sensor price is in the repo. `seatsense_attribution` computes payback only
+  from a `cost_per_coach_gbp` you supply at the time.
 - Every service runs every day in this model, with weekend and bank-holiday
   demand factors rather than a reduced weekend timetable.

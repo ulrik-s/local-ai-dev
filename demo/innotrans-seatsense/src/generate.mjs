@@ -16,6 +16,7 @@ import {
   BANK_HOLIDAYS, TICKET_DATA, SALES_POLICY, PRICING_POLICY, ATTRIBUTION,
   MARKET_GROWTH_2026, BUSINESS_CASE_TARGET_PCT, pricingActive, noShowRateFor,
   fareDelta2026For, soldTargetFor, windowOf, MAX_SHOULDER_DISCOUNT,
+  unitSeats, formationOf, seatsFor, peakFormationSeats,
   jitter, lerp, buildServices, round1, round2,
 } from './model.mjs';
 
@@ -80,9 +81,10 @@ function makeRouteDay(route, date) {
 
   // Preferred demand: how many people would take this departure if price were
   // no object and every seat were free. Same in both scenarios below.
+  const reference = peakFormationSeats(route);
   const preferred = deps.map((svc) => {
-    const cls = DEMAND_CLASSES[svc.demand_class];
-    return svc.seats * cls.preferredLoad * route.loadAdjust * SEASONALITY[m - 1] *
+    const index = route.demandIndex?.[svc.demand_class] ?? DEMAND_CLASSES[svc.demand_class].demandIndex;
+    return reference * index * SEASONALITY[m - 1] *
       dayTypeFactor(date, svc.demand_class) * jitter(`${svc.service_id}|${date}|vol`, 0.035) *
       (seatsense ? 1 + MARKET_GROWTH_2026 : 1);
   });
@@ -226,9 +228,9 @@ function buildDevices() {
   const nodes = [];
   const coachLetters = 'ABCDEFGHIJ';
   for (const route of ROUTES) {
-    for (let u = 1; u <= route.units; u++) {
+    for (let u = 1; u <= route.fleetUnits; u++) {
       const unit = `${route.id}-U${String(u).padStart(3, '0')}`;
-      for (let c = 0; c < route.coachesPerUnit; c++) {
+      for (let c = 0; c < route.unit.cars; c++) {
         const coach = coachLetters[c];
         const id = `${unit}-${coach}`.toLowerCase();
         const j = jitter(id, 1);
@@ -243,7 +245,7 @@ function buildDevices() {
             route_id: route.id,
             unit_id: unit,
             coach,
-            seat_count: route.seatsPerCoach,
+            seat_count: route.unit.seatsPerCar,
             installed_at: OPERATOR.seatsense.fleetGoLive,
             firmware: '2.4.1',
           },
@@ -287,6 +289,7 @@ function buildPricing() {
     class_actions: Object.entries(DEMAND_CLASSES).map(([id, cls]) => ({
       demand_class: id,
       label: cls.label,
+      priced: cls.priced,
       priced_by: cls.priced === 'to_target'
         ? 'solved per day, held just below full against a measured cabin-factor target'
         : 'discounted in proportion to the peak premium that day, but only on the departures that sit next to a peak',
@@ -301,8 +304,10 @@ function buildPricing() {
       departures_total: services.filter((s) => s.demand_class === id).length,
       rationale: cls.pricingRationale,
       mean_no_show_rate_pct: round1(cls.noShowRate * 100),
-      preferred_demand_pct_of_seats: round1(cls.preferredLoad * 100),
-      demand_exceeds_seats: cls.preferredLoad > 1,
+      demand_pct_of_seats_offered_by_route: Object.fromEntries(ROUTES.map((r) => [
+        r.id, round1(((peakFormationSeats(r) * (r.demandIndex?.[id] ?? cls.demandIndex)) / seatsFor(r, id)) * 100),
+      ])),
+      formation_units_by_route: Object.fromEntries(ROUTES.map((r) => [r.id, formationOf(r, id)])),
     })),
     service_actions: services
       .filter((s) => s.demand_class === 'peak_core' || s.demand_class === 'peak_shoulder')
@@ -340,12 +345,21 @@ const files = [
       destination: r.destination,
       calling_points: r.calling,
       profile: r.profile,
-      units: r.units,
-      coaches_per_unit: r.coachesPerUnit,
-      seats_per_coach: r.seatsPerCoach,
-      seats_per_train: r.coachesPerUnit * r.seatsPerCoach,
+      fleet: {
+        units: r.fleetUnits,
+        unit_type: `${r.unit.cars}-car, ${unitSeats(r)} seats`,
+        coaches: r.fleetUnits * r.unit.cars,
+        seats_per_coach: r.unit.seatsPerCar,
+      },
+      formations: Object.fromEntries(Object.entries(r.formations).map(([cls, n]) => [cls, {
+        units: n, coaches: n * r.unit.cars, seats: unitSeats(r) * n,
+      }])),
+      longest_formation_seats: peakFormationSeats(r),
+      shortest_formation_seats: unitSeats(r) * Math.min(...Object.values(r.formations)),
       daily_departures: r.services.length,
       peak_fare_gbp: r.peakFareGbp,
+      demand_index_pct_of_longest_formation: Object.fromEntries(
+        Object.entries(r.demandIndex).map(([k, v]) => [k, round1(v * 100)])),
     })),
     demand_classes: Object.entries(DEMAND_CLASSES).map(([id, c]) => ({
       demand_class: id, label: c.label, description: c.description,
