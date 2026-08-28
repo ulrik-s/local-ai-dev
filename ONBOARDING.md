@@ -16,12 +16,17 @@ network, no API keys, no database. The data is committed.
 ## 60 seconds to a working demo
 
 ```bash
-git clone https://github.com/ulrik-s/local-ai-dev
+git clone -b claude/innotrans-seatsense-demo-7edpxk \
+  https://github.com/ulrik-s/local-ai-dev
 cd local-ai-dev/demo/innotrans-seatsense
 
 node src/selftest.mjs     # must end: "All checks passed - the demo is ready."
 claude                    # starts Claude with the fake Yggio already wired in
 ```
+
+The `-b` matters: the demo lives on that branch. Once it has been merged, a
+plain `git clone` is enough — check whether the branch still exists before
+passing it on.
 
 Then ask it: **“What data do you have?”**
 
