@@ -22,14 +22,14 @@ const TOOLS = [
   {
     name: 'yggio_overview',
     description:
-      "Start here. What this Yggio tenant contains: the operator, its routes, the SeatSense device estate, which periods have measured seat occupancy, and the headline year-on-year numbers. Answers 'what data do you have?'.",
+      "Start here. What this Yggio tenant contains: the operator, its sales policy (one ticket per seat, no overselling), the SeatSense device estate, which periods have measured seat occupancy, and the headline numbers including how much revenue is attributable to SeatSense. Answers 'what data do you have?'.",
     inputSchema: { type: 'object', properties: {} },
     handler: () => db.overview(),
   },
   {
     name: 'compare_years',
     description:
-      'The main analysis tool. Compares 2025 (ticket sales only, no sensors) with 2026 (SeatSense live from 1 January) over the same calendar window. Use group_by to break the change down by month, route, demand_class or service. Returns passengers, revenue, average fare, load factors and the year-on-year deltas.',
+      'The main analysis tool. Compares 2025 (ticket sales only, no sensors) with 2026 (SeatSense live from 1 January) over the same calendar window. Every 2026 group also carries the revenue attributable to the repricing, measured against a per-departure counterfactual, so the SeatSense effect is separated from background market growth. Use group_by to break it down by month, route, demand_class or service.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -58,9 +58,23 @@ const TOOLS = [
     handler: (a) => db.ticketDataBlindSpot(a),
   },
   {
-    name: 'peak_spreading_report',
+    name: 'fullness_ranking',
     description:
-      'The heart of the story: how morning peak demand redistributed after SeatSense-informed pricing. Shows every morning departure before and after - fares, sold load, measured occupancy and ghost seats - plus how much of the peak load moved out of the crush trains into the half-empty shoulder departures.',
+      "The proof that ticket data mis-ranks departures. Ranks departures by tickets sold and then by measured cabin factor, and shows which ones change place. Departures the ticket system calls equally sold out differ by several points of actual occupancy, because their no-show rates differ - and pricing decisions are made on the ranking. Use this to explain why measuring occupancy is worth money when the empty seats themselves cannot be resold.",
+    inputSchema: {
+      type: 'object',
+      properties: {
+        demand_class: { type: 'string', enum: ['peak_core', 'peak_shoulder', 'offpeak', 'evening_peak', 'early_late'], description: "Default 'peak_core'." },
+        route_id: str('Optional filter.'),
+        month: int('Calendar month 1-12. Defaults to the latest month with data.'),
+      },
+    },
+    handler: (a) => db.fullnessRanking(a),
+  },
+  {
+    name: 'morning_peak_report',
+    description:
+      "The morning peak before and after, departure by departure: fares, ticket-derived load factor, measured cabin factor, ghost seats and turn-aways. Note what does not move - the peak's sold load, because those departures were already selling every seat and cannot be oversold.",
     inputSchema: {
       type: 'object',
       properties: {
@@ -68,12 +82,12 @@ const TOOLS = [
         month: int('Calendar month 1-12 to compare in both years. Defaults to the latest month with data.'),
       },
     },
-    handler: (a) => db.peakSpreadingReport(a),
+    handler: (a) => db.morningPeakReport(a),
   },
   {
     name: 'seatsense_snapshot',
     description:
-      "What SeatSense actually sees on one train on one day: tickets sold versus seats physically occupied, per coach, plus standing passengers and ghost seats (seats that were paid for and travelled empty). 2026 only - nothing measured seats in 2025. Use this when someone asks about a specific departure or date.",
+      "What SeatSense actually sees on one train on one day: tickets sold versus seats physically occupied, per coach, plus the passengers turned away when sales closed and the ghost seats (paid for, travelled empty) that could not be resold. 2026 only - nothing measured seats in 2025. Use this when someone asks about a specific departure or date.",
     inputSchema: {
       type: 'object',
       properties: {
@@ -87,7 +101,7 @@ const TOOLS = [
   {
     name: 'seatsense_attribution',
     description:
-      'For the commercial question "how much of the revenue growth is really SeatSense?". Splits the revenue change into a price effect and a volume effect, subtracts an assumed underlying market trend, and values the recovered ghost seats. States every assumption it uses.',
+      'For the commercial question "how much of the revenue growth is really SeatSense?". Splits the observed change into market growth and pricing effect using a per-departure counterfactual rather than a flat growth assumption, decomposes the pricing effect into price and volume, and states plainly what it does NOT claim - no revenue from overselling, none from reselling no-show seats, and no claim that ticket data misses unsold seats.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -99,7 +113,7 @@ const TOOLS = [
   {
     name: 'pricing_actions',
     description:
-      'The fare changes the operator made on 1 January 2026 off the back of SeatSense data, per demand class and per departure, together with the realised fare, passenger and revenue response and the implied elasticity.',
+      'The fare changes the operator made on 1 January 2026 off the back of SeatSense data, per demand class and per departure, with the realised fares and the revenue attributable to each class. Also lists what was not available to them: overselling and reselling no-show seats.',
     inputSchema: {
       type: 'object',
       properties: { route_id: str('Optional filter.'), demand_class: str('Optional filter.') },
@@ -107,16 +121,16 @@ const TOOLS = [
     handler: (a) => db.pricingActions(a),
   },
   {
-    name: 'crowding_and_performance',
+    name: 'capacity_pressure',
     description:
-      'The non-financial case: crush departures, standing passengers, crowding complaints, dwell time, PPM punctuality and passengers left behind on the platform, 2025 versus 2026, with the 2026 month-by-month trend.',
+      "Capacity pressure counted from the data: sold-out departures, passengers turned away when sales closed, cabin factor, and what measurement changes for a capacity-planning case. Also carries the 2026 month-by-month series showing that the revenue effect appears only in the months when the peak actually sold out. Deliberately claims no service-quality improvement - the fare moves are too small to have caused one.",
     inputSchema: { type: 'object', properties: { month: int('Calendar month 1-12. Defaults to the latest month with data.') } },
-    handler: (a) => db.crowdingAndPerformance(a),
+    handler: (a) => db.capacityPressure(a),
   },
   {
     name: 'repricing_candidates',
     description:
-      "Forward-looking: which departures to reprice or release seats on next, ranked, with the measured numbers and the rule behind each recommendation. Answers 'what should we do next?'.",
+      "Forward-looking: which departures to reprice next, ranked, with the measured numbers and the rule behind each recommendation - including the departures that look full but are not, where a fare increase would backfire. Answers 'what should we do next?'.",
     inputSchema: {
       type: 'object',
       properties: {
@@ -207,7 +221,7 @@ function handle(msg) {
         capabilities: { tools: { listChanged: false } },
         serverInfo: SERVER,
         instructions:
-          'Yggio tenant for Northbank Rail, a fictional British train operator. 2025 has ticket sales only; SeatSense measures actual seat occupancy from 2026-01-01. Call yggio_overview first. All money is GBP. Year-on-year figures are like-for-like over the same calendar window unless asked otherwise.',
+          'Yggio tenant for Northbank Rail, a fictional British train operator selling reserved seats: one ticket per seat, no overselling. 2025 has ticket sales only, which cannot see a no-show, so 2025 has no cabin factor at all; SeatSense measures actual seat occupancy from 2026-01-01. Call yggio_overview first. All money is GBP. Year-on-year figures are like-for-like over the same calendar window. When asked what SeatSense is worth, quote the attributable figure (measured against a per-departure counterfactual), not the observed year-on-year change, which includes market growth.',
       });
     }
     case 'notifications/initialized':

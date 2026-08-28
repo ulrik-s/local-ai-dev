@@ -13,8 +13,9 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import {
   GENERATOR_VERSION, COVERAGE, OPERATOR, ROUTES, DEMAND_CLASSES, SEASONALITY,
-  BANK_HOLIDAYS, KPI_ENDPOINTS, ATTRIBUTION, TICKET_DATA, rampFor, jitter, lerp,
-  buildServices, round1, round2, rng,
+  BANK_HOLIDAYS, TICKET_DATA, SALES_POLICY, ATTRIBUTION,
+  MARKET_GROWTH_2026, BUSINESS_CASE_TARGET_PCT, pricingActive, noShowRateFor, jitter, lerp,
+  buildServices, round1, round2,
 } from './model.mjs';
 
 const DATA_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', 'data');
@@ -56,63 +57,69 @@ const routeById = Object.fromEntries(ROUTES.map((r) => [r.id, r]));
 /**
  * One departure on one day.
  *
- * 2025 rows carry only what the operator could actually know back then:
- * tickets sold and revenue. 2026 rows add the SeatSense measurements -
- * boarded passengers, seats physically occupied, standing, and ghost seats
- * (paid for, travelled empty).
+ * Both years record what ticket data can see: seats sold (never more than the
+ * seats there are), revenue, whether sales closed, and the demand that arrived
+ * afterwards. 2026 rows add what SeatSense measures - who boarded, how many
+ * seats were physically occupied, and how many paid-for seats departed empty.
+ *
+ * 2026 rows also carry `cf_*`: the counterfactual, meaning what the departure
+ * would have done on 2025's pricing rules with the same market growth. That is
+ * how the attribution isolates the pricing effect, rather than netting off a
+ * flat growth rate - which would be wrong here, because a departure that is
+ * already sold out cannot absorb market growth at all.
  */
 function makeRow(svc, date) {
   const route = routeById[svc.route_id];
   const cls = DEMAND_CLASSES[svc.demand_class];
   const [y, m] = date.split('-').map(Number);
-  const ramp = rampFor(y, m);
   const seed = `${svc.service_id}|${date}`;
+  const seatsense = y >= COVERAGE.seatsenseYear;
 
-  const load = lerp(cls.load2025, lerp(cls.load2025, cls.load2026, route.effectStrength), ramp);
-  const fareMult = lerp(1, 1 + cls.fareDelta2026 * route.effectStrength, ramp);
+  // One ticket per seat, no overselling: sales stop at seated capacity.
+  const cap = Math.round((svc.seats * SALES_POLICY.sales_cap_pct_of_seats) / 100);
+  const baseDemand =
+    svc.seats * cls.demand2025 * route.loadAdjust * SEASONALITY[m - 1] *
+    dayTypeFactor(date, svc.demand_class) * jitter(seed + '|vol', 0.035) *
+    (seatsense ? 1 + MARKET_GROWTH_2026 : 1);
 
-  const demand =
-    svc.seats * load * route.loadAdjust * SEASONALITY[m - 1] *
-    dayTypeFactor(date, svc.demand_class) * jitter(seed + '|vol', 0.035);
+  /** Sell one scenario: a fare multiplier and a demand response to it. */
+  const sell = (fareMult, demandMult) => {
+    const demand = Math.round(baseDemand * demandMult);
+    const sold = Math.max(0, Math.min(demand, cap));
+    const fare = round2(svc.fare_2025_gbp * fareMult * jitter(seed + '|fare', 0.02));
+    return { demand, sold, revenue: round2(sold * fare), turnedAway: Math.max(0, demand - sold) };
+  };
 
-  // Sales close at a threshold the operator sets. In 2025 that threshold is a
-  // guess built on ticket counts; demand above it walks away.
-  const cap = svc.seats * (y >= COVERAGE.seatsenseYear ? cls.salesCap2026 : cls.salesCap2025);
-  const sold = Math.max(0, Math.round(Math.min(demand, cap)));
-  const turnedAway = Math.max(0, Math.round(demand) - sold);
-  const fare = round2(svc.fare_2025_gbp * fareMult * jitter(seed + '|fare', 0.02));
+  const effect = route.effectStrength * pricingActive(y);
+  const priced = sell(1 + cls.fareDelta2026 * effect, 1 + cls.demandDelta2026 * effect);
 
   const row = {
     date,
     service_id: svc.service_id,
     day_type: dayType(date),
-    tickets_sold: sold,
-    revenue_gbp: round2(sold * fare),
-    sales_closed: turnedAway > 0,
-    demand_turned_away: turnedAway,
+    tickets_sold: priced.sold,
+    revenue_gbp: priced.revenue,
+    sales_closed: priced.demand > cap,
+    demand_turned_away: priced.turnedAway,
   };
 
-  // The only 2025 data that ever saw an actual passenger: four manual load
-  // surveys, morning up services, with a counting error.
-  if (y < COVERAGE.seatsenseYear && TICKET_DATA.loadSurveyDates2025.includes(date) &&
-      svc.direction === 'up' && svc.departure_time < '10:00') {
-    const [lo, hi] = TICKET_DATA.pilotNoShowRange;
-    const noShow = lerp(lo, hi, rng(seed + '|survey')());
-    row.manual_load_survey = Math.round(sold * (1 - noShow) * jitter(seed + '|count', 0.03));
-  }
+  // The no-show rate is the same in both years. SeatSense measures it; it does
+  // not change it. In 2025 nobody could observe it at all.
+  const noShowRate = noShowRateFor(svc.service_id, svc.demand_class) * jitter(seed + '|ns', 0.18);
 
-  if (y >= COVERAGE.seatsenseYear) {
-    const noShowRate = lerp(cls.noShowStart, cls.noShowEnd, ramp) * jitter(seed + '|ns', 0.18);
-    const wasteRate = lerp(cls.wasteStart, cls.wasteEnd, ramp) * jitter(seed + '|w', 0.22);
-    const boarded = Math.round(sold * (1 - noShowRate));
-    // Usable seats: even a crush-loaded train never gets every seat sat on.
-    const usable = Math.floor(svc.seats * (1 - wasteRate));
-    const occupied = Math.min(usable, boarded);
+  if (seatsense) {
+    const boarded = Math.round(priced.sold * (1 - noShowRate));
     row.boarded = boarded;
-    row.seats_occupied = occupied;
-    // Standing passengers can coexist with empty seats - that is the point.
-    row.standing = Math.max(0, boarded - occupied);
-    row.ghost_seats = Math.max(0, Math.min(sold, svc.seats) - occupied);
+    row.seats_occupied = boarded;                 // every ticket carries a seat
+    row.ghost_seats = priced.sold - boarded;      // paid for, travelled empty
+    const cf = sell(1, 1);                        // same year, 2025's pricing
+    row.cf_tickets_sold = cf.sold;
+    row.cf_revenue_gbp = cf.revenue;
+  } else if (TICKET_DATA.loadSurveyDates2025.includes(date) &&
+             svc.direction === 'up' && svc.departure_time < '10:00') {
+    // The only 2025 data that ever saw an actual passenger: four manual load
+    // surveys, morning up services, counted by hand with an error margin.
+    row.manual_load_survey = Math.round(priced.sold * (1 - noShowRate) * jitter(seed + '|count', 0.03));
   }
   return row;
 }
@@ -167,21 +174,23 @@ function buildDevices() {
 function buildPricing() {
   return {
     effective_from: COVERAGE.seatsenseGoLive,
-    mechanism: 'SeatSense-informed demand-based pricing',
+    mechanism: 'Demand-based pricing on measured seat occupancy',
     rationale:
-      'Fares are set from measured seat occupancy rather than ticket sales. Departures that SeatSense proves are physically full take a fare increase; the half-empty departures either side are discounted to attract the displaced demand; paid seats that SeatSense sees empty after departure are released for on-day sale.',
-    phase_in:
-      'Rules were tuned monthly through 2026 as SeatSense history accumulated. January reflects ~45% of the end-state effect, August ~100%.',
+      'Fares are set from measured cabin factor rather than tickets sold. Departures SeatSense proves are physically full carry a small increase, because the demand sitting behind their closed sale is real. Departures with measured spare capacity are discounted to attract the passengers those closed sales turn away. The moves are one to two percent: the value is in aiming them at the right departures, not in their size.',
+    not_available: SALES_POLICY.what_seatsense_does_not_do,
+    phase_in: 'None - the rules were live in full from 1 January 2026.',
+    why_the_effect_varies_by_month:
+      'A fare increase only reaches revenue on a departure whose sales cap binds. In a quiet month the morning peak does not sell out, the increase loses exactly the volume it gains, and the effect falls to almost nothing. The gain is concentrated in the months when the peak is genuinely full.',
+    fare_basket: 'Unchanged overall - the increases and discounts are set to offset in the regulated basket.',
     class_actions: Object.entries(DEMAND_CLASSES).map(([id, cls]) => ({
       demand_class: id,
       label: cls.label,
       fare_change_pct: round1(cls.fareDelta2026 * 100),
-      intent:
-        cls.fareDelta2026 > 0
-          ? 'Suppress marginal demand on physically full departures and raise yield'
-          : 'Attract displaced demand into measured spare capacity',
-      sold_load_2025_pct: round1(cls.load2025 * 100),
-      sold_load_2026_target_pct: round1(cls.load2026 * 100),
+      demand_response_pct: round1(cls.demandDelta2026 * 100),
+      rationale: cls.pricingRationale,
+      no_show_rate_pct: round1(cls.noShowRate * 100),
+      demand_2025_pct_of_seats: round1(cls.demand2025 * 100),
+      capacity_constrained: cls.demand2025 > 1,
     })),
     service_actions: services
       .filter((s) => s.demand_class === 'peak_core' || s.demand_class === 'peak_shoulder')
@@ -227,13 +236,21 @@ const files = [
     demand_classes: Object.entries(DEMAND_CLASSES).map(([id, c]) => ({
       demand_class: id, label: c.label, description: c.description,
     })),
+    sales_policy: SALES_POLICY,
     ticket_data: TICKET_DATA,
+    business_case: {
+      target_total_revenue_uplift_pct: BUSINESS_CASE_TARGET_PCT,
+      source: 'The operator\'s own projection, signed off before rollout.',
+      mechanism: 'Demand-based pricing on measured occupancy. No overselling, no reselling of no-show seats, no increase to the fare basket.',
+      assumed_market_growth_pct: MARKET_GROWTH_2026 * 100,
+      market_growth_note: ATTRIBUTION.note,
+    },
     data_dictionary: {
       both_years: {
-        tickets_sold: 'Tickets sold for the departure. A sale, not a person in a seat.',
-        revenue_gbp: 'Ticket revenue for the departure.',
-        sales_closed: 'True if the operator stopped selling this departure before demand ran out.',
-        demand_turned_away: 'Passengers who wanted this departure after sales closed.',
+        tickets_sold: 'Tickets sold for the departure, never more than the seats there are. A sale, not a person in a seat.',
+        revenue_gbp: 'Ticket revenue for the departure. Identical whether the ticket holder travels or not - which is why ticket data cannot see a no-show.',
+        sales_closed: 'True if demand exceeded the 100%-of-seats cap and sales were stopped.',
+        demand_turned_away: 'Passengers who wanted this departure after sales closed. Not absorbed by overselling, because overselling is not permitted.',
       },
       [`${COVERAGE.baselineYear}_only`]: {
         manual_load_survey: 'Passengers counted by hand on board, on the four survey days only. The single 2025 field that saw actual people.',
@@ -241,9 +258,10 @@ const files = [
       },
       [`${COVERAGE.seatsenseYear}_only`]: {
         boarded: 'People SeatSense saw on board. Tickets sold minus no-shows.',
-        seats_occupied: 'Seats SeatSense measured as physically occupied - the cabin factor numerator.',
-        standing: 'People on board with no seat, measured.',
-        ghost_seats: 'Seats paid for that travelled empty.',
+        seats_occupied: 'Seats SeatSense measured as physically occupied - the cabin factor numerator. Equal to boarded, since every ticket carries a seat and there is no standing product.',
+        ghost_seats: 'Seats paid for that travelled empty. Not recoverable: the seat still belongs to its buyer and overselling to cover it is not permitted.',
+        cf_tickets_sold: "Counterfactual: seats this departure would have sold on 2025's pricing rules, with the same market growth applied.",
+        cf_revenue_gbp: 'Counterfactual revenue on the same basis. Observed minus counterfactual is the pricing effect, and that is the SeatSense business case.',
       },
     },
     generator: { version: GENERATOR_VERSION, generated_at: new Date().toISOString().slice(0, 10) },
@@ -251,7 +269,6 @@ const files = [
   write('services.json', services),
   write('devices.json', buildDevices()),
   write('pricing.json', buildPricing()),
-  write('kpis.json', { endpoints: KPI_ENDPOINTS, attribution: ATTRIBUTION }),
   write('daily-2025.json', daily2025),
   write('daily-2026.json', daily2026),
 ];

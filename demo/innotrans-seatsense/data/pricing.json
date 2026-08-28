@@ -1,48 +1,65 @@
 {
   "effective_from": "2026-01-01",
-  "mechanism": "SeatSense-informed demand-based pricing",
-  "rationale": "Fares are set from measured seat occupancy rather than ticket sales. Departures that SeatSense proves are physically full take a fare increase; the half-empty departures either side are discounted to attract the displaced demand; paid seats that SeatSense sees empty after departure are released for on-day sale.",
-  "phase_in": "Rules were tuned monthly through 2026 as SeatSense history accumulated. January reflects ~45% of the end-state effect, August ~100%.",
+  "mechanism": "Demand-based pricing on measured seat occupancy",
+  "rationale": "Fares are set from measured cabin factor rather than tickets sold. Departures SeatSense proves are physically full carry a small increase, because the demand sitting behind their closed sale is real. Departures with measured spare capacity are discounted to attract the passengers those closed sales turn away. The moves are one to two percent: the value is in aiming them at the right departures, not in their size.",
+  "not_available": [
+    "It does not let the operator oversell. That is a policy and passenger-rights question, not a data question.",
+    "It does not let the operator resell a no-show seat mid-journey: the reservation still belongs to its buyer for the whole journey.",
+    "It does not reduce the no-show rate. People who have paid still fail to travel at roughly the same rate in 2026 as in 2025."
+  ],
+  "phase_in": "None - the rules were live in full from 1 January 2026.",
+  "why_the_effect_varies_by_month": "A fare increase only reaches revenue on a departure whose sales cap binds. In a quiet month the morning peak does not sell out, the increase loses exactly the volume it gains, and the effect falls to almost nothing. The gain is concentrated in the months when the peak is genuinely full.",
+  "fare_basket": "Unchanged overall - the increases and discounts are set to offset in the regulated basket.",
   "class_actions": [
     {
       "demand_class": "peak_core",
       "label": "Morning peak core",
-      "fare_change_pct": 14,
-      "intent": "Suppress marginal demand on physically full departures and raise yield",
-      "sold_load_2025_pct": 106,
-      "sold_load_2026_target_pct": 102
+      "fare_change_pct": 1.9,
+      "demand_response_pct": -1.9,
+      "rationale": "SeatSense confirms these departures are physically full, not just sold out. A small fare rise is safe here because the demand behind the sales cap is real.",
+      "no_show_rate_pct": 10.5,
+      "demand_2025_pct_of_seats": 110,
+      "capacity_constrained": true
     },
     {
       "demand_class": "peak_shoulder",
       "label": "Peak shoulder",
-      "fare_change_pct": -5,
-      "intent": "Attract displaced demand into measured spare capacity",
-      "sold_load_2025_pct": 64,
-      "sold_load_2026_target_pct": 79
+      "fare_change_pct": -1.1,
+      "demand_response_pct": 1.7,
+      "rationale": "Measured occupancy shows real room, so a small discount buys volume from passengers turned away by the crush departures rather than cannibalising them.",
+      "no_show_rate_pct": 7.5,
+      "demand_2025_pct_of_seats": 64,
+      "capacity_constrained": false
     },
     {
       "demand_class": "offpeak",
       "label": "Off-peak",
-      "fare_change_pct": -4,
-      "intent": "Attract displaced demand into measured spare capacity",
-      "sold_load_2025_pct": 43,
-      "sold_load_2026_target_pct": 48
+      "fare_change_pct": -0.3,
+      "demand_response_pct": 0.5,
+      "rationale": "Advance-purchase heavy, low no-show, little to correct. Minor bucket reallocation only.",
+      "no_show_rate_pct": 4.2,
+      "demand_2025_pct_of_seats": 43,
+      "capacity_constrained": false
     },
     {
       "demand_class": "evening_peak",
       "label": "Evening peak",
-      "fare_change_pct": 10,
-      "intent": "Suppress marginal demand on physically full departures and raise yield",
-      "sold_load_2025_pct": 98,
-      "sold_load_2026_target_pct": 92
+      "fare_change_pct": 1.4,
+      "demand_response_pct": -1.4,
+      "rationale": "Capacity-constrained on most weekdays once measured, though less consistently than the morning peak, so the fare move is smaller.",
+      "no_show_rate_pct": 9,
+      "demand_2025_pct_of_seats": 102,
+      "capacity_constrained": true
     },
     {
       "demand_class": "early_late",
       "label": "Early / late",
-      "fare_change_pct": -6,
-      "intent": "Attract displaced demand into measured spare capacity",
-      "sold_load_2025_pct": 31,
-      "sold_load_2026_target_pct": 36
+      "fare_change_pct": -0.6,
+      "demand_response_pct": 0.9,
+      "rationale": "Cheap already; a token discount to pull a little demand off the shoulder.",
+      "no_show_rate_pct": 3.5,
+      "demand_2025_pct_of_seats": 31,
+      "capacity_constrained": false
     }
   ],
   "service_actions": [
@@ -51,152 +68,152 @@
       "departure_time": "06:11",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 21.89,
-      "fare_2026_target_gbp": 20.8,
-      "fare_change_pct": -5
+      "fare_2026_target_gbp": 21.64,
+      "fare_change_pct": -1.1
     },
     {
       "service_id": "NBR1-0641",
       "departure_time": "06:41",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 21.89,
-      "fare_2026_target_gbp": 20.8,
-      "fare_change_pct": -5
+      "fare_2026_target_gbp": 21.64,
+      "fare_change_pct": -1.1
     },
     {
       "service_id": "NBR1-0711",
       "departure_time": "07:11",
       "demand_class": "peak_core",
       "fare_2025_gbp": 24.6,
-      "fare_2026_target_gbp": 28.04,
-      "fare_change_pct": 14
+      "fare_2026_target_gbp": 25.07,
+      "fare_change_pct": 1.9
     },
     {
       "service_id": "NBR1-0741",
       "departure_time": "07:41",
       "demand_class": "peak_core",
       "fare_2025_gbp": 24.6,
-      "fare_2026_target_gbp": 28.04,
-      "fare_change_pct": 14
+      "fare_2026_target_gbp": 25.07,
+      "fare_change_pct": 1.9
     },
     {
       "service_id": "NBR1-0811",
       "departure_time": "08:11",
       "demand_class": "peak_core",
       "fare_2025_gbp": 24.6,
-      "fare_2026_target_gbp": 28.04,
-      "fare_change_pct": 14
+      "fare_2026_target_gbp": 25.07,
+      "fare_change_pct": 1.9
     },
     {
       "service_id": "NBR1-0841",
       "departure_time": "08:41",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 21.89,
-      "fare_2026_target_gbp": 20.8,
-      "fare_change_pct": -5
+      "fare_2026_target_gbp": 21.64,
+      "fare_change_pct": -1.1
     },
     {
       "service_id": "NBR1-0911",
       "departure_time": "09:11",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 21.89,
-      "fare_2026_target_gbp": 20.8,
-      "fare_change_pct": -5
+      "fare_2026_target_gbp": 21.64,
+      "fare_change_pct": -1.1
     },
     {
       "service_id": "NBR2-0618",
       "departure_time": "06:18",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 36.67,
-      "fare_2026_target_gbp": 34.93,
-      "fare_change_pct": -4.7
+      "fare_2026_target_gbp": 36.27,
+      "fare_change_pct": -1.1
     },
     {
       "service_id": "NBR2-0648",
       "departure_time": "06:48",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 36.67,
-      "fare_2026_target_gbp": 34.93,
-      "fare_change_pct": -4.7
+      "fare_2026_target_gbp": 36.27,
+      "fare_change_pct": -1.1
     },
     {
       "service_id": "NBR2-0718",
       "departure_time": "07:18",
       "demand_class": "peak_core",
       "fare_2025_gbp": 41.2,
-      "fare_2026_target_gbp": 46.68,
-      "fare_change_pct": 13.3
+      "fare_2026_target_gbp": 41.94,
+      "fare_change_pct": 1.8
     },
     {
       "service_id": "NBR2-0748",
       "departure_time": "07:48",
       "demand_class": "peak_core",
       "fare_2025_gbp": 41.2,
-      "fare_2026_target_gbp": 46.68,
-      "fare_change_pct": 13.3
+      "fare_2026_target_gbp": 41.94,
+      "fare_change_pct": 1.8
     },
     {
       "service_id": "NBR2-0818",
       "departure_time": "08:18",
       "demand_class": "peak_core",
       "fare_2025_gbp": 41.2,
-      "fare_2026_target_gbp": 46.68,
-      "fare_change_pct": 13.3
+      "fare_2026_target_gbp": 41.94,
+      "fare_change_pct": 1.8
     },
     {
       "service_id": "NBR2-0848",
       "departure_time": "08:48",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 36.67,
-      "fare_2026_target_gbp": 34.93,
-      "fare_change_pct": -4.7
+      "fare_2026_target_gbp": 36.27,
+      "fare_change_pct": -1.1
     },
     {
       "service_id": "NBR2-0918",
       "departure_time": "09:18",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 36.67,
-      "fare_2026_target_gbp": 34.93,
-      "fare_change_pct": -4.7
+      "fare_2026_target_gbp": 36.27,
+      "fare_change_pct": -1.1
     },
     {
       "service_id": "NBR3-0622",
       "departure_time": "06:22",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 10.15,
-      "fare_2026_target_gbp": 9.6,
-      "fare_change_pct": -5.4
+      "fare_2026_target_gbp": 10.02,
+      "fare_change_pct": -1.2
     },
     {
       "service_id": "NBR3-0652",
       "departure_time": "06:52",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 10.15,
-      "fare_2026_target_gbp": 9.6,
-      "fare_change_pct": -5.4
+      "fare_2026_target_gbp": 10.02,
+      "fare_change_pct": -1.2
     },
     {
       "service_id": "NBR3-0722",
       "departure_time": "07:22",
       "demand_class": "peak_core",
       "fare_2025_gbp": 11.4,
-      "fare_2026_target_gbp": 13.12,
-      "fare_change_pct": 15.1
+      "fare_2026_target_gbp": 11.63,
+      "fare_change_pct": 2.1
     },
     {
       "service_id": "NBR3-0752",
       "departure_time": "07:52",
       "demand_class": "peak_core",
       "fare_2025_gbp": 11.4,
-      "fare_2026_target_gbp": 13.12,
-      "fare_change_pct": 15.1
+      "fare_2026_target_gbp": 11.63,
+      "fare_change_pct": 2.1
     },
     {
       "service_id": "NBR3-0822",
       "departure_time": "08:22",
       "demand_class": "peak_shoulder",
       "fare_2025_gbp": 10.15,
-      "fare_2026_target_gbp": 9.6,
-      "fare_change_pct": -5.4
+      "fare_2026_target_gbp": 10.02,
+      "fare_change_pct": -1.2
     }
   ]
 }

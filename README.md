@@ -71,13 +71,15 @@ ran `make` from, so file edits persist on the host.
 stack: a visitor asks Claude questions in plain English, and Claude reads a
 **fake Yggio tenant** over MCP to answer with real figures from generated JSON.
 The story is what SeatSense - measuring whether a seat is *physically occupied*
-- earned a (fictional) British train operator. Its sharpest moment is what
-2025 looked like without it: an operator running on ticket sales has no cabin
-factor at all, because a ticket is a sale and a no-show is invisible, so the
-load factor it prices on is about 11% too high.
+- is worth to a (fictional) British operator that **may not oversell**. One
+ticket per seat means a no-show seat departs empty and cannot be recovered, so
+the entire value is in pricing: an operator running on ticket sales has no
+cabin factor at all, and its ticket system mis-ranks its own departures by
+several points of real occupancy. Correcting that is worth **+0.75% of total
+revenue** - the number a real customer's business case projects.
 
 ```bash
-make demo-check      # pre-flight: calls all 13 fake-Yggio tools, prints OK per tool
+make demo-check      # pre-flight: calls all 15 fake-Yggio tools, prints OK per tool
 make demo            # Claude + fake Yggio, ready for questions
 make demo-yggio      # optional: the same data as REST on http://localhost:8787
 make demo-data       # regenerate the dataset
