@@ -13,6 +13,16 @@ network, no API keys, no database. The data is committed.
 
 ---
 
+## Two ways to open this
+
+**In Claude Code on the web** — go to claude.ai/code, point it at
+`ulrik-s/local-ai-dev` and pick the branch
+`claude/innotrans-seatsense-demo-7edpxk`. The repo carries its own `.mcp.json`
+and `.claude/settings.json`, so the fake Yggio connects on startup with no
+prompts and nothing to install. Then ask it *"What data do you have?"*.
+
+**Locally**, if you want to present from your own machine:
+
 ## 60 seconds to a working demo
 
 ```bash
