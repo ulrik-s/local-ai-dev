@@ -502,7 +502,7 @@ export const TICKET_DATA = {
 
 /** Assumption used when attributing revenue growth to SeatSense. */
 export const ATTRIBUTION = {
-  assumedMarketGrowthPct: MARKET_GROWTH_2026 * 100,
+  assumedMarketGrowthPct: Math.round(MARKET_GROWTH_2026 * 1000) / 10,
   note:
     'Underlying market growth is the counterfactual: what revenue would have done in 2026 without SeatSense-informed pricing. It is generated into the 2026 demand at this rate, so netting it off isolates the pricing effect. Change the parameter to test how sensitive the attribution is.',
 };

@@ -15,7 +15,7 @@ import {
   GENERATOR_VERSION, COVERAGE, OPERATOR, ROUTES, DEMAND_CLASSES, SEASONALITY,
   BANK_HOLIDAYS, TICKET_DATA, SALES_POLICY, PRICING_POLICY, ATTRIBUTION,
   MARKET_GROWTH_2026, BUSINESS_CASE_TARGET_PCT, pricingActive, noShowRateFor,
-  fareDelta2026For, soldTargetFor, windowOf, MAX_SHOULDER_DISCOUNT,
+  fareDelta2026For, soldTargetFor, windowOf, MAX_SHOULDER_DISCOUNT, rng,
   unitSeats, formationOf, seatsFor, peakFormationSeats,
   jitter, lerp, buildServices, round1, round2,
 } from './model.mjs';
@@ -233,9 +233,11 @@ function buildDevices() {
       for (let c = 0; c < route.unit.cars; c++) {
         const coach = coachLetters[c];
         const id = `${unit}-${coach}`.toLowerCase();
-        const j = jitter(id, 1);
-        const battery = Math.round(lerp(74, 99, (j + 1) / 2));
-        const offline = jitter(id + '|off', 1) > 0.985;
+        // rng() is uniform 0..1. jitter() is NOT - it returns 1 +/- amplitude,
+        // so jitter(seed, 1) spans 0..2 and silently doubles anything scaled
+        // by it. Use rng directly for anything that must stay inside a range.
+        const battery = Math.round(lerp(74, 99, rng(id)()));
+        const offline = rng(`${id}|off`)() > 0.985;
         nodes.push({
           _id: `iot-${id}`,
           name: `SeatSense ${unit} coach ${coach}`,
@@ -253,8 +255,10 @@ function buildDevices() {
           latestValues: {
             seatsOccupied: null, // filled per-query by the snapshot endpoints
             batteryPercent: battery,
-            rssi: -Math.round(lerp(58, 96, jitter(id + '|rssi', 1) / 2 + 0.5)),
-            reportedAt: offline ? '2026-08-19T04:12:07Z' : '2026-08-31T23:58:02Z',
+            rssi: -Math.round(lerp(58, 96, rng(`${id}|rssi`)())),
+            reportedAt: offline
+              ? `2026-08-${String(12 + Math.floor(rng(`${id}|last`)() * 14)).padStart(2, '0')}T04:12:07Z`
+              : '2026-08-31T23:58:02Z',
           },
         });
       }
@@ -370,7 +374,7 @@ const files = [
       target_total_revenue_uplift_pct: BUSINESS_CASE_TARGET_PCT,
       source: 'The operator\'s own projection, signed off before rollout.',
       mechanism: 'Demand-based pricing on measured occupancy. No overselling, no reselling of no-show seats, no increase to the fare basket.',
-      assumed_market_growth_pct: MARKET_GROWTH_2026 * 100,
+      assumed_market_growth_pct: round1(MARKET_GROWTH_2026 * 100),
       market_growth_note: ATTRIBUTION.note,
     },
     data_dictionary: {

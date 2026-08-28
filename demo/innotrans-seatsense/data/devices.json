@@ -15,8 +15,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 90,
-      "rssi": -83,
+      "batteryPercent": 78,
+      "rssi": -64,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -36,8 +36,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 103,
-      "rssi": -97,
+      "batteryPercent": 91,
+      "rssi": -78,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -54,12 +54,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 111,
-      "rssi": -105,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 99,
+      "rssi": -86,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -78,8 +78,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 105,
-      "rssi": -112,
+      "batteryPercent": 92,
+      "rssi": -93,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -99,8 +99,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 104,
-      "rssi": -82,
+      "batteryPercent": 91,
+      "rssi": -63,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -120,8 +120,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 105,
-      "rssi": -102,
+      "batteryPercent": 92,
+      "rssi": -83,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -138,12 +138,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 106,
-      "rssi": -96,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 93,
+      "rssi": -77,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -159,12 +159,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 103,
-      "rssi": -77,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 91,
+      "rssi": -58,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -183,8 +183,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 98,
-      "rssi": -78,
+      "batteryPercent": 85,
+      "rssi": -59,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -204,8 +204,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 96,
-      "rssi": -86,
+      "batteryPercent": 84,
+      "rssi": -67,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -222,12 +222,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 100,
-      "rssi": -102,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 87,
+      "rssi": -83,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -246,8 +246,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 94,
-      "rssi": -97,
+      "batteryPercent": 82,
+      "rssi": -78,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -267,8 +267,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 88,
-      "rssi": -83,
+      "batteryPercent": 76,
+      "rssi": -64,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -288,8 +288,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 103,
-      "rssi": -112,
+      "batteryPercent": 90,
+      "rssi": -93,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -306,12 +306,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 93,
-      "rssi": -90,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 80,
+      "rssi": -71,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -327,12 +327,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 87,
-      "rssi": -100,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 74,
+      "rssi": -81,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -348,12 +348,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 99,
-      "rssi": -106,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 87,
+      "rssi": -87,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -369,12 +369,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 104,
-      "rssi": -101,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 92,
+      "rssi": -82,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -393,8 +393,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 100,
-      "rssi": -99,
+      "batteryPercent": 87,
+      "rssi": -80,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -414,8 +414,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 109,
-      "rssi": -111,
+      "batteryPercent": 96,
+      "rssi": -92,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -435,8 +435,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 98,
-      "rssi": -101,
+      "batteryPercent": 86,
+      "rssi": -82,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -453,12 +453,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 104,
-      "rssi": -84,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 91,
+      "rssi": -65,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -474,12 +474,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 88,
-      "rssi": -88,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 75,
+      "rssi": -69,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -498,8 +498,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 110,
-      "rssi": -114,
+      "batteryPercent": 97,
+      "rssi": -95,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -516,12 +516,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 89,
-      "rssi": -82,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 76,
+      "rssi": -63,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -537,12 +537,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 99,
-      "rssi": -90,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 86,
+      "rssi": -71,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -558,12 +558,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 95,
-      "rssi": -84,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 83,
+      "rssi": -65,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -582,8 +582,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 105,
-      "rssi": -87,
+      "batteryPercent": 93,
+      "rssi": -68,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -600,12 +600,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 110,
-      "rssi": -88,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 98,
+      "rssi": -69,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -624,8 +624,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 103,
-      "rssi": -87,
+      "batteryPercent": 91,
+      "rssi": -68,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -645,8 +645,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 94,
-      "rssi": -114,
+      "batteryPercent": 81,
+      "rssi": -95,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -666,8 +666,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 108,
-      "rssi": -80,
+      "batteryPercent": 95,
+      "rssi": -61,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -684,12 +684,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 109,
-      "rssi": -112,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 97,
+      "rssi": -93,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -705,12 +705,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 98,
-      "rssi": -104,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 85,
+      "rssi": -85,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -729,8 +729,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 89,
-      "rssi": -82,
+      "batteryPercent": 76,
+      "rssi": -63,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -747,12 +747,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 105,
-      "rssi": -97,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 92,
+      "rssi": -78,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -771,8 +771,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 95,
-      "rssi": -91,
+      "batteryPercent": 83,
+      "rssi": -72,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -789,12 +789,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 90,
-      "rssi": -91,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 77,
+      "rssi": -72,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -810,12 +810,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 93,
-      "rssi": -97,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 80,
+      "rssi": -78,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -831,12 +831,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 91,
-      "rssi": -82,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 79,
+      "rssi": -63,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -855,8 +855,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 91,
-      "rssi": -81,
+      "batteryPercent": 79,
+      "rssi": -62,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -873,12 +873,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 90,
-      "rssi": -108,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 77,
+      "rssi": -89,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -894,12 +894,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 99,
-      "rssi": -80,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 86,
+      "rssi": -61,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -918,8 +918,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 93,
-      "rssi": -109,
+      "batteryPercent": 81,
+      "rssi": -90,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -936,12 +936,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 89,
-      "rssi": -114,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 76,
+      "rssi": -95,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -960,8 +960,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 92,
-      "rssi": -104,
+      "batteryPercent": 80,
+      "rssi": -85,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -978,12 +978,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 88,
-      "rssi": -87,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 75,
+      "rssi": -68,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -999,12 +999,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 107,
-      "rssi": -114,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 95,
+      "rssi": -95,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -1023,8 +1023,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 110,
-      "rssi": -94,
+      "batteryPercent": 97,
+      "rssi": -75,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1041,12 +1041,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 96,
-      "rssi": -81,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 84,
+      "rssi": -62,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -1062,12 +1062,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 92,
-      "rssi": -87,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 79,
+      "rssi": -68,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -1083,12 +1083,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 91,
-      "rssi": -81,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 78,
+      "rssi": -62,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -1107,8 +1107,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 92,
-      "rssi": -80,
+      "batteryPercent": 80,
+      "rssi": -61,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1128,8 +1128,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 106,
-      "rssi": -108,
+      "batteryPercent": 93,
+      "rssi": -89,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1146,12 +1146,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 88,
-      "rssi": -109,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 76,
+      "rssi": -90,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -1170,8 +1170,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 103,
-      "rssi": -86,
+      "batteryPercent": 91,
+      "rssi": -67,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1191,8 +1191,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 107,
-      "rssi": -86,
+      "batteryPercent": 95,
+      "rssi": -67,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1209,12 +1209,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 96,
-      "rssi": -90,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 84,
+      "rssi": -71,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -1230,12 +1230,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 96,
-      "rssi": -102,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 84,
+      "rssi": -83,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -1254,8 +1254,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 88,
-      "rssi": -82,
+      "batteryPercent": 76,
+      "rssi": -63,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1272,12 +1272,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 109,
-      "rssi": -79,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 96,
+      "rssi": -60,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -1293,12 +1293,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 107,
-      "rssi": -114,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 94,
+      "rssi": -95,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -1317,8 +1317,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 89,
-      "rssi": -86,
+      "batteryPercent": 77,
+      "rssi": -67,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1335,12 +1335,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 88,
-      "rssi": -78,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 76,
+      "rssi": -59,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -1359,8 +1359,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 92,
-      "rssi": -81,
+      "batteryPercent": 79,
+      "rssi": -62,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1377,12 +1377,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 107,
-      "rssi": -78,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 95,
+      "rssi": -59,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -1401,8 +1401,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 98,
-      "rssi": -95,
+      "batteryPercent": 85,
+      "rssi": -76,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1422,8 +1422,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 101,
-      "rssi": -82,
+      "batteryPercent": 88,
+      "rssi": -63,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1443,8 +1443,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 93,
-      "rssi": -103,
+      "batteryPercent": 81,
+      "rssi": -84,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1461,12 +1461,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 91,
-      "rssi": -100,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 79,
+      "rssi": -81,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -1485,8 +1485,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 105,
-      "rssi": -98,
+      "batteryPercent": 93,
+      "rssi": -79,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1506,8 +1506,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 87,
-      "rssi": -114,
+      "batteryPercent": 74,
+      "rssi": -95,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1527,8 +1527,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 106,
-      "rssi": -97,
+      "batteryPercent": 93,
+      "rssi": -78,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1548,8 +1548,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 95,
-      "rssi": -87,
+      "batteryPercent": 83,
+      "rssi": -68,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1569,8 +1569,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 99,
-      "rssi": -94,
+      "batteryPercent": 86,
+      "rssi": -75,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1590,8 +1590,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 88,
-      "rssi": -97,
+      "batteryPercent": 75,
+      "rssi": -78,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1611,8 +1611,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 94,
-      "rssi": -112,
+      "batteryPercent": 81,
+      "rssi": -93,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1632,8 +1632,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 96,
-      "rssi": -96,
+      "batteryPercent": 84,
+      "rssi": -77,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1650,12 +1650,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 96,
-      "rssi": -94,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 83,
+      "rssi": -75,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -1674,8 +1674,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 87,
-      "rssi": -113,
+      "batteryPercent": 74,
+      "rssi": -94,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1695,8 +1695,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 92,
-      "rssi": -86,
+      "batteryPercent": 79,
+      "rssi": -67,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1713,12 +1713,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 106,
-      "rssi": -93,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 94,
+      "rssi": -74,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -1737,8 +1737,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 101,
-      "rssi": -98,
+      "batteryPercent": 88,
+      "rssi": -79,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1758,8 +1758,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 101,
-      "rssi": -107,
+      "batteryPercent": 89,
+      "rssi": -88,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1776,12 +1776,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 104,
-      "rssi": -86,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 92,
+      "rssi": -67,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -1797,12 +1797,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 90,
-      "rssi": -105,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 77,
+      "rssi": -86,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -1818,12 +1818,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 109,
-      "rssi": -100,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 97,
+      "rssi": -81,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -1842,8 +1842,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 105,
-      "rssi": -110,
+      "batteryPercent": 92,
+      "rssi": -91,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1863,8 +1863,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 89,
-      "rssi": -103,
+      "batteryPercent": 76,
+      "rssi": -84,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1881,12 +1881,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 104,
-      "rssi": -94,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 92,
+      "rssi": -75,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -1902,12 +1902,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 101,
-      "rssi": -99,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 88,
+      "rssi": -80,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -1926,8 +1926,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 108,
-      "rssi": -108,
+      "batteryPercent": 96,
+      "rssi": -89,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1947,8 +1947,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 103,
-      "rssi": -113,
+      "batteryPercent": 90,
+      "rssi": -94,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -1965,12 +1965,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 103,
-      "rssi": -108,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 91,
+      "rssi": -89,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -1989,8 +1989,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 96,
-      "rssi": -78,
+      "batteryPercent": 83,
+      "rssi": -59,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -2010,8 +2010,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 89,
-      "rssi": -110,
+      "batteryPercent": 77,
+      "rssi": -91,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -2028,12 +2028,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 96,
-      "rssi": -104,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 83,
+      "rssi": -85,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2049,12 +2049,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 105,
-      "rssi": -80,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 92,
+      "rssi": -61,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2073,8 +2073,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 104,
-      "rssi": -99,
+      "batteryPercent": 91,
+      "rssi": -80,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -2091,12 +2091,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 105,
-      "rssi": -115,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 93,
+      "rssi": -96,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2112,12 +2112,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 100,
-      "rssi": -104,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 87,
+      "rssi": -85,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2133,12 +2133,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 95,
-      "rssi": -99,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 83,
+      "rssi": -80,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2154,12 +2154,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 111,
-      "rssi": -104,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 99,
+      "rssi": -85,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2178,9 +2178,9 @@
     "status": "offline",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 93,
-      "rssi": -101,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 81,
+      "rssi": -82,
+      "reportedAt": "2026-08-18T04:12:07Z"
     }
   },
   {
@@ -2196,12 +2196,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 102,
-      "rssi": -86,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 90,
+      "rssi": -67,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2217,12 +2217,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 96,
-      "rssi": -78,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 84,
+      "rssi": -59,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2238,12 +2238,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 99,
-      "rssi": -88,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 86,
+      "rssi": -69,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2259,12 +2259,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 104,
-      "rssi": -87,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 92,
+      "rssi": -68,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2283,8 +2283,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 110,
-      "rssi": -80,
+      "batteryPercent": 98,
+      "rssi": -61,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -2301,12 +2301,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 107,
-      "rssi": -87,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 94,
+      "rssi": -68,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2325,8 +2325,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 99,
-      "rssi": -79,
+      "batteryPercent": 87,
+      "rssi": -60,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -2346,8 +2346,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 109,
-      "rssi": -78,
+      "batteryPercent": 96,
+      "rssi": -59,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -2364,12 +2364,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 87,
-      "rssi": -114,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 74,
+      "rssi": -95,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2388,8 +2388,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 95,
-      "rssi": -102,
+      "batteryPercent": 83,
+      "rssi": -83,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -2409,8 +2409,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 100,
-      "rssi": -110,
+      "batteryPercent": 87,
+      "rssi": -91,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -2427,12 +2427,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 96,
-      "rssi": -109,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 83,
+      "rssi": -90,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2451,8 +2451,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 103,
-      "rssi": -87,
+      "batteryPercent": 91,
+      "rssi": -68,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -2472,8 +2472,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 95,
-      "rssi": -91,
+      "batteryPercent": 82,
+      "rssi": -72,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -2490,12 +2490,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 102,
-      "rssi": -86,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 90,
+      "rssi": -67,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2514,8 +2514,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 104,
-      "rssi": -79,
+      "batteryPercent": 92,
+      "rssi": -60,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -2535,8 +2535,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 92,
-      "rssi": -89,
+      "batteryPercent": 80,
+      "rssi": -70,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -2556,8 +2556,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 95,
-      "rssi": -112,
+      "batteryPercent": 82,
+      "rssi": -93,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -2577,8 +2577,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 109,
-      "rssi": -104,
+      "batteryPercent": 96,
+      "rssi": -85,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -2595,12 +2595,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 101,
-      "rssi": -79,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 88,
+      "rssi": -60,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2616,12 +2616,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 91,
-      "rssi": -99,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 79,
+      "rssi": -80,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2637,12 +2637,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 97,
-      "rssi": -91,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 85,
+      "rssi": -72,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2658,12 +2658,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 89,
-      "rssi": -87,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 76,
+      "rssi": -68,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2679,12 +2679,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 95,
-      "rssi": -80,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 82,
+      "rssi": -61,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2700,12 +2700,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 89,
-      "rssi": -86,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 76,
+      "rssi": -67,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2721,12 +2721,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 93,
-      "rssi": -86,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 80,
+      "rssi": -67,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2742,12 +2742,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 103,
-      "rssi": -97,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 91,
+      "rssi": -78,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2766,8 +2766,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 88,
-      "rssi": -86,
+      "batteryPercent": 76,
+      "rssi": -67,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -2784,12 +2784,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 102,
-      "rssi": -114,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 90,
+      "rssi": -95,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2805,12 +2805,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 106,
-      "rssi": -114,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 94,
+      "rssi": -95,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2826,12 +2826,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 89,
-      "rssi": -95,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 76,
+      "rssi": -76,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2847,12 +2847,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 89,
-      "rssi": -92,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 76,
+      "rssi": -73,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2871,8 +2871,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 106,
-      "rssi": -104,
+      "batteryPercent": 93,
+      "rssi": -85,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -2889,12 +2889,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 98,
-      "rssi": -91,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 85,
+      "rssi": -72,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2910,12 +2910,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 92,
-      "rssi": -95,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 79,
+      "rssi": -76,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2931,12 +2931,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 89,
-      "rssi": -94,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 77,
+      "rssi": -75,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2955,8 +2955,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 87,
-      "rssi": -105,
+      "batteryPercent": 74,
+      "rssi": -86,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -2973,12 +2973,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 94,
-      "rssi": -90,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 82,
+      "rssi": -71,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -2994,12 +2994,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 98,
-      "rssi": -104,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 85,
+      "rssi": -85,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3015,12 +3015,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 88,
-      "rssi": -94,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 75,
+      "rssi": -75,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3036,12 +3036,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 97,
-      "rssi": -86,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 85,
+      "rssi": -67,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3057,12 +3057,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 91,
-      "rssi": -91,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 78,
+      "rssi": -72,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3081,8 +3081,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 88,
-      "rssi": -79,
+      "batteryPercent": 75,
+      "rssi": -60,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -3099,12 +3099,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 104,
-      "rssi": -111,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 92,
+      "rssi": -92,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3123,8 +3123,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 89,
-      "rssi": -100,
+      "batteryPercent": 77,
+      "rssi": -81,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -3141,12 +3141,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 101,
-      "rssi": -101,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 88,
+      "rssi": -82,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3165,8 +3165,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 96,
-      "rssi": -84,
+      "batteryPercent": 84,
+      "rssi": -65,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -3183,12 +3183,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 88,
-      "rssi": -100,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 76,
+      "rssi": -81,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3207,8 +3207,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 104,
-      "rssi": -93,
+      "batteryPercent": 91,
+      "rssi": -74,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -3225,12 +3225,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 87,
-      "rssi": -113,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 74,
+      "rssi": -94,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3246,12 +3246,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 110,
-      "rssi": -107,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 98,
+      "rssi": -88,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3270,8 +3270,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 102,
-      "rssi": -78,
+      "batteryPercent": 89,
+      "rssi": -59,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -3288,12 +3288,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 87,
-      "rssi": -99,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 74,
+      "rssi": -80,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3309,12 +3309,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 104,
-      "rssi": -84,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 91,
+      "rssi": -65,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3333,8 +3333,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 92,
-      "rssi": -111,
+      "batteryPercent": 80,
+      "rssi": -92,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -3354,8 +3354,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 108,
-      "rssi": -107,
+      "batteryPercent": 96,
+      "rssi": -88,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -3372,12 +3372,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 96,
-      "rssi": -101,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 84,
+      "rssi": -82,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3396,8 +3396,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 99,
-      "rssi": -83,
+      "batteryPercent": 87,
+      "rssi": -64,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -3417,8 +3417,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 105,
-      "rssi": -81,
+      "batteryPercent": 92,
+      "rssi": -62,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -3435,12 +3435,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 109,
-      "rssi": -79,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 97,
+      "rssi": -60,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3456,12 +3456,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 93,
-      "rssi": -82,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 81,
+      "rssi": -63,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3480,8 +3480,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 102,
-      "rssi": -110,
+      "batteryPercent": 89,
+      "rssi": -91,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -3501,8 +3501,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 96,
-      "rssi": -114,
+      "batteryPercent": 83,
+      "rssi": -95,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -3522,8 +3522,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 97,
-      "rssi": -99,
+      "batteryPercent": 85,
+      "rssi": -80,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -3540,12 +3540,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 103,
-      "rssi": -88,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 90,
+      "rssi": -69,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3561,12 +3561,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 91,
-      "rssi": -93,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 79,
+      "rssi": -74,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3582,12 +3582,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 94,
-      "rssi": -94,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 81,
+      "rssi": -75,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3606,8 +3606,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 97,
-      "rssi": -114,
+      "batteryPercent": 84,
+      "rssi": -95,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -3627,8 +3627,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 98,
-      "rssi": -87,
+      "batteryPercent": 85,
+      "rssi": -68,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -3645,12 +3645,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 110,
-      "rssi": -114,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 97,
+      "rssi": -95,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3666,12 +3666,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 103,
-      "rssi": -114,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 91,
+      "rssi": -95,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3690,8 +3690,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 104,
-      "rssi": -82,
+      "batteryPercent": 91,
+      "rssi": -63,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -3711,8 +3711,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 100,
-      "rssi": -91,
+      "batteryPercent": 87,
+      "rssi": -72,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -3732,9 +3732,9 @@
     "status": "offline",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 95,
-      "rssi": -105,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 82,
+      "rssi": -86,
+      "reportedAt": "2026-08-22T04:12:07Z"
     }
   },
   {
@@ -3753,8 +3753,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 103,
-      "rssi": -112,
+      "batteryPercent": 90,
+      "rssi": -93,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -3771,12 +3771,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 99,
-      "rssi": -94,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 86,
+      "rssi": -75,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3792,12 +3792,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 110,
-      "rssi": -90,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 97,
+      "rssi": -71,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3813,12 +3813,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 92,
-      "rssi": -115,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 80,
+      "rssi": -96,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3834,12 +3834,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 91,
-      "rssi": -85,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 78,
+      "rssi": -66,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3855,12 +3855,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 103,
-      "rssi": -88,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 90,
+      "rssi": -69,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3876,12 +3876,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 94,
-      "rssi": -85,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 82,
+      "rssi": -66,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3897,12 +3897,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 93,
-      "rssi": -108,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 81,
+      "rssi": -89,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3921,8 +3921,8 @@
     "status": "offline",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 92,
-      "rssi": -97,
+      "batteryPercent": 79,
+      "rssi": -78,
       "reportedAt": "2026-08-19T04:12:07Z"
     }
   },
@@ -3942,8 +3942,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 107,
-      "rssi": -109,
+      "batteryPercent": 94,
+      "rssi": -90,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -3960,12 +3960,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 100,
-      "rssi": -99,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 87,
+      "rssi": -80,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -3981,12 +3981,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 88,
-      "rssi": -110,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 76,
+      "rssi": -91,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4002,12 +4002,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 89,
-      "rssi": -93,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 77,
+      "rssi": -74,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4023,12 +4023,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 111,
-      "rssi": -90,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 99,
+      "rssi": -71,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4047,8 +4047,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 101,
-      "rssi": -92,
+      "batteryPercent": 89,
+      "rssi": -73,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -4065,12 +4065,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 87,
-      "rssi": -98,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 74,
+      "rssi": -79,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4086,12 +4086,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 90,
-      "rssi": -77,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 77,
+      "rssi": -58,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4110,8 +4110,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 107,
-      "rssi": -97,
+      "batteryPercent": 95,
+      "rssi": -78,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -4131,8 +4131,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 87,
-      "rssi": -108,
+      "batteryPercent": 74,
+      "rssi": -89,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -4149,12 +4149,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 90,
-      "rssi": -113,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 77,
+      "rssi": -94,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4170,12 +4170,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 93,
-      "rssi": -84,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 81,
+      "rssi": -65,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4191,12 +4191,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 102,
-      "rssi": -98,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 89,
+      "rssi": -79,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4212,12 +4212,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 102,
-      "rssi": -108,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 90,
+      "rssi": -89,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4233,12 +4233,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 104,
-      "rssi": -108,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 92,
+      "rssi": -89,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4254,12 +4254,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 110,
-      "rssi": -77,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 97,
+      "rssi": -58,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4275,12 +4275,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 99,
-      "rssi": -83,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 86,
+      "rssi": -64,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4296,12 +4296,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 90,
-      "rssi": -98,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 77,
+      "rssi": -79,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4317,12 +4317,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 92,
-      "rssi": -94,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 79,
+      "rssi": -75,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4341,8 +4341,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 106,
-      "rssi": -83,
+      "batteryPercent": 93,
+      "rssi": -64,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -4362,8 +4362,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 89,
-      "rssi": -110,
+      "batteryPercent": 76,
+      "rssi": -91,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -4383,8 +4383,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 96,
-      "rssi": -95,
+      "batteryPercent": 83,
+      "rssi": -76,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -4401,12 +4401,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 107,
-      "rssi": -80,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 95,
+      "rssi": -61,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4425,8 +4425,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 98,
-      "rssi": -80,
+      "batteryPercent": 86,
+      "rssi": -61,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -4443,12 +4443,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 94,
-      "rssi": -88,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 81,
+      "rssi": -69,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4464,12 +4464,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 101,
-      "rssi": -115,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 89,
+      "rssi": -96,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4485,12 +4485,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 100,
-      "rssi": -91,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 88,
+      "rssi": -72,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4506,12 +4506,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 100,
-      "rssi": -114,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 88,
+      "rssi": -95,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4530,8 +4530,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 104,
-      "rssi": -96,
+      "batteryPercent": 91,
+      "rssi": -77,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -4551,8 +4551,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 89,
-      "rssi": -102,
+      "batteryPercent": 76,
+      "rssi": -83,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -4569,12 +4569,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 90,
-      "rssi": -104,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 78,
+      "rssi": -85,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4593,8 +4593,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 105,
-      "rssi": -112,
+      "batteryPercent": 92,
+      "rssi": -93,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -4611,12 +4611,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 98,
-      "rssi": -99,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 86,
+      "rssi": -80,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4632,12 +4632,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 106,
-      "rssi": -98,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 93,
+      "rssi": -79,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4653,12 +4653,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 100,
-      "rssi": -109,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 88,
+      "rssi": -90,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4677,8 +4677,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 97,
-      "rssi": -107,
+      "batteryPercent": 85,
+      "rssi": -88,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -4695,12 +4695,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 92,
-      "rssi": -94,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 79,
+      "rssi": -75,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4716,12 +4716,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 98,
-      "rssi": -87,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 86,
+      "rssi": -68,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4740,8 +4740,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 108,
-      "rssi": -103,
+      "batteryPercent": 95,
+      "rssi": -84,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -4761,8 +4761,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 96,
-      "rssi": -90,
+      "batteryPercent": 83,
+      "rssi": -71,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -4782,8 +4782,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 97,
-      "rssi": -81,
+      "batteryPercent": 85,
+      "rssi": -62,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -4800,12 +4800,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 101,
-      "rssi": -110,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 89,
+      "rssi": -91,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4824,8 +4824,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 93,
-      "rssi": -82,
+      "batteryPercent": 81,
+      "rssi": -63,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -4842,12 +4842,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 103,
-      "rssi": -108,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 91,
+      "rssi": -89,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4866,8 +4866,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 87,
-      "rssi": -112,
+      "batteryPercent": 75,
+      "rssi": -93,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -4887,8 +4887,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 105,
-      "rssi": -105,
+      "batteryPercent": 92,
+      "rssi": -86,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -4908,8 +4908,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 89,
-      "rssi": -85,
+      "batteryPercent": 76,
+      "rssi": -66,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -4926,12 +4926,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 93,
-      "rssi": -86,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 81,
+      "rssi": -67,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4947,12 +4947,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 107,
-      "rssi": -115,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 94,
+      "rssi": -96,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -4971,8 +4971,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 90,
-      "rssi": -103,
+      "batteryPercent": 77,
+      "rssi": -84,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -4989,12 +4989,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 106,
-      "rssi": -89,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 94,
+      "rssi": -70,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -5013,8 +5013,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 102,
-      "rssi": -103,
+      "batteryPercent": 89,
+      "rssi": -84,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
@@ -5031,12 +5031,12 @@
       "installed_at": "2026-01-01",
       "firmware": "2.4.1"
     },
-    "status": "offline",
+    "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 103,
-      "rssi": -89,
-      "reportedAt": "2026-08-19T04:12:07Z"
+      "batteryPercent": 91,
+      "rssi": -70,
+      "reportedAt": "2026-08-31T23:58:02Z"
     }
   },
   {
@@ -5055,8 +5055,8 @@
     "status": "online",
     "latestValues": {
       "seatsOccupied": null,
-      "batteryPercent": 92,
-      "rssi": -77,
+      "batteryPercent": 79,
+      "rssi": -58,
       "reportedAt": "2026-08-31T23:58:02Z"
     }
   }

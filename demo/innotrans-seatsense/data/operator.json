@@ -293,7 +293,7 @@
     "target_total_revenue_uplift_pct": 0.75,
     "source": "The operator's own projection, signed off before rollout.",
     "mechanism": "Demand-based pricing on measured occupancy. No overselling, no reselling of no-show seats, no increase to the fare basket.",
-    "assumed_market_growth_pct": 1.7999999999999998,
+    "assumed_market_growth_pct": 1.8,
     "market_growth_note": "Underlying market growth is the counterfactual: what revenue would have done in 2026 without SeatSense-informed pricing. It is generated into the 2026 demand at this rate, so netting it off isolates the pricing effect. Change the parameter to test how sensitive the attribution is."
   },
   "data_dictionary": {
