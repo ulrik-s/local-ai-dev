@@ -71,12 +71,14 @@ ran `make` from, so file edits persist on the host.
 stack: a visitor asks Claude questions in plain English, and Claude reads a
 **fake Yggio tenant** over MCP to answer with real figures from generated JSON.
 The story is what SeatSense - measuring whether a seat is *physically occupied*
-- is worth to a (fictional) British operator that **may not oversell**. One
-ticket per seat means a no-show seat departs empty and cannot be recovered, so
-the entire value is in pricing: an operator running on ticket sales has no
-cabin factor at all, and its ticket system mis-ranks its own departures by
-several points of real occupancy. Correcting that is worth **+0.75% of total
-revenue** - the number a real customer's business case projects.
+- is worth to a (fictional) British operator that **may not oversell**. A
+departure sold to 100% cannot take another passenger, and those refused are
+revenue that never happens. So the fares are set to hold the popular departures
+*just below* full and price the ones either side lower: travelling on the
+departure you want stays possible, it just costs more. Doing that correctly
+needs measured occupancy, because ticket data cannot see a no-show and
+mis-ranks the operator's own departures by five points of real fullness.
+Worth **+0.757% of total revenue** - matching a real customer's business case.
 
 ```bash
 make demo-check      # pre-flight: calls all 15 fake-Yggio tools, prints OK per tool

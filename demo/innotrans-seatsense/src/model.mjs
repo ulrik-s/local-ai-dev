@@ -49,6 +49,94 @@ export const COVERAGE = {
  * So the only lever measurement unlocks is price: knowing which departures are
  * genuinely full, rather than merely sold out, and pricing accordingly.
  */
+export const PRICING_POLICY = {
+  principle:
+    'It must always be possible to travel on the departure you want. It may cost more.',
+  rule:
+    'Price the most popular departures so they land just below full - a measured cabin-factor target - and price the departures either side of them below that. A departure that never reaches its sales cap never turns anyone away.',
+  why_it_earns:
+    'A departure sold to 100% cannot take another passenger, and the ones it refuses are revenue that simply does not happen. Overselling would absorb them and is not permitted, so the only way to keep them is to make sure the departure never fills: charge for the scarcity instead of rationing it.',
+  why_it_needs_measurement:
+    'The headroom has to be set against actual occupancy, not tickets sold. Two departures held at 96% sold deliver 89% and 84% of seats occupied, because their no-show rates differ by five points. Set one flat sold-target for both and you give up sales on a train that was already running empty, while still leaving the genuinely full one under-priced. The sold-target has to be per departure, and before 2026 the operator had no way to compute it.',
+  /** Cabin factor the pricing aims each popular departure at. */
+  targetCabinFactor: 0.88,
+  /** Never price a departure to sell above this, so it cannot fill up. */
+  soldCeiling: 0.97,
+  /**
+   * The most the rule may add to a fare. Bounded because a demand-based
+   * product still has to be defensible to a regulator and recognisable to a
+   * season-ticket holder. Where the cap binds, the departure still sells out
+   * occasionally - the policy gets most of the way to never refusing anyone,
+   * not all of it.
+   */
+  maxPremium: 0.07,
+  /**
+   * Two elasticities, because a fare move on one departure does two different
+   * things. Most of its effect is to move passengers to a neighbouring
+   * departure of the same journey - near-perfect substitutes, so this is high.
+   * A much smaller part is people not travelling at all, which responds to what
+   * the whole window costs on average, not to one departure's fare.
+   */
+  choiceElasticity: 2.5,
+  marketElasticity: 0.3,
+  /**
+   * When a departure fills, this share of the blocked demand takes a
+   * neighbouring departure instead. On a commuter railway that share is high -
+   * refused the 07:41, you take the 08:11, you do not stay at home - so the
+   * revenue lost outright is real but modest. Most of what the policy earns is
+   * therefore yield rather than volume: the passenger who must have that train
+   * pays for the certainty, and the flexible one is paid to move.
+   */
+  spillShare: 0.88,
+  /** Spill only reaches departures within this many minutes, same direction. */
+  spillWindowMinutes: 90,
+  /** Iterations used to solve each popular departure's fare for its target. */
+  solverPasses: 10,
+  /**
+   * The shoulder discount is not a standing offer. It scales with how much
+   * premium the peak is carrying that day, because its whole purpose is to
+   * receive demand priced off the peak. On a quiet Tuesday in August the peak
+   * carries no premium, so the shoulder carries no discount and fares are
+   * simply what they were in 2025.
+   */
+  referencePremium: 0.1,
+};
+
+/**
+ * Departures that compete for the same passengers. Within a window a fare
+ * change moves people between departures; outside one it mostly moves them in
+ * or out of travelling. Anything not listed here stands on its own.
+ */
+export const COMPETITION_WINDOWS = [
+  { id: 'morning_up', direction: 'up', from: '05:00', to: '10:00', label: 'Morning peak and its shoulders, towards the city' },
+  { id: 'evening_down', direction: 'down', from: '15:45', to: '20:00', label: 'Evening peak and its shoulders, outbound' },
+];
+
+/**
+ * How much a departure may be discounted to receive demand priced off the
+ * peak. This is a property of sitting next to a peak departure, not of the
+ * demand class: an off-peak departure inside the evening window is a shoulder
+ * in everything but name, while the same class at midday competes with
+ * nothing and is left alone.
+ */
+export const MAX_SHOULDER_DISCOUNT = {
+  peak_shoulder: 0.07,
+  offpeak: 0.05,
+  early_late: 0.04,
+};
+
+export function windowOf(svc) {
+  const w = COMPETITION_WINDOWS.find(
+    (c) => c.direction === svc.direction && svc.departure_time >= c.from && svc.departure_time <= c.to,
+  );
+  return w ? w.id : `solo:${svc.service_id}`;
+}
+
+/** Whether a departure sits in a window where a discount can earn anything. */
+export function inCompetitionWindow(svc) {
+  return !windowOf(svc).startsWith('solo:');
+}
+
 export const SALES_POLICY = {
   reservation: 'compulsory - every ticket carries a specific seat',
   tickets_per_seat: 1,
@@ -57,7 +145,7 @@ export const SALES_POLICY = {
   basis:
     'A seat reservation is a contractual right to that seat, and denied boarding triggers passenger-rights obligations. European operators therefore sell at most one ticket per seat per departure, unlike airlines, which deliberately overbook and price the denied-boarding risk into their yield model.',
   consequences: [
-    'The morning peak sells out and turns passengers away rather than absorbing them.',
+    'A departure sold to 100% cannot take another passenger. In 2025 the morning peak did exactly that and refused the rest - revenue that never happened.',
     'A seat sold to someone who does not travel departs empty and the revenue is not recoverable: the seat is still theirs, and overselling to cover it is not an option.',
     'Ticket data knows precisely how many seats are unsold. What it cannot know is how many of the sold seats will actually be sat in - so it cannot rank departures by how full they really are.',
     'That ranking is what pricing decisions are made on, which is why measuring it is worth money even though the empty seats themselves are not.',
@@ -136,61 +224,62 @@ export const OPERATOR = {
 export const DEMAND_CLASSES = {
   peak_core: {
     label: 'Morning peak core',
-    description: 'The 07:00-08:30 arrivals. Sells out every weekday and turns passengers away.',
-    demand2025: 1.1,
+    description: 'The 07:00-08:30 arrivals. More people want these than there are seats.',
+    preferredLoad: 1.08,
     fareIndex: 1.0,
     noShowRate: 0.105,
-    fareDelta2026: 0.019,
-    demandDelta2026: -0.019,
+    /** Priced by the rule: held just below full. See PRICING_POLICY. */
+    priced: 'to_target',
     weekendFactor: 0.34,
     pricingRationale:
-      'SeatSense confirms these departures are physically full, not just sold out. A small fare rise is safe here because the demand behind the sales cap is real.',
+      'Demand exceeds the seats, so in 2025 these closed sales and refused passengers. The 2026 fare is set per departure so predicted sales land on the measured cabin-factor target instead - never at the cap.',
   },
   peak_shoulder: {
     label: 'Peak shoulder',
-    description: 'The departures either side of the crush, with genuine measured spare capacity.',
-    demand2025: 0.64,
+    description: 'The departures either side of the crush. Where the priced-off demand goes.',
+    preferredLoad: 0.55,
     fareIndex: 0.89,
     noShowRate: 0.075,
-    fareDelta2026: -0.0115,
-    demandDelta2026: 0.0173,
+    priced: 'discount',
+    /** Maximum discount, reached on the days the peak carries a full premium. */
+    maxDiscount2026: 0.07,
     weekendFactor: 0.46,
     pricingRationale:
-      'Measured occupancy shows real room, so a small discount buys volume from passengers turned away by the crush departures rather than cannibalising them.',
+      'Discounted to receive the passengers priced off the crush departures, and the ones who used to be refused outright. Measured occupancy is what proves the room is really there.',
   },
   offpeak: {
     label: 'Off-peak',
     description: 'Midday and late evening leisure travel.',
-    demand2025: 0.43,
+    preferredLoad: 0.42,
     fareIndex: 0.62,
     noShowRate: 0.042,
-    fareDelta2026: -0.0032,
-    demandDelta2026: 0.0048,
+    priced: 'unchanged',
+    maxDiscount2026: 0,
     weekendFactor: 0.74,
-    pricingRationale: 'Advance-purchase heavy, low no-show, little to correct. Minor bucket reallocation only.',
+    pricingRationale:
+      'Left alone. These departures do not compete with the peak - nobody moves a midday leisure trip to 07:41 - so a discount here would buy almost no volume and simply give away yield.',
   },
   evening_peak: {
     label: 'Evening peak',
-    description: 'The 16:30-18:00 exodus out of the city. Sells out in the busier months.',
-    demand2025: 1.02,
+    description: 'The 16:30-18:00 exodus out of the city. Also demand-constrained.',
+    preferredLoad: 1.04,
     fareIndex: 0.94,
     noShowRate: 0.09,
-    fareDelta2026: 0.014,
-    demandDelta2026: -0.014,
+    priced: 'to_target',
     weekendFactor: 0.58,
-    pricingRationale:
-      'Capacity-constrained on most weekdays once measured, though less consistently than the morning peak, so the fare move is smaller.',
+    pricingRationale: 'Same rule as the morning peak, on a slightly smaller demand overhang.',
   },
   early_late: {
     label: 'Early / late',
     description: 'First and last departures of the day.',
-    demand2025: 0.31,
+    preferredLoad: 0.3,
     fareIndex: 0.56,
     noShowRate: 0.035,
-    fareDelta2026: -0.0057,
-    demandDelta2026: 0.0086,
+    priced: 'discount',
+    maxDiscount2026: 0.04,
     weekendFactor: 0.44,
-    pricingRationale: 'Cheap already; a token discount to pull a little demand off the shoulder.',
+    pricingRationale:
+      'The first departures of the morning sit inside the peak window, so they get a smaller version of the shoulder discount on the days there is displaced demand to receive.',
   },
 };
 
@@ -232,9 +321,11 @@ export const ROUTES = [
       ['1011', 'up', 'offpeak'],
       ['1211', 'up', 'offpeak'],
       ['1411', 'up', 'offpeak'],
+      ['1627', 'down', 'peak_shoulder'],
       ['1657', 'down', 'evening_peak'],
       ['1727', 'down', 'evening_peak'],
       ['1757', 'down', 'evening_peak'],
+      ['1827', 'down', 'peak_shoulder'],
       ['1927', 'down', 'offpeak'],
       ['2057', 'down', 'offpeak'],
       ['2227', 'down', 'early_late'],
@@ -266,9 +357,11 @@ export const ROUTES = [
       ['1018', 'up', 'offpeak'],
       ['1218', 'up', 'offpeak'],
       ['1418', 'up', 'offpeak'],
+      ['1603', 'down', 'peak_shoulder'],
       ['1633', 'down', 'evening_peak'],
       ['1703', 'down', 'evening_peak'],
       ['1733', 'down', 'evening_peak'],
+      ['1803', 'down', 'peak_shoulder'],
       ['1903', 'down', 'offpeak'],
       ['2033', 'down', 'offpeak'],
       ['2203', 'down', 'early_late'],
@@ -298,9 +391,11 @@ export const ROUTES = [
       ['0922', 'up', 'offpeak'],
       ['1122', 'up', 'offpeak'],
       ['1322', 'up', 'offpeak'],
+      ['1614', 'down', 'peak_shoulder'],
       ['1644', 'down', 'evening_peak'],
       ['1714', 'down', 'evening_peak'],
       ['1744', 'down', 'evening_peak'],
+      ['1814', 'down', 'peak_shoulder'],
       ['1914', 'down', 'offpeak'],
       ['2044', 'down', 'offpeak'],
       ['2214', 'down', 'early_late'],
@@ -414,6 +509,38 @@ export function noShowRateFor(serviceId, demandClass) {
   return DEMAND_CLASSES[demandClass].noShowRate * spread;
 }
 
+/**
+ * The indicative 2026 fare move for one departure, at mean weekday demand.
+ *
+ * The fare the operator actually charges is solved per day, against that day's
+ * expected demand - a quiet Tuesday in August carries no premium at all,
+ * because nothing would have filled. This function is the annual headline
+ * figure for the timetable, not the price of any particular journey.
+ *
+ * Note which departure gets the *smaller* increase: the one with the higher
+ * no-show rate, because it can be sold closer to full without ever refusing
+ * anyone. Ticket data would have ranked them the other way round.
+ */
+export function fareDelta2026For(serviceId, demandClass, inWindow = true) {
+  const cls = DEMAND_CLASSES[demandClass];
+  if (cls.priced !== 'to_target') {
+    return inWindow ? -(MAX_SHOULDER_DISCOUNT[demandClass] ?? 0) : 0;
+  }
+  const targetSold = soldTargetFor(serviceId, demandClass);
+  if (cls.preferredLoad <= targetSold) return 0;
+  return Math.min(
+    PRICING_POLICY.maxPremium,
+    Math.pow(cls.preferredLoad / targetSold, 1 / PRICING_POLICY.choiceElasticity) - 1,
+  );
+}
+
+/** Sold-target the rule aims a to_target departure at, as a share of seats. */
+export function soldTargetFor(serviceId, demandClass) {
+  const cls = DEMAND_CLASSES[demandClass];
+  if (cls.priced !== 'to_target') return null;
+  return Math.min(PRICING_POLICY.soldCeiling, PRICING_POLICY.targetCabinFactor + noShowRateFor(serviceId, demandClass));
+}
+
 /** Flattened timetable: one row per daily departure. */
 export function buildServices() {
   const out = [];
@@ -422,6 +549,12 @@ export function buildServices() {
     for (const [time, direction, demandClass] of route.services) {
       const cls = DEMAND_CLASSES[demandClass];
       const fare2025 = round2(route.peakFareGbp * cls.fareIndex);
+      const departureTime = `${time.slice(0, 2)}:${time.slice(2)}`;
+      const win = COMPETITION_WINDOWS.find(
+        (c) => c.direction === direction && departureTime >= c.from && departureTime <= c.to,
+      );
+      const inWindow = Boolean(win);
+      const windowId = win?.id ?? null;
       out.push({
         service_id: `${route.id}-${time}`,
         route_id: route.id,
@@ -435,8 +568,14 @@ export function buildServices() {
         coaches: route.coachesPerUnit,
         seats_per_coach: route.seatsPerCoach,
         fare_2025_gbp: fare2025,
-        fare_2026_target_gbp: round2(fare2025 * (1 + cls.fareDelta2026 * route.effectStrength)),
-        fare_change_pct: round1(cls.fareDelta2026 * route.effectStrength * 100),
+        fare_2026_target_gbp: round2(fare2025 * (1 + fareDelta2026For(`${route.id}-${time}`, demandClass, inWindow) * route.effectStrength)),
+        fare_change_pct: round1(fareDelta2026For(`${route.id}-${time}`, demandClass, inWindow) * route.effectStrength * 100),
+        competition_window: inWindow ? windowId : null,
+        priced_by: cls.priced === 'to_target'
+          ? 'solved per day, held just below full against a measured cabin-factor target'
+          : inWindow ? 'discounted in proportion to the peak premium that day, to receive displaced demand'
+                     : 'left unchanged - competes with nothing',
+        sold_target_pct: cls.priced === 'to_target' ? round1(soldTargetFor(`${route.id}-${time}`, demandClass) * 100) : null,
         no_show_rate_pct: round1(noShowRateFor(`${route.id}-${time}`, demandClass) * 100),
         no_show_rate_known_from: COVERAGE.seatsenseGoLive,
         sales_cap_pct_of_seats: SALES_POLICY.sales_cap_pct_of_seats,

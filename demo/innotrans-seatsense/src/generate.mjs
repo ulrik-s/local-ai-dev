@@ -13,9 +13,10 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import {
   GENERATOR_VERSION, COVERAGE, OPERATOR, ROUTES, DEMAND_CLASSES, SEASONALITY,
-  BANK_HOLIDAYS, TICKET_DATA, SALES_POLICY, ATTRIBUTION,
-  MARKET_GROWTH_2026, BUSINESS_CASE_TARGET_PCT, pricingActive, noShowRateFor, jitter, lerp,
-  buildServices, round1, round2,
+  BANK_HOLIDAYS, TICKET_DATA, SALES_POLICY, PRICING_POLICY, ATTRIBUTION,
+  MARKET_GROWTH_2026, BUSINESS_CASE_TARGET_PCT, pricingActive, noShowRateFor,
+  fareDelta2026For, soldTargetFor, windowOf, MAX_SHOULDER_DISCOUNT,
+  jitter, lerp, buildServices, round1, round2,
 } from './model.mjs';
 
 const DATA_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', 'data');
@@ -55,78 +56,168 @@ const services = buildServices();
 const routeById = Object.fromEntries(ROUTES.map((r) => [r.id, r]));
 
 /**
- * One departure on one day.
+ * One route's whole day, allocated across its departures together.
+ *
+ * Departures cannot be modelled independently, because the interesting thing
+ * that happens is between them. When a departure fills, the demand it refuses
+ * does not disappear: most of it takes a neighbouring departure, and the rest
+ * does not travel at all. That last part is the revenue the 2026 pricing is
+ * designed to keep - by making sure the popular departures never fill.
  *
  * Both years record what ticket data can see: seats sold (never more than the
- * seats there are), revenue, whether sales closed, and the demand that arrived
- * afterwards. 2026 rows add what SeatSense measures - who boarded, how many
- * seats were physically occupied, and how many paid-for seats departed empty.
- *
- * 2026 rows also carry `cf_*`: the counterfactual, meaning what the departure
- * would have done on 2025's pricing rules with the same market growth. That is
- * how the attribution isolates the pricing effect, rather than netting off a
- * flat growth rate - which would be wrong here, because a departure that is
- * already sold out cannot absorb market growth at all.
+ * seats there are), revenue, whether the departure reached its cap, and the
+ * demand that wanted it and did not travel. 2026 rows add what SeatSense
+ * measures, plus `cf_*`: what the departure would have done on 2025's flat
+ * fares with the same market growth.
  */
-function makeRow(svc, date) {
-  const route = routeById[svc.route_id];
-  const cls = DEMAND_CLASSES[svc.demand_class];
+const minutesOf = (t) => Number(t.slice(0, 2)) * 60 + Number(t.slice(3));
+
+function makeRouteDay(route, date) {
   const [y, m] = date.split('-').map(Number);
-  const seed = `${svc.service_id}|${date}`;
   const seatsense = y >= COVERAGE.seatsenseYear;
+  const priceRules = pricingActive(y) === 1;
+  const deps = services.filter((s) => s.route_id === route.id);
 
-  // One ticket per seat, no overselling: sales stop at seated capacity.
-  const cap = Math.round((svc.seats * SALES_POLICY.sales_cap_pct_of_seats) / 100);
-  const baseDemand =
-    svc.seats * cls.demand2025 * route.loadAdjust * SEASONALITY[m - 1] *
-    dayTypeFactor(date, svc.demand_class) * jitter(seed + '|vol', 0.035) *
-    (seatsense ? 1 + MARKET_GROWTH_2026 : 1);
+  // Preferred demand: how many people would take this departure if price were
+  // no object and every seat were free. Same in both scenarios below.
+  const preferred = deps.map((svc) => {
+    const cls = DEMAND_CLASSES[svc.demand_class];
+    return svc.seats * cls.preferredLoad * route.loadAdjust * SEASONALITY[m - 1] *
+      dayTypeFactor(date, svc.demand_class) * jitter(`${svc.service_id}|${date}|vol`, 0.035) *
+      (seatsense ? 1 + MARKET_GROWTH_2026 : 1);
+  });
+  const caps = deps.map((svc) => Math.round((svc.seats * SALES_POLICY.sales_cap_pct_of_seats) / 100));
+  const mins = deps.map((svc) => minutesOf(svc.departure_time));
 
-  /** Sell one scenario: a fare multiplier and a demand response to it. */
-  const sell = (fareMult, demandMult) => {
-    const demand = Math.round(baseDemand * demandMult);
-    const sold = Math.max(0, Math.min(demand, cap));
-    const fare = round2(svc.fare_2025_gbp * fareMult * jitter(seed + '|fare', 0.02));
-    return { demand, sold, revenue: round2(sold * fare), turnedAway: Math.max(0, demand - sold) };
+  // Departures that compete for the same passengers, so that a fare move on
+  // one of them shows up as a shift to its neighbours rather than as
+  // passengers vanishing from the railway.
+  const windows = {};
+  deps.forEach((svc, i) => { (windows[windowOf(svc)] ??= []).push(i); });
+
+  /**
+   * Allocate the day under one fare scenario.
+   *
+   * With pricing on, each popular departure's fare is solved for its own
+   * sold-target: raise it until predicted sales land just below full, and
+   * never raise it at all on a day when the departure would not have filled.
+   */
+  const run = (usePricing) => {
+    const mult = deps.map(() => 1);
+    const targets = deps.map((svc) => {
+      const t = soldTargetFor(svc.service_id, svc.demand_class);
+      return t == null ? null : t * svc.seats;
+    });
+
+    /** Predicted demand per departure given the current fares. */
+    const predict = () => {
+      const wanted = deps.map(() => 0);
+      for (const idx of Object.values(windows)) {
+        const base = idx.reduce((a, i) => a + preferred[i], 0);
+        if (base <= 0) continue;
+        // What the window costs on average decides how many travel at all;
+        // the relative fares inside it decide which departure they take.
+        const avgMult = idx.reduce((a, i) => a + preferred[i] * mult[i], 0) / base;
+        const total = base * Math.pow(avgMult, -PRICING_POLICY.marketElasticity);
+        const weights = idx.map((i) => preferred[i] * Math.pow(mult[i], -PRICING_POLICY.choiceElasticity));
+        const wsum = weights.reduce((a, b) => a + b, 0);
+        idx.forEach((i, k) => { wanted[i] = (total * weights[k]) / wsum; });
+      }
+      return wanted;
+    };
+
+    // Solve the popular departures' fares for their targets, and set each
+    // window's shoulder discount from the premium its peak ends up carrying.
+    if (usePricing) {
+      for (let pass = 0; pass < PRICING_POLICY.solverPasses; pass++) {
+        const wanted = predict();
+        for (let i = 0; i < deps.length; i++) {
+          if (targets[i] == null || wanted[i] <= 0) continue;
+          const ratio = wanted[i] / targets[i];
+          if (ratio <= 1 && mult[i] <= 1) { mult[i] = 1; continue; }
+          mult[i] = Math.min(
+            1 + PRICING_POLICY.maxPremium * route.effectStrength,
+            Math.max(1, mult[i] * Math.pow(ratio, 1 / PRICING_POLICY.choiceElasticity)),
+          );
+        }
+        for (const idx of Object.values(windows)) {
+          const premiums = idx.filter((i) => targets[i] != null).map((i) => mult[i] - 1);
+          if (!premiums.length) continue;
+          const mean = premiums.reduce((a, b) => a + b, 0) / premiums.length;
+          const intensity = Math.min(1, Math.max(0, mean / PRICING_POLICY.referencePremium));
+          for (const i of idx) {
+            if (DEMAND_CLASSES[deps[i].demand_class].priced === 'to_target') continue;
+            const max = MAX_SHOULDER_DISCOUNT[deps[i].demand_class] ?? 0;
+            mult[i] = 1 - max * route.effectStrength * intensity;
+          }
+        }
+      }
+    }
+
+    const fares = deps.map((svc, i) => round2(
+      svc.fare_2025_gbp * mult[i] * jitter(`${svc.service_id}|${date}|fare`, 0.02),
+    ));
+    const wanted = predict().map((w) => Math.round(w));
+    const sold = wanted.map((w, i) => Math.min(w, caps[i]));
+    const lost = deps.map(() => 0);
+
+    for (let i = 0; i < deps.length; i++) {
+      const blocked = wanted[i] - sold[i];
+      if (blocked <= 0) continue;
+      // Most of the refused demand tries a nearby departure; the rest gives up,
+      // and that is the revenue the 2026 pricing exists to keep.
+      let seeking = Math.round(blocked * PRICING_POLICY.spillShare);
+      lost[i] += blocked - seeking;
+      const neighbours = deps
+        .map((svc, j) => ({ j, gap: Math.abs(mins[j] - mins[i]), sameWay: svc.direction === deps[i].direction }))
+        .filter((n) => n.j !== i && n.sameWay && n.gap <= PRICING_POLICY.spillWindowMinutes)
+        .sort((p, q) => p.gap - q.gap);
+      for (const n of neighbours) {
+        if (seeking <= 0) break;
+        const room = caps[n.j] - sold[n.j];
+        if (room <= 0) continue;
+        const take = Math.min(room, seeking);
+        sold[n.j] += take;
+        seeking -= take;
+      }
+      lost[i] += Math.max(0, seeking);
+    }
+    return { fares, wanted, sold, lost, mult };
   };
 
-  const effect = route.effectStrength * pricingActive(y);
-  const priced = sell(1 + cls.fareDelta2026 * effect, 1 + cls.demandDelta2026 * effect);
+  const priced = run(priceRules);
+  const cf = seatsense ? run(false) : null;
 
-  const row = {
-    date,
-    service_id: svc.service_id,
-    day_type: dayType(date),
-    tickets_sold: priced.sold,
-    revenue_gbp: priced.revenue,
-    sales_closed: priced.demand > cap,
-    demand_turned_away: priced.turnedAway,
-  };
-
-  // The no-show rate is the same in both years. SeatSense measures it; it does
-  // not change it. In 2025 nobody could observe it at all.
-  const noShowRate = noShowRateFor(svc.service_id, svc.demand_class) * jitter(seed + '|ns', 0.18);
-
-  if (seatsense) {
-    const boarded = Math.round(priced.sold * (1 - noShowRate));
-    row.boarded = boarded;
-    row.seats_occupied = boarded;                 // every ticket carries a seat
-    row.ghost_seats = priced.sold - boarded;      // paid for, travelled empty
-    const cf = sell(1, 1);                        // same year, 2025's pricing
-    row.cf_tickets_sold = cf.sold;
-    row.cf_revenue_gbp = cf.revenue;
-  } else if (TICKET_DATA.loadSurveyDates2025.includes(date) &&
-             svc.direction === 'up' && svc.departure_time < '10:00') {
-    // The only 2025 data that ever saw an actual passenger: four manual load
-    // surveys, morning up services, counted by hand with an error margin.
-    row.manual_load_survey = Math.round(priced.sold * (1 - noShowRate) * jitter(seed + '|count', 0.03));
-  }
-  return row;
+  return deps.map((svc, i) => {
+    const row = {
+      date,
+      service_id: svc.service_id,
+      day_type: dayType(date),
+      tickets_sold: priced.sold[i],
+      revenue_gbp: round2(priced.sold[i] * priced.fares[i]),
+      sales_closed: priced.sold[i] >= caps[i],
+      demand_turned_away: priced.lost[i],
+    };
+    const noShowRate = noShowRateFor(svc.service_id, svc.demand_class) *
+      jitter(`${svc.service_id}|${date}|ns`, 0.18);
+    if (seatsense) {
+      const boarded = Math.round(priced.sold[i] * (1 - noShowRate));
+      row.boarded = boarded;
+      row.seats_occupied = boarded;              // every ticket carries a seat
+      row.ghost_seats = priced.sold[i] - boarded; // paid for, travelled empty
+      row.cf_tickets_sold = cf.sold[i];
+      row.cf_revenue_gbp = round2(cf.sold[i] * cf.fares[i]);
+    } else if (TICKET_DATA.loadSurveyDates2025.includes(date) &&
+               svc.direction === 'up' && svc.departure_time < '10:00') {
+      row.manual_load_survey = Math.round(priced.sold[i] * (1 - noShowRate) * jitter(`${svc.service_id}|${date}|count`, 0.03));
+    }
+    return row;
+  });
 }
 
 function buildDaily(from, to) {
   const rows = [];
-  for (const date of eachDate(from, to)) for (const svc of services) rows.push(makeRow(svc, date));
+  for (const date of eachDate(from, to)) for (const route of ROUTES) rows.push(...makeRouteDay(route, date));
   return rows;
 }
 
@@ -175,22 +266,43 @@ function buildPricing() {
   return {
     effective_from: COVERAGE.seatsenseGoLive,
     mechanism: 'Demand-based pricing on measured seat occupancy',
+    principle: PRICING_POLICY.principle,
+    rule: PRICING_POLICY.rule,
+    why_it_earns: PRICING_POLICY.why_it_earns,
+    why_it_needs_measurement: PRICING_POLICY.why_it_needs_measurement,
+    parameters: {
+      target_cabin_factor_pct: round1(PRICING_POLICY.targetCabinFactor * 100),
+      sold_ceiling_pct: round1(PRICING_POLICY.soldCeiling * 100),
+      max_premium_pct: round1(PRICING_POLICY.maxPremium * 100),
+      elasticity_between_adjacent_departures: PRICING_POLICY.choiceElasticity,
+      market_participation_elasticity: PRICING_POLICY.marketElasticity,
+      share_of_refused_demand_that_takes_another_departure: PRICING_POLICY.spillShare,
+    },
     rationale:
-      'Fares are set from measured cabin factor rather than tickets sold. Departures SeatSense proves are physically full carry a small increase, because the demand sitting behind their closed sale is real. Departures with measured spare capacity are discounted to attract the passengers those closed sales turn away. The moves are one to two percent: the value is in aiming them at the right departures, not in their size.',
+      "Each popular departure's fare is derived, not chosen: its sold-target is the cabin-factor target plus its own measured no-show rate, capped so it can never reach the sales cap, and the fare moves by whatever it takes to land predicted sales there. The departures either side take a flat discount to receive the demand priced off the peak - and the passengers who used to be refused outright.",
     not_available: SALES_POLICY.what_seatsense_does_not_do,
     phase_in: 'None - the rules were live in full from 1 January 2026.',
     why_the_effect_varies_by_month:
-      'A fare increase only reaches revenue on a departure whose sales cap binds. In a quiet month the morning peak does not sell out, the increase loses exactly the volume it gains, and the effect falls to almost nothing. The gain is concentrated in the months when the peak is genuinely full.',
-    fare_basket: 'Unchanged overall - the increases and discounts are set to offset in the regulated basket.',
+      "The fare is solved against each day's demand, so a departure that would not have filled carries no premium at all. The gain is therefore concentrated in the months when demand most exceeded the seats - in a quiet month nothing was being rationed, so there is nothing to price and the effect falls to almost nothing.",
     class_actions: Object.entries(DEMAND_CLASSES).map(([id, cls]) => ({
       demand_class: id,
       label: cls.label,
-      fare_change_pct: round1(cls.fareDelta2026 * 100),
-      demand_response_pct: round1(cls.demandDelta2026 * 100),
+      priced_by: cls.priced === 'to_target'
+        ? 'solved per day, held just below full against a measured cabin-factor target'
+        : 'discounted in proportion to the peak premium that day, but only on the departures that sit next to a peak',
+      fare_change_pct: round1(
+        services.filter((s) => s.demand_class === id).reduce((a, s) => a + s.fare_change_pct, 0) /
+        services.filter((s) => s.demand_class === id).length),
+      fare_change_range_pct: [
+        Math.min(...services.filter((s) => s.demand_class === id).map((s) => s.fare_change_pct)),
+        Math.max(...services.filter((s) => s.demand_class === id).map((s) => s.fare_change_pct)),
+      ],
+      departures_in_a_competition_window: services.filter((s) => s.demand_class === id && s.competition_window).length,
+      departures_total: services.filter((s) => s.demand_class === id).length,
       rationale: cls.pricingRationale,
-      no_show_rate_pct: round1(cls.noShowRate * 100),
-      demand_2025_pct_of_seats: round1(cls.demand2025 * 100),
-      capacity_constrained: cls.demand2025 > 1,
+      mean_no_show_rate_pct: round1(cls.noShowRate * 100),
+      preferred_demand_pct_of_seats: round1(cls.preferredLoad * 100),
+      demand_exceeds_seats: cls.preferredLoad > 1,
     })),
     service_actions: services
       .filter((s) => s.demand_class === 'peak_core' || s.demand_class === 'peak_shoulder')
@@ -201,6 +313,8 @@ function buildPricing() {
         fare_2025_gbp: s.fare_2025_gbp,
         fare_2026_target_gbp: s.fare_2026_target_gbp,
         fare_change_pct: s.fare_change_pct,
+        no_show_rate_pct: s.no_show_rate_pct,
+        sold_target_pct: s.sold_target_pct,
       })),
   };
 }

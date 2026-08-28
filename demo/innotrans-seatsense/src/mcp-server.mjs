@@ -130,13 +130,13 @@ const TOOLS = [
   {
     name: 'repricing_candidates',
     description:
-      "Forward-looking: which departures to reprice next, ranked, with the measured numbers and the rule behind each recommendation - including the departures that look full but are not, where a fare increase would backfire. Answers 'what should we do next?'.",
+      "Forward-looking: which departures still need attention, ranked, with the measured numbers and the rule behind each. Separates the departures where price has done its job and only more seats will help from the ones that fill on tickets while measurably travelling with empty seats. Answers 'what should we do next?'.",
     inputSchema: {
       type: 'object',
       properties: {
         limit: int('How many candidates to return. Default 8.'),
-        days: int('Look-back window in days. Default 28.'),
-        month: int('Optional: analyse a specific calendar month of 2026 instead of the look-back window.'),
+        days: int('Optional: look back this many days instead of the whole year to date.'),
+        month: int('Optional: analyse a single calendar month of 2026 instead.'),
       },
     },
     handler: (a) => db.repricingCandidates(a),

@@ -231,12 +231,12 @@ export function overview() {
     routes: META.routes,
     demand_classes: META.demand_classes,
     suggested_questions: [
-      'European operators cannot oversell. Why does measuring occupancy make money then?',
+      'A train sold out at 100% cannot take another passenger. What did that cost, and what did you do about it?',
       'What did they think their load factor was in 2025, and what was it really?',
-      'How much revenue is attributable to SeatSense, and how do you know?',
       'Show me the morning peak departures ranked by how full they actually are.',
-      'How many paid seats travelled empty on the 07:41 last Tuesday?',
-      'Which departures should we reprice next?',
+      'How much revenue is attributable to SeatSense, and how do you know?',
+      'How many paid seats travelled empty on the 07:41, and why can you not resell them?',
+      'Which departures still need attention?',
     ],
     narrative: `${META.operator.name} (fictional) sells one seat per ticket and may not oversell. ${BASELINE} has ticket sales only; SeatSense measures actual seat occupancy from ${META.operator.seatsense.fleetGoLive}. Over ${head.window.label} observed revenue moved ${pct(t.delta.revenue_pct)}, of which ${eff.revenue_uplift_pct}% (${gbp(eff.revenue_uplift_gbp)}) is attributable to pricing on measured occupancy - against a business case of ${BUSINESS_CASE.target_total_revenue_uplift_pct}%. The rest is market growth. No revenue comes from overselling or from reselling a no-show seat; neither is permitted.`,
   };
@@ -547,9 +547,9 @@ export function morningPeakReport({ route_id, month } = {}) {
     },
     services: perService,
     definitions: DEFINITIONS,
-    what_did_not_change:
-      'The peak\'s sold load. Those departures were already selling every seat they had, and one ticket per seat means there is no 481st seat to sell. Market growth in a capacity-constrained peak turns into turn-aways, not revenue.',
-    narrative: `Morning peak, ${MONTH_NAMES[m - 1]} weekdays. The crush departures sold ${a25?.assumed_load_factor_pct}% of seats in ${BASELINE} and ${a26?.assumed_load_factor_pct}% now - unchanged, because they were already full and cannot be oversold. What changed is the fare, ${pct(growth(a25?.avg_fare_gbp, a26?.avg_fare_gbp))}, worth ${a26?.pricing_effect?.revenue_uplift_pct}% attributable on this class, and that SeatSense now shows their real cabin factor to be ${a26?.cabin_factor_pct}% - ${a26?.seatsense?.overstatement_pp} points below what the ticket system reports. They still close sales on ${a26?.sold_out_departures_pct}% of weekdays against ${a25?.sold_out_departures_pct}% before. The shoulder departures took ${pct(growth(s25?.tickets_sold, s26?.tickets_sold))} more passengers on fares ${pct(growth(s25?.avg_fare_gbp, s26?.avg_fare_gbp))}, and peak core's share of morning passengers moved from ${share(a25, s25)}% to ${share(a26, s26)}%.`
+    what_the_policy_is:
+      'Hold the popular departures just below full so they never refuse anyone, and price the departures either side below them so the displaced demand has somewhere to go. Travelling on the train you want stays possible; it costs more.',
+    narrative: `Morning peak, ${MONTH_NAMES[m - 1]} weekdays. The crush departures were sold to ${a25?.assumed_load_factor_pct}% of seats in ${BASELINE}, closing sales on ${a25?.sold_out_departures_pct}% of days and refusing ${r1((a25?.passengers_turned_away ?? 0) / (a25?.departures ?? 1))} passengers a departure. In ${CURRENT} they are deliberately held at ${a26?.assumed_load_factor_pct}% - sales closed on ${a26?.sold_out_departures_pct}% of days, ${r1((a26?.passengers_turned_away ?? 0) / (a26?.departures ?? 1))} refused - on a fare ${pct(growth(a25?.avg_fare_gbp, a26?.avg_fare_gbp))} higher, and SeatSense measures the cabin factor behind that at ${a26?.cabin_factor_pct}%, ${a26?.seatsense?.overstatement_pp} points below the ticket figure. The shoulder departures took ${pct(growth(s25?.tickets_sold, s26?.tickets_sold))} more passengers on fares ${pct(growth(s25?.avg_fare_gbp, s26?.avg_fare_gbp))}, and peak core's share of morning passengers moved from ${share(a25, s25)}% to ${share(a26, s26)}%.`
   };
 }
 
@@ -574,6 +574,11 @@ export function pricingActions({ route_id, demand_class } = {}) {
   return {
     effective_from: PRICING.effective_from,
     mechanism: PRICING.mechanism,
+    principle: PRICING.principle,
+    rule: PRICING.rule,
+    why_it_earns: PRICING.why_it_earns,
+    why_it_needs_measurement: PRICING.why_it_needs_measurement,
+    parameters: PRICING.parameters,
     rationale: PRICING.rationale,
     not_available: PRICING.not_available,
     fare_basket: PRICING.fare_basket,
@@ -587,7 +592,7 @@ export function pricingActions({ route_id, demand_class } = {}) {
       'A fare increase on a departure with spare seats earns nothing here: demand falls by the same percentage the fare rises. Only where the 100% sales cap binds does the increase reach revenue.',
     ],
     definitions: DEFINITIONS,
-    narrative: `From ${PRICING.effective_from} fares follow measured cabin factor: ${classRows.map((c) => `${c.demand_class} ${pct(c.fare_change_pct)}`).join(', ')}. Over ${LIKE_FOR_LIKE.label} that is worth ${gbp(total)} attributable. ${PRICING.why_the_effect_varies_by_month}`,
+    narrative: `${PRICING.principle} From ${PRICING.effective_from} each popular departure's fare is solved against that day's demand so predicted sales land on ${PRICING.parameters.target_cabin_factor_pct}% measured occupancy and never at the sales cap, capped at ${PRICING.parameters.max_premium_pct}% premium; the departures either side are discounted in proportion. Realised: ${classRows.map((c) => `${c.demand_class} ${pct(c.fare_change_pct)}`).join(', ')}. Over ${LIKE_FOR_LIKE.label} that is worth ${gbp(total)} attributable. ${PRICING.why_the_effect_varies_by_month}`,
   };
 }
 
@@ -667,81 +672,105 @@ export function seatsenseAttribution({ assumed_market_growth_pct } = {}) {
 /**
  * Capacity pressure, counted from the data rather than modelled.
  *
- * Deliberately does not claim a service-quality improvement. A 0.75% revenue
- * effect from one- and two-percent fare moves does not relieve crowding, and
- * this tool says so. What measurement changes here is the capacity *case*: a
- * peak that sells out but travels at 90% needs less new rolling stock than the
- * ticket data implies.
+ * This is where the pricing policy shows up operationally: departures that
+ * used to close sales and refuse passengers now stay just below full. It also
+ * names the residual honestly - the days when the premium cap binds and a
+ * departure still fills, which is where price stops being the answer and more
+ * seats start being it.
  */
 export function capacityPressure({ month } = {}) {
   const lfl = { day_type: 'weekday', from_month: LIKE_FOR_LIKE.from_month, to_month: LIKE_FOR_LIKE.to_month };
   const yA = aggregate(select(BASELINE, lfl), BASELINE);
   const yB = aggregate(select(CURRENT, lfl), CURRENT);
-  const pk = (year) => aggregate(select(year, { ...lfl, demand_class: 'peak_core' }), year);
-  const pkA = pk(BASELINE), pkB = pk(CURRENT);
+  const cl = (year, demand_class) => aggregate(select(year, { ...lfl, demand_class }), year);
+  const pkA = cl(BASELINE, 'peak_core'), pkB = cl(CURRENT, 'peak_core');
+  const evA = cl(BASELINE, 'evening_peak'), evB = cl(CURRENT, 'evening_peak');
+  const shA = cl(BASELINE, 'peak_shoulder'), shB = cl(CURRENT, 'peak_shoulder');
   const wdA = weekdaysIn(BASELINE, lfl), wdB = weekdaysIn(CURRENT, lfl);
   const seatsPerPeakTrain = Math.round(pkB.seats_offered / pkB.departures);
-  const notNeeded = Math.round((seatsPerPeakTrain * pkB.seatsense.overstatement_pp) / 100);
+  const headroom = Math.round((seatsPerPeakTrain * (100 - pkB.cabin_factor_pct)) / 100);
 
   const monthly = [];
   for (let i = 1; i <= LAST_MONTH; i++) {
-    const agg = aggregate(select(CURRENT, { from_month: i, to_month: i, day_type: 'weekday' }), CURRENT);
-    const peak = aggregate(select(CURRENT, { from_month: i, to_month: i, day_type: 'weekday', demand_class: 'peak_core' }), CURRENT);
+    const win = { from_month: i, to_month: i, day_type: 'weekday' };
+    const agg = aggregate(select(CURRENT, win), CURRENT);
+    const peak = aggregate(select(CURRENT, { ...win, demand_class: 'peak_core' }), CURRENT);
+    const peak25 = aggregate(select(BASELINE, { ...win, demand_class: 'peak_core' }), BASELINE);
     monthly.push({
       month: MONTH_NAMES[i - 1],
-      peak_core_sold_out_departures_pct: peak.sold_out_departures_pct,
+      peak_core_sold_out_departures_pct: { [BASELINE]: peak25.sold_out_departures_pct, [CURRENT]: peak.sold_out_departures_pct },
+      peak_core_assumed_load_factor_pct: peak.assumed_load_factor_pct,
       peak_core_cabin_factor_pct: peak.cabin_factor_pct,
+      passengers_turned_away: { [BASELINE]: peak25.passengers_turned_away, [CURRENT]: peak.passengers_turned_away },
       attributable_revenue_pct: agg.pricing_effect.revenue_uplift_pct,
-      passengers_turned_away: agg.passengers_turned_away,
     });
   }
 
   return {
     scope: `${LIKE_FOR_LIKE.label}, weekdays, counted from the departure data`,
+    the_policy: {
+      principle: PRICING.principle,
+      target_cabin_factor_pct: PRICING.parameters.target_cabin_factor_pct,
+      sold_ceiling_pct: PRICING.parameters.sold_ceiling_pct,
+    },
     network: {
       sold_out_departures_pct: { [BASELINE]: yA.sold_out_departures_pct, [CURRENT]: yB.sold_out_departures_pct },
       passengers_turned_away_per_weekday: { [BASELINE]: r1(yA.passengers_turned_away / wdA), [CURRENT]: r1(yB.passengers_turned_away / wdB) },
       cabin_factor_pct: { [BASELINE]: null, [CURRENT]: yB.cabin_factor_pct, note: 'Averaged over every departure of the day including the quiet ones - not a peak figure.' },
       ghost_seat_pct: { [BASELINE]: null, [CURRENT]: yB.seatsense.ghost_seat_pct },
     },
-    peak_core: {
-      sold_out_departures_pct: { [BASELINE]: pkA.sold_out_departures_pct, [CURRENT]: pkB.sold_out_departures_pct },
-      turned_away_per_weekday: { [BASELINE]: r1(pkA.passengers_turned_away / wdA), [CURRENT]: r1(pkB.passengers_turned_away / wdB) },
-      assumed_load_factor_pct: { [BASELINE]: pkA.assumed_load_factor_pct, [CURRENT]: pkB.assumed_load_factor_pct },
-      cabin_factor_pct: { [BASELINE]: null, [CURRENT]: pkB.cabin_factor_pct },
-      overstatement_pp: pkB.seatsense.overstatement_pp,
+    by_class: {
+      peak_core: {
+        assumed_load_factor_pct: { [BASELINE]: pkA.assumed_load_factor_pct, [CURRENT]: pkB.assumed_load_factor_pct },
+        cabin_factor_pct: { [BASELINE]: null, [CURRENT]: pkB.cabin_factor_pct },
+        sold_out_departures_pct: { [BASELINE]: pkA.sold_out_departures_pct, [CURRENT]: pkB.sold_out_departures_pct },
+        turned_away_per_weekday: { [BASELINE]: r1(pkA.passengers_turned_away / wdA), [CURRENT]: r1(pkB.passengers_turned_away / wdB) },
+        avg_fare_gbp: { [BASELINE]: pkA.avg_fare_gbp, [CURRENT]: pkB.avg_fare_gbp },
+      },
+      evening_peak: {
+        assumed_load_factor_pct: { [BASELINE]: evA.assumed_load_factor_pct, [CURRENT]: evB.assumed_load_factor_pct },
+        cabin_factor_pct: { [BASELINE]: null, [CURRENT]: evB.cabin_factor_pct },
+        sold_out_departures_pct: { [BASELINE]: evA.sold_out_departures_pct, [CURRENT]: evB.sold_out_departures_pct },
+        turned_away_per_weekday: { [BASELINE]: r1(evA.passengers_turned_away / wdA), [CURRENT]: r1(evB.passengers_turned_away / wdB) },
+      },
+      peak_shoulder: {
+        assumed_load_factor_pct: { [BASELINE]: shA.assumed_load_factor_pct, [CURRENT]: shB.assumed_load_factor_pct },
+        cabin_factor_pct: { [BASELINE]: null, [CURRENT]: shB.cabin_factor_pct },
+        avg_fare_gbp: { [BASELINE]: shA.avg_fare_gbp, [CURRENT]: shB.avg_fare_gbp },
+        note: 'Where the demand priced off the peak goes, and where the passengers who used to be refused now travel.',
+      },
     },
-    why_turn_aways_barely_moved:
-      'Background market growth adds demand to departures that were already at the sales cap, and a cap is a cap: the extra demand becomes a turn-away rather than a ticket. The peak fare increase pushes a little of it back off again, which is why the peak figure moves slightly while the network figure rises. Nothing in a sensor changes this, and nor does pricing at this scale - relieving it needs more seats.',
-    what_measurement_changes_for_capacity_planning: {
-      seats_per_peak_train: seatsPerPeakTrain,
-      ticket_data_says_load_factor_pct: pkB.assumed_load_factor_pct,
-      measured_cabin_factor_pct: pkB.cabin_factor_pct,
-      seats_per_train_that_look_needed_but_are_not: notNeeded,
-      implication: `On ticket data these departures run at ${pkB.assumed_load_factor_pct}% and the obvious answer is more capacity. Measured, they run at ${pkB.cabin_factor_pct}%: about ${notNeeded} seats a train are already there and unused. That does not remove the case for lengthening - the turn-aways are real - but it changes its size, and it is not a calculation the operator could do before 2026.`,
+    where_price_stops_being_the_answer: {
+      peak_core_departures_still_selling_out_pct: pkB.sold_out_departures_pct,
+      why: `The premium is capped at ${r1(PRICING.parameters.max_premium_pct)}% because a demand-based fare still has to be defensible to a regulator and recognisable to a season-ticket holder. On the busiest days that cap binds before the target is reached and the departure fills anyway.`,
+      measured_headroom_per_peak_train: headroom,
+      headroom_note: `Peak departures are sold to ${pkB.assumed_load_factor_pct}% and measurably travel at ${pkB.cabin_factor_pct}% - about ${headroom} of ${seatsPerPeakTrain} seats a train. That is the gap the no-show rate opens, it is not sellable under one-ticket-per-seat, and it is the number to have in hand before signing for more rolling stock.`,
     },
     monthly_2026: monthly,
     no_service_quality_claim:
-      'This dataset does not claim SeatSense improved punctuality, dwell time or complaints. The fare moves are too small to have done so, and inventing the numbers would not survive the first question from anyone who runs a railway.',
+      'This dataset does not claim SeatSense improved punctuality, dwell time or complaints, and carries no modelled figures for them. What it can show is that far fewer passengers now meet a closed sale.',
     notes: [
       'Every figure here is counted from the departure data, not modelled.',
-      'attributable_revenue_pct in the monthly series tracks whether the peak actually sold out that month - a fare increase only reaches revenue when the sales cap binds.',
+      'attributable_revenue_pct in the monthly series tracks how far demand exceeded the seats that month. The fare is solved per day, so a departure that would not have filled carries no premium and earns nothing.',
     ],
     definitions: DEFINITIONS,
-    narrative: `Over ${LIKE_FOR_LIKE.label}, peak-core departures closed sales on ${pkA.sold_out_departures_pct}% of weekdays in ${BASELINE} and ${pkB.sold_out_departures_pct}% in ${CURRENT} - effectively unchanged - and turn-aways moved from ${r1(pkA.passengers_turned_away / wdA)} to ${r1(pkB.passengers_turned_away / wdB)} a weekday on the peak, while across the network they rose from ${r1(yA.passengers_turned_away / wdA)} to ${r1(yB.passengers_turned_away / wdB)}: market growth pushing against a hard cap. SeatSense does not fix that, and this dataset does not pretend it does. What it does show is that these departures, reported at ${pkB.assumed_load_factor_pct}% by the ticket system, actually travel at ${pkB.cabin_factor_pct}% - about ${notNeeded} of ${seatsPerPeakTrain} seats a train sitting empty on a train that just refused passengers. Monthly, the attributable revenue follows whether the peak sold out at all: ${monthly.map((x) => `${x.month.slice(0, 3)} ${x.attributable_revenue_pct}%`).join(', ')}.`,
+    narrative: `The policy is that it must always be possible to travel on the departure you want, even if it costs more. Over ${LIKE_FOR_LIKE.label}, peak-core departures closed sales on ${pkA.sold_out_departures_pct}% of weekdays in ${BASELINE} and ${pkB.sold_out_departures_pct}% in ${CURRENT}; the evening peak went ${evA.sold_out_departures_pct}% to ${evB.sold_out_departures_pct}%. Passengers turned away across the network fell from ${r1(yA.passengers_turned_away / wdA)} to ${r1(yB.passengers_turned_away / wdB)} a weekday. The peak now sells to ${pkB.assumed_load_factor_pct}% instead of ${pkA.assumed_load_factor_pct}% and its fare is GBP ${pkB.avg_fare_gbp} against GBP ${pkA.avg_fare_gbp}, while the shoulder departures carry the difference at GBP ${shB.avg_fare_gbp} against GBP ${shA.avg_fare_gbp}. What price cannot fix: ${pkB.sold_out_departures_pct}% of peak departures still fill, because the premium is capped - and measured occupancy shows ${headroom} of ${seatsPerPeakTrain} seats a train travelling empty regardless, which is the no-show gap and is not sellable.`,
   };
 }
 
 /** Forward-looking: what should the revenue team do next week? */
-export function repricingCandidates({ limit = 8, days = 28, month } = {}) {
+export function repricingCandidates({ limit = 8, days, month } = {}) {
   const RULES = {
-    raise_fare: 'Cabin factor at or above 90% and sales closing on at least a fifth of weekdays: the departure is genuinely full, so the demand behind the closed sale is real and a small increase reaches revenue instead of losing volume.',
-    hold_fare_high_no_show: 'Sales closing on at least a fifth of weekdays but cabin factor below 90%: the departure looks full and is not. An increase here would push away passengers who would have travelled, while the no-show seats stay empty regardless. Price its neighbour instead.',
-    discount_to_fill: 'Assumed load factor at or below 50% with measured spare capacity: room the neighbouring peak can be priced into.',
+    lengthen_the_train: `Still closing sales on 10% or more of weekdays with a cabin factor at or above the ${PRICING.parameters.target_cabin_factor_pct}% target: the premium cap has been reached and the departure really is as full as the policy intends. Price has done what it can; the answer is more seats.`,
+    premium_cap_is_binding: `Still closing sales on 10% or more of weekdays but a cabin factor below the ${PRICING.parameters.target_cabin_factor_pct}% target: the departure fills on tickets while measurably travelling with empty seats, because its no-show rate is high. Raising the premium further refuses fewer people but earns less per passenger - the judgement call worth taking to the revenue meeting, and one ticket data cannot even frame.`,
+    ease_the_premium: 'A peak departure landing more than 6 points below its cabin-factor target: the premium is doing more than it needs to and is pushing away passengers who would have paid. Give some back.',
+    discount_to_fill: 'Assumed load factor at or below 50%: measured spare capacity the neighbouring peak could be priced into.',
   };
   const window = month
     ? { from_month: month, to_month: month }
-    : { from_date: new Date(new Date(COVERAGE_END + 'T00:00:00Z').getTime() - days * 86400000).toISOString().slice(0, 10) };
+    : days
+      ? { from_date: new Date(new Date(COVERAGE_END + 'T00:00:00Z').getTime() - days * 86400000).toISOString().slice(0, 10) }
+      : { from_month: LIKE_FOR_LIKE.from_month, to_month: LIKE_FOR_LIKE.to_month };
 
   const out = [];
   for (const svc of SERVICES) {
@@ -752,9 +781,11 @@ export function repricingCandidates({ limit = 8, days = 28, month } = {}) {
     const cabin = agg.cabin_factor_pct;
     const closed = agg.sold_out_departures_pct;
 
+    const target = svc.sold_target_pct;
     let action = null, move = 0;
-    if (cabin >= 90 && closed >= 20) { action = 'raise_fare'; move = 2; }
-    else if (closed >= 20 && cabin < 90) action = 'hold_fare_high_no_show';
+    if (closed >= 10 && cabin >= PRICING.parameters.target_cabin_factor_pct) action = 'lengthen_the_train';
+    else if (closed >= 10) action = 'premium_cap_is_binding';
+    else if (target != null && sold < target - 6) { action = 'ease_the_premium'; move = -1.5; }
     else if (sold <= 50) { action = 'discount_to_fill'; move = -1.5; }
     if (!action) continue;
 
@@ -766,6 +797,7 @@ export function repricingCandidates({ limit = 8, days = 28, month } = {}) {
       demand_class: svc.demand_class,
       measured: {
         assumed_load_factor_pct: sold,
+        sold_target_pct: svc.sold_target_pct,
         cabin_factor_pct: cabin,
         overstatement_pp: agg.seatsense.overstatement_pp,
         no_show_rate_pct: svc.no_show_rate_pct,
@@ -778,15 +810,15 @@ export function repricingCandidates({ limit = 8, days = 28, month } = {}) {
       suggested_fare_move_pct: move,
       reason: RULES[action],
       indicative_annual_revenue_effect_gbp: move
-        ? r2(revenuePerWeekdayYear * (move / 100) * (move > 0 ? 1 : -1.5))
+        ? r2(revenuePerWeekdayYear * (move / 100) * -1.5)
         : 0,
       effect_assumption: move
-        ? 'A fare increase on a departure whose sales cap binds keeps its volume, so the move reaches revenue in full; a discount is assumed to return 1.5x its cost in volume. Indicative only.'
-        : 'No fare move recommended - the action is to leave this departure alone and price its neighbour.',
+        ? 'A fare reduction is assumed to return 1.5x its cost in volume, the same elasticity the pricing rule uses. Indicative only.'
+        : 'No fare move recommended: this one is a capacity or judgement question, not a price question.',
     });
   }
 
-  const priority = ['raise_fare', 'hold_fare_high_no_show', 'discount_to_fill'];
+  const priority = ['lengthen_the_train', 'premium_cap_is_binding', 'ease_the_premium', 'discount_to_fill'];
   out.sort((a, b) =>
     priority.indexOf(a.recommended_action) - priority.indexOf(b.recommended_action) ||
     Math.abs(b.indicative_annual_revenue_effect_gbp) - Math.abs(a.indicative_annual_revenue_effect_gbp));
@@ -795,16 +827,18 @@ export function repricingCandidates({ limit = 8, days = 28, month } = {}) {
   for (const c of out) counts[c.recommended_action] = (counts[c.recommended_action] || 0) + 1;
 
   return {
-    window: month ? `${MONTH_NAMES[month - 1]} ${CURRENT} weekdays` : `Weekdays ${window.from_date} .. ${COVERAGE_END}`,
+    window: month ? `${MONTH_NAMES[month - 1]} ${CURRENT} weekdays`
+      : days ? `Weekdays ${window.from_date} .. ${COVERAGE_END}`
+      : `${LIKE_FOR_LIKE.label} ${CURRENT}, weekdays`,
     rules_applied: RULES,
     not_available: SALES_POLICY.what_seatsense_does_not_do,
-    sort_order: 'Action priority (fare increases, then the ones to leave alone, then discounts), then largest indicative money first.',
+    sort_order: 'Action priority (capacity first, then the premium judgement calls, then discounts), then largest indicative money first.',
     candidates: top,
     total_candidates: out.length,
     by_action: counts,
     indicative_total_annual_effect_gbp: r2(top.reduce((a, c) => a + c.indicative_annual_revenue_effect_gbp, 0)),
     definitions: DEFINITIONS,
-    narrative: `${out.length} departures have a clear next move (${Object.entries(counts).map(([k, v]) => `${v} x ${k}`).join(', ')}); showing the ${top.length} largest. ${top[0] ? `Top: ${top[0].service_id} at ${top[0].departure_time} - ${top[0].recommended_action}. ${top[0].reason}` : ''} Note what is not on the list: releasing or reselling no-show seats, and overselling. Neither is available to a European operator selling reserved seats.`,
+    narrative: `${out.length} departures have a clear next move (${Object.entries(counts).map(([k, v]) => `${v} x ${k}`).join(', ')}); showing the ${top.length} largest. ${top[0] ? `Top: ${top[0].service_id} at ${top[0].departure_time} - ${top[0].recommended_action}. ${top[0].reason}` : ''} Note what is not on the list: releasing or reselling no-show seats, and overselling. Neither is available to an operator selling reserved seats, which is why the only levers here are price and rolling stock.`,
   };
 }
 

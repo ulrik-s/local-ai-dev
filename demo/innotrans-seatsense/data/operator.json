@@ -55,7 +55,7 @@
       "coaches_per_unit": 8,
       "seats_per_coach": 60,
       "seats_per_train": 480,
-      "daily_departures": 18,
+      "daily_departures": 20,
       "peak_fare_gbp": 24.6
     },
     {
@@ -78,7 +78,7 @@
       "coaches_per_unit": 9,
       "seats_per_coach": 56,
       "seats_per_train": 504,
-      "daily_departures": 18,
+      "daily_departures": 20,
       "peak_fare_gbp": 41.2
     },
     {
@@ -99,7 +99,7 @@
       "coaches_per_unit": 5,
       "seats_per_coach": 68,
       "seats_per_train": 340,
-      "daily_departures": 16,
+      "daily_departures": 18,
       "peak_fare_gbp": 11.4
     }
   ],
@@ -107,12 +107,12 @@
     {
       "demand_class": "peak_core",
       "label": "Morning peak core",
-      "description": "The 07:00-08:30 arrivals. Sells out every weekday and turns passengers away."
+      "description": "The 07:00-08:30 arrivals. More people want these than there are seats."
     },
     {
       "demand_class": "peak_shoulder",
       "label": "Peak shoulder",
-      "description": "The departures either side of the crush, with genuine measured spare capacity."
+      "description": "The departures either side of the crush. Where the priced-off demand goes."
     },
     {
       "demand_class": "offpeak",
@@ -122,7 +122,7 @@
     {
       "demand_class": "evening_peak",
       "label": "Evening peak",
-      "description": "The 16:30-18:00 exodus out of the city. Sells out in the busier months."
+      "description": "The 16:30-18:00 exodus out of the city. Also demand-constrained."
     },
     {
       "demand_class": "early_late",
@@ -137,7 +137,7 @@
     "overselling": "not permitted",
     "basis": "A seat reservation is a contractual right to that seat, and denied boarding triggers passenger-rights obligations. European operators therefore sell at most one ticket per seat per departure, unlike airlines, which deliberately overbook and price the denied-boarding risk into their yield model.",
     "consequences": [
-      "The morning peak sells out and turns passengers away rather than absorbing them.",
+      "A departure sold to 100% cannot take another passenger. In 2025 the morning peak did exactly that and refused the rest - revenue that never happened.",
       "A seat sold to someone who does not travel departs empty and the revenue is not recoverable: the seat is still theirs, and overselling to cover it is not an option.",
       "Ticket data knows precisely how many seats are unsold. What it cannot know is how many of the sold seats will actually be sat in - so it cannot rank departures by how full they really are.",
       "That ranking is what pricing decisions are made on, which is why measuring it is worth money even though the empty seats themselves are not."
