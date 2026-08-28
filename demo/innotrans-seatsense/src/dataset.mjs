@@ -91,6 +91,49 @@ function select(year, { route_id, demand_class, service_id, day_type, from_month
   });
 }
 
+/** Distinct dates by day type - the calendar behind an aggregate. */
+function dayMix(rows) {
+  const seen = new Set(), mix = {};
+  for (const r of rows) {
+    if (seen.has(r.date)) continue;
+    seen.add(r.date);
+    mix[r.day_type] = (mix[r.day_type] || 0) + 1;
+  }
+  return mix;
+}
+
+/** Per-day-type totals, so two periods with different calendars can be compared. */
+function byDayType(rows) {
+  const out = {};
+  for (const r of rows) {
+    const d = (out[r.day_type] ??= { dates: new Set(), revenue: 0, tickets: 0 });
+    d.dates.add(r.date);
+    d.revenue += r.revenue_gbp;
+    d.tickets += r.tickets_sold;
+  }
+  return out;
+}
+
+/**
+ * Rebuild one year's totals on the other year's calendar.
+ *
+ * A month can contain one more or one fewer weekday than the same month a year
+ * earlier, which is worth several percent of its revenue - far more than the
+ * effect this demo is trying to show. So any comparison of a period shorter
+ * than the whole window has to be adjusted for it.
+ */
+function onCalendarOf(rows, referenceRows) {
+  const mine = byDayType(rows), ref = dayMix(referenceRows);
+  let revenue = 0, tickets = 0, covered = true;
+  for (const [dt, days] of Object.entries(ref)) {
+    const d = mine[dt];
+    if (!d) { covered = false; continue; }
+    revenue += (d.revenue / d.dates.size) * days;
+    tickets += (d.tickets / d.dates.size) * days;
+  }
+  return { revenue_gbp: r2(revenue), tickets_sold: Math.round(tickets), complete: covered };
+}
+
 function aggregate(rows, year) {
   const departures = rows.length;
   if (!departures) return null;
@@ -98,11 +141,14 @@ function aggregate(rows, year) {
   const sold = sum(rows, 'tickets_sold');
   const revenue = sum(rows, 'revenue_gbp');
   const assumed = r1((sold / seats) * 100);
+  const mix = dayMix(rows);
   const out = {
     departures,
+    day_mix: mix,
     seats_offered: seats,
     tickets_sold: sold,
     seats_unsold: seats - sold,
+    revenue_per_weekday_gbp: mix.weekday ? r2(sum(rows.filter((r) => r.day_type === 'weekday'), 'revenue_gbp') / mix.weekday) : null,
     revenue_gbp: r2(revenue),
     avg_fare_gbp: r2(revenue / sold),
     assumed_load_factor_pct: assumed,
@@ -171,9 +217,14 @@ function groupAggregate(year, filters, groupBy) {
     buckets.get(key).rows.push(row);
   }
   const out = new Map();
-  for (const [key, b] of buckets) out.set(key, { key, label: b.label, agg: aggregate(b.rows, year) });
+  for (const [key, b] of buckets) out.set(key, { key, label: b.label, agg: aggregate(b.rows, year), rows: b.rows });
   return out;
 }
+
+const sameMix = (a, b) => {
+  const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
+  return [...keys].every((k) => (a[k] || 0) === (b[k] || 0));
+};
 
 const weekdaysIn = (year, filters) => new Set(select(year, { ...filters, day_type: 'weekday' }).map((r) => r.date)).size;
 
@@ -270,15 +321,30 @@ export function compareYears({ group_by = 'total', route_id, demand_class, servi
   const rows = keys.map((key) => {
     const x = a.get(key), y = b.get(key);
     const y2025 = x?.agg ?? null, y2026 = y?.agg ?? null;
+    // Two Marches can hold a different number of weekdays. Rebuild 2026 on
+    // 2025's calendar before comparing, and say which figure is which.
+    const adjusted = y2025 && y2026 ? onCalendarOf(y.rows, x.rows) : null;
+    const matched = y2025 && y2026 && sameMix(y2025.day_mix, y2026.day_mix);
     return {
       key,
       label: (y || x).label,
+      calendar: y2025 && y2026 ? {
+        day_mix_2025: y2025.day_mix,
+        day_mix_2026: y2026.day_mix,
+        identical: matched,
+        note: matched
+          ? 'Both periods hold the same number of weekdays, Saturdays and Sundays, so the observed change needs no adjustment.'
+          : `The two periods do not hold the same working days (${y2025.day_mix.weekday ?? 0} weekdays in ${BASELINE} against ${y2026.day_mix.weekday ?? 0} in ${CURRENT}). One weekday is worth several percent of a month, so quote revenue_pct_calendar_adjusted, not revenue_pct.`,
+      } : null,
       y2025,
       y2026,
       delta: y2025 && y2026 ? {
         tickets_sold_pct: growth(y2025.tickets_sold, y2026.tickets_sold),
         revenue_pct: growth(y2025.revenue_gbp, y2026.revenue_gbp),
         revenue_gbp_abs: r2(y2026.revenue_gbp - y2025.revenue_gbp),
+        revenue_pct_calendar_adjusted: growth(y2025.revenue_gbp, adjusted.revenue_gbp),
+        tickets_sold_pct_calendar_adjusted: growth(y2025.tickets_sold, adjusted.tickets_sold),
+        calendar_adjustment_pp: r1((growth(y2025.revenue_gbp, adjusted.revenue_gbp) ?? 0) - (growth(y2025.revenue_gbp, y2026.revenue_gbp) ?? 0)),
         avg_fare_pct: growth(y2025.avg_fare_gbp, y2026.avg_fare_gbp),
         assumed_load_factor_pp: r1(y2026.assumed_load_factor_pct - y2025.assumed_load_factor_pct),
         sold_out_departures_pp: r1(y2026.sold_out_departures_pct - y2025.sold_out_departures_pct),
@@ -296,12 +362,16 @@ export function compareYears({ group_by = 'total', route_id, demand_class, servi
       months: `${MONTH_NAMES[fm - 1]} - ${MONTH_NAMES[tm - 1]}`,
       label: fm === LIKE_FOR_LIKE.from_month && tm === LIKE_FOR_LIKE.to_month ? LIKE_FOR_LIKE.label : `${MONTH_NAMES[fm - 1]} - ${MONTH_NAMES[tm - 1]}, both years`,
       like_for_like: true,
-      note: LIKE_FOR_LIKE.note,
+      note: fm === LIKE_FOR_LIKE.from_month && tm === LIKE_FOR_LIKE.to_month
+        ? LIKE_FOR_LIKE.note
+        : `${CURRENT} data ends ${COVERAGE_END}, so both years are read over the same calendar window. Individual months within it do not hold the same working days - see calendar on each row.`,
     },
     filters: { group_by, route_id: route_id ?? 'all', demand_class: demand_class ?? 'all', service_id: service_id ?? 'all', day_type: day_type ?? 'all' },
     rows,
     notes: [
       'revenue_pct is the observed year-on-year change and includes background market growth. attributable_revenue_pct is the part caused by pricing on measured occupancy, measured against each departure\'s counterfactual. Quote the second one for anything about SeatSense.',
+      'revenue_pct compares raw totals. Where the two periods hold different working days - which happens in most individual months - use revenue_pct_calendar_adjusted, which rebuilds 2026 on 2025\'s calendar. attributable_revenue_pct is immune either way: it compares each 2026 departure with itself.',
+      'Check calendar.identical on each row before quoting an observed change.',
       `Cabin factor and ghost seats exist for ${CURRENT} only. assumed_load_factor_pct exists for both years but is not an occupancy figure.`,
     ],
     definitions: DEFINITIONS,
